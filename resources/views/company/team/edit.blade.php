@@ -49,18 +49,18 @@
                                 <div class="row">
                                     <div class="form-group form-float col-md-6">
                                         <select class="form-control show-tick ml-3 mr-3"  >
-                                            <option disabled>-- Select Company--</option>
+                                            {{-- <option disabled>-- Select Company--</option> --}}
                                             <option value="">Company1</option>
-                                            <option value="">Company2</option>
+                                            {{-- <option value="">Company2</option>
                                             <option value="">Company3</option>
                                             <option value="">Company4</option>
-                                            <option value="">Company5</option>
+                                            <option value="">Company5</option> --}}
                                            
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
-                                            <input type="text" class="form-control" placeholder=" Enter Team"
+                                            <input type="text" class="form-control" value="" placeholder=" Enter Team"
                                                 name="name" required>
                                         </div>
                                     </div>

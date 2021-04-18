@@ -48,23 +48,23 @@
                             <div class="body">
                                 <div class="row"><div class="form-group form-float col-md-4">
                                     <select class="form-control show-tick ml-3 mr-3"  >
-                                        <option disabled>-- Select Company--</option>
+                                        {{-- <option disabled>-- Select Company--</option> --}}
                                         <option value="">Company1</option>
-                                        <option value="">Company2</option>
+                                        {{-- <option value="">Company2</option>
                                         <option value="">Company3</option>
                                         <option value="">Company4</option>
-                                        <option value="">Company5</option>
+                                        <option value="">Company5</option> --}}
                                        
                                     </select>
                                 </div>
                                 <div class="form-group form-float col-md-4">
                                     <select class="form-control show-tick ml-3 mr-3"  >
-                                        <option disabled>-- Select Team--</option>
+                                        {{-- <option disabled>-- Select Team--</option> --}}
                                         <option value="">Team1</option>
-                                        <option value="">Team2</option>
+                                        {{-- <option value="">Team2</option>
                                         <option value="">Team3</option>
                                         <option value="">Team4</option>
-                                        <option value="">Team5</option>
+                                        <option value="">Team5</option> --}}
                                        
                                     </select>
                                 </div>

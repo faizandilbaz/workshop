@@ -7,7 +7,7 @@
  Css -->
 <link rel="stylesheet" href="{{asset ('admin/assets/plugins/jquery-/s.bootstrap4.min.css') }}">
 <!-- Custom Css -->
-<link  rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
 @endsection
 @section('content')
 <section class="content">
@@ -44,78 +44,82 @@
                                     <td>Team1</td>
                                     <td>
                                         <a href="{{ route('company.team.edit',) }}" type="submit" class="btn
-    btn-warning edit">Edit</a>
-    </td>
-    <td>
-        <form action="#" method="POST">
+                                           btn-warning edit">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="#" method="POST">
 
-            <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-    </td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Company2</td>
-        <td>Team2</td>
-        <td>
-            <a href="{{ route('company.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-        </td>
-        <td>
-            <form action="#" method="POST">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Company2</td>
+                                    <td>Team2</td>
+                                    <td>
+                                        <a href="{{ route('company.team.edit',) }}" type="submit"
+                                            class="btn btn-warning edit">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="#" method="POST">
 
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Company3</td>
-        <td>Team3</td>
-        <td>
-            <a href="{{ route('company.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-        </td>
-        <td>
-            <form action="#" method="POST">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Company3</td>
+                                    <td>Team3</td>
+                                    <td>
+                                        <a href="{{ route('company.team.edit',) }}" type="submit"
+                                            class="btn btn-warning edit">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="#" method="POST">
 
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Company4</td>
-        <td>Team4</td>
-        <td>
-            <a href="{{ route('company.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-        </td>
-        <td>
-            <form action="#" method="POST">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Company4</td>
+                                    <td>Team4</td>
+                                    <td>
+                                        <a href="{{ route('company.team.edit',) }}" type="submit"
+                                            class="btn btn-warning edit">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="#" method="POST">
 
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Company5</td>
-        <td>Team5</td>
-        <td>
-            <a href="{{ route('company.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-        </td>
-        <td>
-            <form action="#" method="POST">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Company5</td>
+                                    <td>Team5</td>
+                                    <td>
+                                        <a href="{{ route('company.team.edit',) }}" type="submit"
+                                            class="btn btn-warning edit">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="#" method="POST">
 
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
-    </tr>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
 
-    </tbody>
-    </table>
-    </div>
-    </div>
-    </div>
-    </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     {{-- <div class="row clearfix">
         <div class="col-lg-12">

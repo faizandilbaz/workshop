@@ -47,9 +47,9 @@ Route::view('login', 'company.auth.login')->name('login');
 Route::view('register', 'company.auth.register')->name('register');
 
 Route::view('dashboard', 'company.dashboard.index')->name('dashboard');
-Route::view('company/create', 'company.info.create')->name('info.create');
-Route::view('company/show', 'company.info.index')->name('info.index');
-Route::view('company/edit', 'company.info.edit')->name('info.edit');
+// Route::view('company/create', 'company.info.create')->name('info.create');
+// Route::view('company/show', 'company.info.index')->name('info.index');
+// Route::view('company/edit', 'company.info.edit')->name('info.edit');
  ////////////////////////////////TEAMs/////////////////////////////
 Route::view('team/create', 'company.team.create')->name('team'); 
 Route::view('team/show', 'company.team.index')->name('team.index');
@@ -60,6 +60,8 @@ Route::view('employee/show', 'company.employee.index')->name('employee.index');
 Route::view('employee/edit', 'company.employee.edit')->name('employee.edit');
 ///////////////////////////////Work Shope/////////////////////////////
 Route::view('work/shop', 'company.workShop.physical.create')->name('shop.create');
+Route::view('work/show/shop', 'company.workShop.physical.index')->name('shop.index');
+Route::view('work/shop/edit', 'company.workShop.physical.edit')->name('shop.physical.edit');
 });
 
 
@@ -89,7 +91,7 @@ Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'as' => 'employ
 
  Route::view('dashboard', 'employee.dashboard.index')->name('dashboard');
  ////////////////////////////////EMPLOYEE/////////////////////////////
- Route::view('employee/create', 'employee.info.create')->name('info.create');
- Route::view('employee/show', 'employee.info.index')->name('info.index');
- Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
+ Route::view('show', 'employee.workShope.create')->name('workShope.create');
+//  Route::view('employee/show', 'employee.info.index')->name('info.index');
+//  Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
 });

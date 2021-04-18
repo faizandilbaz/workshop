@@ -2,7 +2,7 @@
 @section('style')
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Favicon-->
-<link  rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 <!-- Morris Chart Css-->
 <link rel="stylesheet" href="{{ asset('admin/assets/plugins/morrisjs/morris.css') }}" />
 <!-- Colorpicker Css -->
@@ -47,14 +47,38 @@
                         <form action="#" method="POST">
                             <div class="body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="form-group form-float col-md-4">
+                                        <select class="form-control show-tick ml-3 mr-3">
+                                            {{-- <option disabled>-- Select Company--</option> --}}
+                                            <option value="">Company1</option>
+                                            {{-- <option value="">Company2</option>
+                                             <option value="">Company3</option>
+                                             <option value="">Company4</option>
+                                             <option value="">Company5</option> --}}
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-float col-md-4">
+                                        <select class="form-control show-tick ml-3 mr-3">
+                                            {{-- <option disabled>-- Select Team--</option> --}}
+                                            <option value="">Team1</option>
+                                            {{-- <option value="">Team2</option>
+                                                <option value="">Team3</option>
+                                                 <option value="">Team4</option>
+                                                <option value="">Team5</option> --}}
+
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <div class="form-group form-float">
                                             <input type="text" class="form-control" placeholder=" Enter Company"
                                                 name="name" required>
                                         </div>
                                     </div>
-                                </div> 
-                                <a href="{{ route('company.employee.index') }}" class="btn btn-raised btn-success waves-effect" type="submit">Update</a>
+                                </div>
+                                <a href="{{ route('company.employee.index') }}"
+                                    class="btn btn-raised btn-success waves-effect" type="submit">Update</a>
                             </div>
                         </form>
                     </div>
@@ -62,6 +86,6 @@
             </div>
         </div>
     </div>
-   
+
 </section>
 @endsection

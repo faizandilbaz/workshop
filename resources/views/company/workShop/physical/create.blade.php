@@ -43,6 +43,7 @@
             <!-- Basic Example | Horizontal Layout -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
+                   <a href="#" class="btn btn-raised btn-success waves-effect float-right" type="submit">Save</a>
                     <div class="card">
                         <div class="header">
                             <h2><strong>Work</strong>Shope</h2>
@@ -50,6 +51,7 @@
                         <div class="body">
                             <div class="row">
                                 <div class="col-sm-6">
+                                    <label>Start Time</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -59,6 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
+                                    <label>End Time</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -79,103 +82,27 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group form-float">
-                                        <input type="text" class="form-control" placeholder=" Enter Description"
-                                            name="name" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group form-float">
                                         <input type="url" class="form-control"
                                             placeholder=" Enter link: http://, https://, ftp://" name="url" required>
                                     </div>
                                 </div>
-                            
-                            <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="radio inlineblock m-r-20">
-                                            <input type="radio" name="gender" id="male" class="with-gap"
-                                                value="option1">
-                                            <label for="male">(True/False)</label>
-                                        </div>
-                                        <div class="radio inlineblock">
-                                            <input type="radio" name="gender" id="Female" class="with-gap"
-                                                value="option2" checked="">
-                                            <label for="Female">Multiple Choice Question</label>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12 txt4">
+                                    <label>Description</label>
+                                    <textarea rows="4" name="description" placeholder="Enter description"
+                                        class="form-control txt4"></textarea>
                                 </div>
                             </div>
-                            <div id="wizard_vertical">
-                                <h2>First Question</h2>
-                                <section>
-                                    <p>How many Provinceses of pakistan? </p>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="radio inlineblock m-r-20">
-                                                    <input type="radio" name="gender" id="male" class="with-gap"
-                                                        value="option1">
-                                                    <label for="Female">One</label>
-                                                </div>
-                                                <div class="radio inlineblock">
-                                                    <input type="radio" name="gender" id="Female" class="with-gap"
-                                                        value="option2" checked="">
-                                                    <label for="male">Two</label>
-                                                </div>
-                                                <div class="radio inlineblock m-r-20">
-                                                    <input type="radio" name="gender" id="male" class="with-gap"
-                                                        value="option1">
-                                                    <label for="male">One</label>
-                                                </div>
-                                                <div class="radio inlineblock">
-                                                    <input type="radio" name="gender" id="Female" class="with-gap"
-                                                        value="option2" checked="">
-                                                    <label for="male">Two</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                    <a href="#" class="btn btn-raised btn-success waves-effect" type="submit">save</a>
-
-                                </section>
-                                <h2>Second Question</h2>
-                                <section>
-                                    <p> Sargodha is famous for?  </p>
-                                    <a href="#" class="btn btn-raised btn-success waves-effect" type="submit">save</a>
-
-                                </section>
-                                <h2>Third Question</h2>
-                                <section>
-                                    <p> How many Provinceses of pakistan? </p>
-                                    <a href="#" class="btn btn-raised btn-success waves-effect" type="submit">save</a>
-
-                                </section>
-                                <h2>Forth Question</h2>
-                                <section>
-                                    <p> Sargodha is famous for? </p>
-                                    <a href="#" class="btn btn-raised btn-success waves-effect" type="submit">save</a>
-
-                                </section>
-                                <h2>Fifth Question</h2>
-                                <section>
-                                    <p> How many Provinceses of pakistan? </p>
-                                    <a href="#" class="btn btn-raised btn-success waves-effect" type="submit">save</a>
-
-                                </section>
-                            </div>
-                        </div>
-                            {{-- <div class="row align-right">
+                            <div class="row align-right">
                                 <div class="col-md-6"></div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-success waves-effect m-r-20"
-                                        data-toggle="modal" data-target="#largeModal">Add Questions</button>
+                                    <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal"
+                                        data-target="#largeModal">Add Questions </button>
 
                                 </div>
 
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -184,26 +111,41 @@
         </div>
 
     </div>
-    {{-- <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="title" id="largeModalLabel">Modal title</h4>
+                    <h4 class="title" id="largeModalLabel">Add Questions</h4>
                 </div>
-                <div class="modal-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci
-                    ante, sed ornare eros vestibulum ut. Ut accumsan
-                    vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus
-                    ullamcorper.
-                    Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
-                    nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
-                    Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc. </div>
+                <div class="modal-body">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="radio inlineblock m-r-20">
+                                <input type="radio" id="options1" class="with-gap" value="1">
+                                <label for="options1">(True/False)</label>
+                            </div>
+                            <div class="radio inlineblock">
+                                <input type="radio" id="options2" class="with-gap" value="2">
+                                <label for="options2">Multiple Choice Question</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-round waves-effect">SAVE CHANGES</button>
+                    <button type="button" data-dismiss="modal"
+                        class="btn btn-success btn-round waves-effect">Add</button>
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
+
+    <h5 class="card-title text-center">Questions</h5>
+    <div>
+        <h1 style="text-align: center"> Created Question Here</h1>
+    </div>
+   
 </section>
 @endsection
 @section('script')
@@ -216,9 +158,7 @@
 <script
     src="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
 </script>
+<script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
 
-<script src="{{asset('admin/assets/bundles/mainscripts.bundle.js')}}"></script><!-- Custom Js -->
-{{-- <script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script> --}}
-</body>
 @endsection
 }

@@ -72,10 +72,10 @@
                 <li><a href="{{ route('employee.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
                 </li>
             
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>WorkShope</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('employee.info.create') }}">Add</a></li>
-                        <li><a href="{{ route('employee.info.index') }}">All Employee</a></li>
+                        <li><a href="{{ route('employee.workShope.create') }}">view</a></li>
+                         {{-- <li><a href="{{ route('employee.info.index') }}">All Employee</a></li> --}}
                     </ul>
                 </li>
                

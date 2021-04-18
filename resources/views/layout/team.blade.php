@@ -72,12 +72,12 @@
                 <li><a href="{{ route('company.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
                 </li>
             
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
+                {{-- <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('team.info.create') }}">Add</a></li>
                         <li><a href="{{ route('team.info.index') }}">All Teams</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('team.employee') }}">Add</a></li>

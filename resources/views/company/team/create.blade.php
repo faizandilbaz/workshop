@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.company')
 @section('style')
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Favicon-->
@@ -49,12 +49,12 @@
                                 <div class="row">
                                     <div class="form-group form-float col-md-6">
                                         <select class="form-control show-tick ml-3 mr-3"  >
-                                            <option disabled>-- Select Company--</option>
-                                            <option value="">Company1</option>
+                                            <option value="" >Company1</option>
+                                            {{-- <option value="">Company1</option>
                                             <option value="">Company2</option>
                                             <option value="">Company3</option>
                                             <option value="">Company4</option>
-                                            <option value="">Company5</option>
+                                            <option value="">Company5</option> --}}
                                            
                                         </select>
                                     </div>
