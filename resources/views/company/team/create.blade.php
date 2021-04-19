@@ -48,7 +48,7 @@
                             <div class="body">
                                 <div class="row">
                                     <div class="form-group form-float col-md-6">
-                                        <select class="form-control show-tick ml-3 mr-3"  >
+                                        <select class="form-control show-tick  mr-3"  >
                                             <option value="" >Company1</option>
                                             {{-- <option value="">Company1</option>
                                             <option value="">Company2</option>
@@ -66,6 +66,33 @@
                                     </div>
                                    
                                 </div> 
+                                <div class="row">
+                                   
+                                    <div class="col-md-6">
+                                        <input type="gmail" class="form-control" name="gmail"
+                                            placeholder="gmail">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="password" placeholder="Password">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="pitcher"
+                                            placeholder="Profile pitcher">
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-md-12 txt4">
+                                        <textarea rows="4" name="adress" placeholder="Enter adress"
+                                            class="form-control txt4"></textarea>
+                                    </div>
+                                </div>
                                 <a href="{{ route('company.team') }}" class="btn btn-raised btn-success waves-effect" type="submit">Create</a>
                             </div>
                         </form>

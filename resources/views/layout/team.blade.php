@@ -84,6 +84,9 @@
                         <li><a href="{{ route('team.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ route('team.profile.index') }}"><i class="zmdi zmdi-apps"></i><span>Profile</span></a>
+                   
+                </li> 
             </ul>
         </div>
     </aside>

@@ -48,12 +48,31 @@
                             <div class="body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group form-float">
-                                            <input type="text" class="form-control" placeholder=" Enter Company"
-                                                name="name" required>
-                                        </div>
+                                       <input type="text" class="form-control" value="Company1" name="name" placeholder="company name">
                                     </div>
-                                </div> 
+                                    
+                                    <div class="col-md-6">
+                                       <input type="gmail" value="company@mail.com" class="form-control" name="gmail" placeholder="gmail">
+                   
+                                    </div>
+                                </div>
+                                <br>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                       <input type="text" class="form-control" name="password" placeholder="Password">
+                                       </div>
+                                       <div class="col-md-6">
+                                           <input type="file" class="form-control" name="pitcher" placeholder="Profile pitcher">
+                   
+                                       </div>
+                                   </div>
+                                   <br>
+                                   <div class="row">
+                                    <div class="form-group col-md-12 txt4">
+                                        <textarea rows="4" name="adress" placeholder="Enter adress"
+                                            class="form-control txt4"></textarea>
+                                    </div>
+                                </div>
                                 <a href="{{ route('admin.company.index') }}" class="btn btn-raised btn-success waves-effect" type="submit">Update</a>
                             </div>
                         </form>

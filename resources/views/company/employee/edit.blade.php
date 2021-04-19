@@ -47,34 +47,53 @@
                         <form action="#" method="POST">
                             <div class="body">
                                 <div class="row">
-                                    <div class="form-group form-float col-md-4">
-                                        <select class="form-control show-tick ml-3 mr-3">
-                                            {{-- <option disabled>-- Select Company--</option> --}}
+                                    <div class="form-group form-float col-md-6">
+                                        <select class="form-control show-tick mr-3">
+                                            <option disabled>-- Select Company--</option>
                                             <option value="">Company1</option>
-                                            {{-- <option value="">Company2</option>
-                                             <option value="">Company3</option>
-                                             <option value="">Company4</option>
-                                             <option value="">Company5</option> --}}
-
                                         </select>
                                     </div>
-                                    <div class="form-group form-float col-md-4">
-                                        <select class="form-control show-tick ml-3 mr-3">
-                                            {{-- <option disabled>-- Select Team--</option> --}}
+                                    <div class="form-group form-float col-md-6">
+                                        <select class="form-control show-tick  mr-3">
+                                            <option disabled>-- Select Team--</option>
                                             <option value="">Team1</option>
-                                            {{-- <option value="">Team2</option>
-                                                <option value="">Team3</option>
-                                                 <option value="">Team4</option>
-                                                <option value="">Team5</option> --}}
+                                            <option value="">Team2</option>
+                                            <option value="">Team3</option>
+                                            <option value="">Team4</option>
+                                            <option value="">Team5</option>
 
                                         </select>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group form-float">
-                                            <input type="text" class="form-control" placeholder=" Enter Company"
-                                                name="name" required>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" value="Employee1" name="name"
+                                            placeholder="company name">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input type="gmail" value="employee@mail.com" class="form-control" name="gmail"
+                                            placeholder="gmail">
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="password" placeholder="Password">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="pitcher"
+                                            placeholder="Profile pitcher">
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-md-12 txt4">
+                                        <textarea rows="4" name="adress" placeholder="Enter adress"
+                                            class="form-control txt4"></textarea>
                                     </div>
                                 </div>
                                 <a href="{{ route('company.employee.index') }}"

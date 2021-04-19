@@ -38,6 +38,8 @@ Route::view('company/edit', 'admin.company.edit')->name('company.edit');
  Route::view('employee/create', 'admin.employee.create')->name('employee');
  Route::view('employee/show', 'admin.employee.index')->name('employee.index');
  Route::view('employee/edit', 'admin.employee.edit')->name('employee.edit');
+ ////////////////////////////////Profile///////////////////////////////
+Route::view('admin/profile', 'admin.profile.index')->name('profile.index');
 });
 
 
@@ -62,6 +64,9 @@ Route::view('employee/edit', 'company.employee.edit')->name('employee.edit');
 Route::view('work/shop', 'company.workShop.physical.create')->name('shop.create');
 Route::view('work/show/shop', 'company.workShop.physical.index')->name('shop.index');
 Route::view('work/shop/edit', 'company.workShop.physical.edit')->name('shop.physical.edit');
+////////////////////////////////Profile///////////////////////////////
+Route::view('company/profile', 'company.profile.index')->name('profile.index');
+
 });
 
 
@@ -79,7 +84,8 @@ Route::view('register', 'team.auth.register')->name('register');
   Route::view('employee/create', 'team.employee.create')->name('employee');
   Route::view('employee/show', 'team.employee.index')->name('employee.index');
   Route::view('employee/edit', 'team.employee.edit')->name('employee.edit');
-
+////////////////////////////////Profile///////////////////////////////
+Route::view('team/profile', 'team.profile.index')->name('profile.index');
 });
 
 
@@ -94,4 +100,8 @@ Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'as' => 'employ
  Route::view('show', 'employee.workShope.create')->name('workShope.create');
 //  Route::view('employee/show', 'employee.info.index')->name('info.index');
 //  Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
+////////////////////////////////Profile///////////////////////////////
+Route::view('profile', 'employee.profile.index')->name('profile.index');
+////////////////////////////////Rank///////////////////////////////
+Route::view('rank', 'employee.rank.index')->name('rank.index');
 });

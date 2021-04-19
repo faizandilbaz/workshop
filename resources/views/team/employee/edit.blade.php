@@ -47,13 +47,51 @@
                         <form action="#" method="POST">
                             <div class="body">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-float">
-                                            <input type="text" class="form-control" placeholder=" Enter Company"
-                                                name="name" required>
-                                        </div>
+                                    <div class="form-group form-float col-md-6">
+                                        <select class="form-control show-tick mr-3">
+                                            <option disabled>-- Select Company--</option>
+                                            <option value="">Company1</option>
+                                        </select>
                                     </div>
-                                </div> 
+                                    <div class="form-group form-float col-md-6">
+                                        <select class="form-control show-tick  mr-3">
+                                            <option disabled>-- Select Team--</option>
+                                            <option value="">Team1</option>
+                                        
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" value="Employee1" name="name"
+                                            placeholder="company name">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input type="gmail" value="employee@mail.com" class="form-control" name="gmail"
+                                            placeholder="gmail">
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="password" placeholder="Password">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="pitcher"
+                                            placeholder="Profile pitcher">
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-md-12 txt4">
+                                        <textarea rows="4" name="adress" placeholder="Enter adress"
+                                            class="form-control txt4"></textarea>
+                                    </div>
+                                </div>
                                 <a href="{{ route('team.employee.index') }}" class="btn btn-raised btn-success waves-effect" type="submit">Update</a>
                             </div>
                         </form>

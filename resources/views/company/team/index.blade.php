@@ -32,6 +32,8 @@
                                     <th>#</th>
                                     <th>Company Name</th>
                                     <th>Team Name</th>
+                                    <th>Team Gmail</th>
+                                    <th>Team Addres</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
@@ -42,6 +44,8 @@
                                     <td>1</td>
                                     <td>Company1</td>
                                     <td>Team1</td>
+                                    <td>Team1@mail.com</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{ route('company.team.edit',) }}" type="submit" class="btn
                                            btn-warning edit">Edit</a>
@@ -57,6 +61,8 @@
                                     <td>2</td>
                                     <td>Company2</td>
                                     <td>Team2</td>
+                                    <td>Team2@mail.com</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{ route('company.team.edit',) }}" type="submit"
                                             class="btn btn-warning edit">Edit</a>
@@ -72,6 +78,8 @@
                                     <td>3</td>
                                     <td>Company3</td>
                                     <td>Team3</td>
+                                    <td>Team3@mail.com</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{ route('company.team.edit',) }}" type="submit"
                                             class="btn btn-warning edit">Edit</a>
@@ -87,6 +95,8 @@
                                     <td>4</td>
                                     <td>Company4</td>
                                     <td>Team4</td>
+                                    <td>Team4@mail.com</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{ route('company.team.edit',) }}" type="submit"
                                             class="btn btn-warning edit">Edit</a>
@@ -102,6 +112,8 @@
                                     <td>5</td>
                                     <td>Company5</td>
                                     <td>Team5</td>
+                                    <td>Team5@mail.com</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{ route('company.team.edit',) }}" type="submit"
                                             class="btn btn-warning edit">Edit</a>
@@ -630,22 +642,4 @@
         </div>
     </div> --}}
 </section>
-@endsection
-@section('script')
-{{-- <script src="{{asset ('admin/assets/bundles/libscripts.bundle.js') }}"></script> <!-- Lib Scripts Plugin Js -->
-<script src="{{asset ('admin/assets/bundles/vendorscripts.bundle.js') }}"></script> <!-- Lib Scripts Plugin Js -->
-
-<!-- Jquery 
- Plugin Js -->
-<script src="{{asset ('admin/assets/bundles/scripts.bundle.js') }}"></script>
-<script src="{{asset ('sdmin/assets/plugins/jquery-/buttons/s.buttons.min.js') }}"></script>
-<script src="{{ asset('admin/assets/plugins/jquery-/buttons/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/assets/plugins/jquery-/buttons/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('admin/assets/plugins/jquery-/buttons/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('admin/assets/plugins/jquery-/buttons/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('admin/assets/plugins/jquery-/buttons/buttons.print.min.js') }}"></script>
-
-<script src="{{ asset('admin/assets/bundles/mainscripts.bundle.js') }}"></script><!-- Custom Js -->
-<script src="{{ asset('admin/assets/js/pages/tables/jquery-.js') }}"></script> --}}
-
 @endsection

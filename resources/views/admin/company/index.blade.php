@@ -21,6 +21,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Company Name</th>
+                                    <th>Company Gmail</th>
+                                    <th>Company Addres</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
@@ -30,6 +32,9 @@
                                 <tr>
                                     <td>1</td>
                                     <td>Company1</td>
+                                    <td>company1@mail.com</td>
+                                    <td></td>
+
                                     <td>
                                         <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
@@ -43,6 +48,9 @@
                                 <tr>
                                     <td>2</td>
                                     <td>Company2</td>
+                                    <td>company2@mail.com</td>
+                                    <td></td>
+
                                     <td>
                                         <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
@@ -56,6 +64,9 @@
                                 <tr>
                                     <td>3</td>
                                     <td>Company3</td>
+                                    <td>company3@mail.com</td>
+                                    <td></td>
+
                                     <td>
                                         <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
@@ -69,6 +80,9 @@
                                 <tr>
                                     <td>4</td>
                                     <td>Company4</td>
+                                    <td>company4@mail.com</td>
+                                    <td></td>
+
                                     <td>
                                         <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
@@ -82,6 +96,8 @@
                                 <tr>
                                     <td>5</td>
                                     <td>Company5</td>
+                                    <td>company5@mail.com</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>

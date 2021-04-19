@@ -90,7 +90,9 @@
                         <li><a href="{{ route('admin.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
-            
+                <li><a href="{{ route('admin.profile.index') }}"><i class="zmdi zmdi-apps"></i><span>Profile</span></a>
+                   
+                </li> 
             </ul>
         </div>
     </aside>

@@ -34,7 +34,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-        <a href="#" class="btn btn-raised btn-info waves-effect float-right" type="submit">Send</a>
+           <a href="#" class="btn btn-raised btn-info waves-effect float-right" type="submit">Send</a>
 
                 <h5 class="card-title text-center"> About WorkShope</h5>
                <div>
@@ -42,6 +42,8 @@
                 <p>Build Modren Skill</p>
                 <h5 style="color: green">Timing</h5>
                 <p>1:00PM <span style="color: green" mr-1>to</span>3:30PM</p>
+                <h5 style="color: green">Date</h5>
+                <p>3/4/24 <span style="color: green" mr-1>to</span>3/4/26</p>
                </div>
                 
                </div>

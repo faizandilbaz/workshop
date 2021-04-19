@@ -72,12 +72,14 @@
                 <li><a href="{{ route('company.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
                 </li>
                 
-                {{-- <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Company</span></a>
+               
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Work Shope</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('company.info.create') }}">Add</a></li>
-                        <li><a href="{{ route('company.info.index') }}">All Companys</a></li>
+                        <li><a href="{{ route('company.shop.create') }}">Create</a></li>
+                        <li><a href="{{ route('company.shop.index') }}"> Work Shope Exam</a></li>
+                    
                     </ul>
-                </li>  --}}
+                </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.team') }}">Add</a></li>
@@ -90,13 +92,10 @@
                         <li><a href="{{ route('company.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Work Shope</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="{{ route('company.shop.create') }}">Create</a></li>
-                        <li><a href="{{ route('company.shop.index') }}"> Work Shope Exam</a></li>
-                    
-                    </ul>
-                </li>
+                 <li><a href="{{ route('company.profile.index') }}"><i class="zmdi zmdi-apps"></i><span>Profile</span></a>
+                   
+                </li> 
+               
             </ul>
         </div>
     </aside>
