@@ -22,10 +22,13 @@ Route::get('/', function () {
 // });
 
 ////////////////////////////////////////////////ADMIN///////////////////////////////////////////
+
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.',], function () {
  Route::view('login', 'admin.auth.login')->name('login');
 
  Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
+
  ////////////////////////////////company/////////////////////////////
 Route::view('company/create', 'admin.company.create')->name('company');
 Route::view('company/show', 'admin.company.index')->name('company.index');
