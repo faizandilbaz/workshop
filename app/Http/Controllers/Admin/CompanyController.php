@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -14,7 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        return view('admin.company.index',compact('companies'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.company.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        Company::create($request->all());
+        // alert()->success('Company Added Successfully', 'Company Added Successfully');
+        return redirect()->back(); 
     }
 
     /**
@@ -46,7 +51,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::find($id);
+        return view('admin.company.detail')->with('company',$company);
     }
 
     /**
@@ -57,7 +63,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company :: find ($id);
+        return view('admin.company.edit',compact('company'));
     }
 
     /**
@@ -69,7 +76,9 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = Company::find($id);
+        $company->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +87,9 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return redirect()->back();
     }
 }

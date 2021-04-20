@@ -16,6 +16,28 @@
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon-->
+<link  rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+<!-- Morris Chart Css-->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/morrisjs/morris.css') }}" />
+<!-- Colorpicker Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css') }}" />
+<!-- Multi Select Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/multi-select/css/multi-select.css') }}">
+<!-- Bootstrap Spinner Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/jquery-spinner/css/bootstrap-spinner.css') }}">
+<!-- Bootstrap Tagsinput Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
+<!-- Bootstrap Select Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css') }}" />
+<!-- noUISlider Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/nouislider/nouislider.min.css') }}" />
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/select2.css') }}" />
+<!-- Custom Css -->
+<link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
     @yield('style')
 </head>
 
@@ -74,7 +96,7 @@
                 
                  <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Company</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('admin.company') }}">Add</a></li>
+                        <li><a href="{{ route('admin.company.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.company.index') }}">All Companys</a></li>
                     </ul>
                 </li>
