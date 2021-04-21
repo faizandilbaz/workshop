@@ -7,7 +7,7 @@ use App\Traits\UserFunctions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TeamLeader extends Model
+class Team extends Model
 {
     use HasFactory, UserFunctions;
     protected $fillable = [

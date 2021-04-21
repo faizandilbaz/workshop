@@ -20,94 +20,45 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Company Name</th>
-                                    <th>Company Gmail</th>
-                                    <th>Company Addres</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (App\Models\Company::all() as $key => $company)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Company1</td>
-                                    <td>company1@mail.com</td>
-                                    <td></td>
+                                    <td>{{$key+1}}</td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="{{asset($company->image)}}" alt="" height="80px" width="80px"
+                                                class=" rounded-circle wth-35 hgt-35">
+                                        </a>
+                                    </td>
+                                    <td>{{$company->name}}</td>
+                                    <td>{{$company->email}}</td>
+                                    <td>{{$company->address}}</td>
 
                                     <td>
-                                        <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
+                                        <a href="{{ route('admin.company.edit',$company->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        <form action="{{route('admin.company.destroy',$company->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button data-toggle="modal" data-target="#delete_modal" `
+                                                class="btn btn-danger delete-btn"> Delete</button>
                                         </form>
+    
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Company2</td>
-                                    <td>company2@mail.com</td>
-                                    <td></td>
-
-                                    <td>
-                                        <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Company3</td>
-                                    <td>company3@mail.com</td>
-                                    <td></td>
-
-                                    <td>
-                                        <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Company4</td>
-                                    <td>company4@mail.com</td>
-                                    <td></td>
-
-                                    <td>
-                                        <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Company5</td>
-                                    <td>company5@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.company.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @endforeach
+                              
+                             
                              
                             </tbody>
                         </table>

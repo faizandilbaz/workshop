@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Team;
 use App\Models\TeamLeader;
 use Illuminate\Database\Seeder;
 
@@ -15,10 +16,10 @@ class TeamLeaderSeeder extends Seeder
     public function run()
     {
         for ($i = 1; $i < 3; $i++) {
-            TeamLeader::create([
+            Team::create([
 
-                'name' => 'teamleader' . $i,
-                'email' =>'teamleader'. $i.'@mail.com',
+                'name' => 'team' . $i,
+                'email' =>'team'. $i.'@mail.com',
                 'password' => '1234',
              
             ]);

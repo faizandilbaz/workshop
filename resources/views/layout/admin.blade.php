@@ -42,7 +42,7 @@
 </head>
 
 <body class="theme-blush">
-
+    @include('sweet::alert')
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -97,7 +97,7 @@
                  <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Company</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('admin.company.create') }}">Add</a></li>
-                        <li><a href="{{ route('admin.company.index') }}">All Companys</a></li>
+                        <li><a href="{{ route('admin.company.index') }}">All Companies</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>

@@ -29,29 +29,34 @@
                             <div class="body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                       <input type="text" class="form-control" value="Company1" name="name" placeholder="company name">
+                                       <input type="text" class="form-control" name="name" placeholder="Company Name" required>
                                     </div>
                                     
                                     <div class="col-md-6">
-                                       <input type="gmail" value="company@mail.com" class="form-control" name="gmail" placeholder="gmail">
+                                       <input type="gmail" class="form-control" name="email" placeholder="Email" required>
                    
                                     </div>
                                 </div>
                                 <br>
                                    <div class="row">
                                        <div class="col-md-6">
-                                       <input type="text" class="form-control" name="password" placeholder="Password">
+                                       <input type="password" class="form-control" name="password" placeholder="Password" required>
                                        </div>
                                        <div class="col-md-6">
-                                           <input type="file" class="form-control" name="pitcher" placeholder="Profile pitcher">
+                                           <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
                    
                                        </div>
                                    </div>
                                    <br>
                                    <div class="row">
                                     <div class="form-group col-md-12 txt4">
-                                        <textarea rows="4" name="adress" placeholder="Enter adress"
-                                            class="form-control txt4"></textarea>
+                                        <input name="address" placeholder="Enter address"
+                                            class="form-control txt4">
+                                    </div> 
+                                    
+                                    <div class="form-group col-md-12 txt4">
+                                        <input  name="detail" placeholder="Other Details"
+                                            class="form-control txt4">
                                     </div>
                                 </div>
                                 <button class="btn btn-raised btn-success waves-effect" type="submit">Create</button>

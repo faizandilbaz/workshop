@@ -24,36 +24,59 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-                        <form action="#" method="POST">
+                        <form action="{{route('admin.company.update',$company->id)}}" method="POST" enctype="multipart/form-data">
+                            @method('put')
+                            @csrf
                             <div class="body">
+                                
+                                        <td>
+                                            <a href="#">
+                                                <img src="{{asset($company->image)}}" alt="" height="100px" width="100px"
+                                                    class=" rounded-circle wth-35 hgt-35">
+                                            </a>
+                                           
+                                        </td>
+                                        
+                                    <br>
+                                    <br>
+                               
                                 <div class="row">
                                     <div class="col-md-6">
-                                       <input type="text" class="form-control" value="Company1" name="name" placeholder="company name">
+                                       <input type="text" class="form-control" value="{{$company->name}}" name="name" placeholder="company name">
                                     </div>
                                     
                                     <div class="col-md-6">
-                                       <input type="gmail" value="company@mail.com" class="form-control" name="gmail" placeholder="gmail">
+                                       <input type="gmail" value="{{$company->email}}" class="form-control" name="email" placeholder="gmail">
                    
                                     </div>
                                 </div>
                                 <br>
                                    <div class="row">
                                        <div class="col-md-6">
-                                       <input type="text" class="form-control" name="password" placeholder="Password">
+                                           <div style="font-size: 10px">To Update Passeord*</div>
+                                           
+                                       <input type="password" class="form-control" name="password" placeholder="Enter New Password to Update ">
                                        </div>
                                        <div class="col-md-6">
-                                           <input type="file" class="form-control" name="pitcher" placeholder="Profile pitcher">
+                                        <div style="font-size: 10px"> To update image*</div>
+                                          
+                                           <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
                    
                                        </div>
                                    </div>
                                    <br>
                                    <div class="row">
                                     <div class="form-group col-md-12 txt4">
-                                        <textarea rows="4" name="adress" placeholder="Enter adress"
-                                            class="form-control txt4"></textarea>
+                                        <input value="{{$company->address}}" name="address" placeholder="Enter address"
+                                            class="form-control txt4">
+                                    </div> 
+                                    
+                                    <div class="form-group col-md-12 txt4">
+                                        <input value="{{$company->detail}}" name="detail" placeholder="Other Details"
+                                            class="form-control txt4">
                                     </div>
                                 </div>
-                                <a href="{{ route('admin.company.index') }}" class="btn btn-raised btn-success waves-effect" type="submit">Update</a>
+                                <button class="btn btn-raised btn-success waves-effect" type="submit">Update</button>
                             </div>
                         </form>
                     </div>

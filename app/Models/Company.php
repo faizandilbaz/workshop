@@ -12,10 +12,10 @@ class Company extends Model
     use HasFactory, UserFunctions;
 
     protected $fillable = [
-        'name','email', 'password','image','detail','status','api_token'
+        'name','email', 'password','address','image','detail','status','api_token'
     ];
     public function team(){
-        return $this->hasMany(TeamLeader::class);
+        return $this->hasMany(Team::class);
     }
 
     public function setImageAttribute($value){

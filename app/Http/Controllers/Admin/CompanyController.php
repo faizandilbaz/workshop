@@ -26,7 +26,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        dd('create company');
+        // dd('create company');
         return view('admin.company.create');
     }
 
@@ -38,9 +38,9 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        
         Company::create($request->all());
-        // alert()->success('Company Added Successfully', 'Company Added Successfully');
+        alert()->success('Company Added Successfully', 'Company Added Successfully');
         return redirect()->back(); 
     }
 
@@ -65,6 +65,8 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company :: find ($id);
+        // dd($id);
+
         return view('admin.company.edit',compact('company'));
     }
 

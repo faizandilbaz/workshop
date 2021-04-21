@@ -25,9 +25,6 @@ Route::get('/', function () {
 ////////////////////////////////////////////////ADMIN///////////////////////////////////////////
 
 
-
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-
   Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Controllers\Admin'], function () {
 
 
@@ -36,8 +33,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     ////////////////////////////////company/////////////////////////////
     Route::resource('company', 'CompanyController');
-    Route::view('company/show', 'admin.company.index')->name('company.index');
-    Route::view('company/edit', 'admin.company.edit')->name('company.edit');
     ////////////////////////////////TEAMs/////////////////////////////
     Route::view('team/create', 'admin.team.create')->name('team');
     Route::view('team/show', 'admin.team.index')->name('team.index');
@@ -112,4 +107,4 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     ////////////////////////////////Rank///////////////////////////////
     Route::view('rank', 'employee.rank.index')->name('rank.index');
   });
-});
+
