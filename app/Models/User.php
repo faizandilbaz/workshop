@@ -30,7 +30,9 @@ class User extends Authenticatable
             $this->attributes['image'] = ImageHelper::saveImage($value,'images'); 
         }
     }
-
+    public function Team(){
+        return $this->hasMany(CompanyWallet::class);
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

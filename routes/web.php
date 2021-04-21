@@ -24,14 +24,15 @@ Route::get('/', function () {
 ////////////////////////////////////////////////ADMIN///////////////////////////////////////////
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.',], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
  Route::view('login', 'admin.auth.login')->name('login');
  Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
 
  ////////////////////////////////company/////////////////////////////
-Route::resource('company', 'Admin\CompanyController');
+Route::resource('company', 'CompanyController');
+
 Route::view('company/show', 'admin.company.index')->name('company.index');
 Route::view('company/edit', 'admin.company.edit')->name('company.edit');
  ////////////////////////////////TEAMs/////////////////////////////

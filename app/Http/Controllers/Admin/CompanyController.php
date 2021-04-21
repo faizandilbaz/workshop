@@ -26,6 +26,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
+        dd('create company');
         return view('admin.company.create');
     }
 

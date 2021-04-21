@@ -14,7 +14,10 @@ class Company extends Model
     protected $fillable = [
         'name','email', 'password','image','detail','status','api_token'
     ];
-    
+    public function team(){
+        return $this->hasMany(TeamLeader::class);
+    }
+
     public function setImageAttribute($value){
         if(is_string($value)){
             $this->attributes['image'] = ImageHelper::saveImageFromApi($value,'images'); 

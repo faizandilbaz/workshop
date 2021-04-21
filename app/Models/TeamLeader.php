@@ -13,7 +13,9 @@ class TeamLeader extends Model
     protected $fillable = [
         'name','email', 'password','image','detail','status','api_token'
     ];
-
+    public function employee(){
+        return $this->hasMany(User::class);
+    }
     public function setImageAttribute($value){
         if(is_string($value)){
             $this->attributes['image'] = ImageHelper::saveImageFromApi($value,'images'); 
