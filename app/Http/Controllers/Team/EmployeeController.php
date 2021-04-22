@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\TeamLeader;
+namespace App\Http\Controllers\Team;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return view('team.employee.index');
     }
 
     /**
@@ -24,7 +26,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('team.employee.create');
     }
 
     /**
@@ -35,7 +38,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create($request->all());
+        alert()->success('Employee Added Successfully');
+        return redirect()->back(); 
     }
 
     /**
@@ -57,7 +62,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('team.employee.edit',compact('user'));   
     }
 
     /**
@@ -69,7 +75,10 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        alert()->success('Employee Updated Successfully');
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +89,9 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        alert()->success('Employee Deleted Successfully');
+        return redirect()->back();
     }
 }

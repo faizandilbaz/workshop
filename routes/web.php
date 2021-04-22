@@ -96,9 +96,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::view('team/show', 'team.info.index')->name('info.index');
     Route::view('team/edit', 'team.info.edit')->name('info.edit');
     ////////////////////////////////EMPLOYEE/////////////////////////////
-    Route::view('employee/create', 'team.employee.create')->name('employee');
-    Route::view('employee/show', 'team.employee.index')->name('employee.index');
-    Route::view('employee/edit', 'team.employee.edit')->name('employee.edit');
+    Route::resource('employee', 'EmployeeController');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('team/profile', 'team.profile.index')->name('profile.index');
   });

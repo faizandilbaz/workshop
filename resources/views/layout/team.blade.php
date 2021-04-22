@@ -80,7 +80,7 @@
                 </li> --}}
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('team.employee') }}">Add</a></li>
+                        <li><a href="{{ route('team.employee.create') }}">Add</a></li>
                         <li><a href="{{ route('team.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
