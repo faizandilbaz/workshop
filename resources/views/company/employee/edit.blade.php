@@ -61,7 +61,7 @@
                                                 <select name="team_id" id="team" class="form-control show-tick  mr-3"  >
                                                     <option value="{{$user->team->id}}">{{$user->team->name}}</option>
                                                     <option>-- Select Team--</option>
-                                                    @foreach (App\Models\Team::all() as $team)
+                                                    @foreach (Auth::user()->teams as $team)
                                                     <option value="{{$team->id}}">{{$team->name}}</option> 
                                                     @endforeach
                                                 </select>

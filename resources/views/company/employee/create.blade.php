@@ -59,7 +59,7 @@
                                             <div class="form-group form-float col-md-6">
                                                 <select name="team_id" class="form-control show-tick  mr-3"  >
                                                     <option>-- Select Team--</option>
-                                                    @foreach (App\Models\Team::all() as $team)
+                                                    @foreach (Auth::user()->teams as $team)
                                                     <option value="{{$team->id}}">{{$team->name}}</option> 
                                                     @endforeach
                                                 </select>
@@ -68,7 +68,7 @@
                                                 <div class="form-group form-float">
                                                     <input type="text" class="form-control" placeholder=" Enter Employee Name"
                                                         name="name" required>  
-                                                    <input type="hidden" class="form-control" value="1" placeholder=" Enter Employee Name"
+                                                    <input type="hidden" class="form-control" value="{{Auth::user()->id}}" placeholder=" Enter Employee Name"
                                                         name="company_id" required>
                                                 </div>
                                             </div>

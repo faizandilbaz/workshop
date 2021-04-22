@@ -73,6 +73,7 @@ Route::get('/', function () {
     Route::view('work/shop/edit', 'company.workShop.physical.edit')->name('shop.physical.edit');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
+    Route::get('company/update/{id}','CompanyController@logout')->name('update');
   });
   });
 

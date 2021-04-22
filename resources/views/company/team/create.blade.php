@@ -60,7 +60,7 @@
                                                 <div class="form-group form-float">
                                                     <input type="text" class="form-control" placeholder=" Enter Team Name"
                                                         name="name" required>
-                                                    <input type="hidden" class="form-control" value="1"
+                                                    <input type="hidden" class="form-control" value="{{Auth::user()->id}}"
                                                     name="company_id" >
                                                 </div>
                                             </div>
