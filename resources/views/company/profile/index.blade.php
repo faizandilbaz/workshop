@@ -44,7 +44,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-                        <form action="{{route('company.company.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('company.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="body">

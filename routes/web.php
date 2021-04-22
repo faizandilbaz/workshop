@@ -79,7 +79,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::view('work/shop/edit', 'company.workShop.physical.edit')->name('shop.physical.edit');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
-    Route::get('company/update/{id}','CompanyController@logout')->name('update');
+    Route::put('company/update/{id}','CompanyController@update')->name('update');
   });
   });
 
