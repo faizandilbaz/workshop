@@ -59,13 +59,15 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     // Route::post('login','AuthController@login');
     Route::group(['middleware' => 'auth:company'], function () { 
     /*******************Logout ROUTES*************/       
-    Route::get('logout','AuthController@logout')->name('logout');
+    Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
 
     /*******************Register ROUTES*************/
     Route::view('register', 'company.auth.register')->name('register');
     /*******************Dashboard ROUTES*************/
     // Route::view('dashboard', 'company.dashboard.index')->name('dashboard');
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    // Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     ////////////////////////////////TEAMs/////////////////////////////
     Route::resource('team', 'TeamController');
     ////////////////////////////////EMPLOYEE/////////////////////////////
@@ -88,7 +90,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     // Route::post('login','AuthController@login');
     Route::group(['middleware' => 'auth:team'], function () { 
     /*******************Logout ROUTES*************/       
-    Route::get('logout','AuthController@logout')->name('logout');
+    Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     /*******************Register ROUTES*************/
@@ -117,7 +119,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::post('login','AuthController@login');
     Route::group(['middleware' => 'auth:user'], function () { 
     /*******************Logout ROUTES*************/       
-    Route::get('logout','AuthController@logout')->name('logout');
+    Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
     /*******************Register ROUTES*************/
     Route::view('register', 'employee.auth.register')->name('register');
     /*******************Dashboard ROUTES*************/

@@ -18,7 +18,7 @@ class CompanySeeder extends Seeder
             Company::create([
 
                 'name' => 'company' . $i,
-                'email' =>'compnay'. $i.'@mail.com',
+                'email' =>'company'. $i.'@mail.com',
                 'password' => '1234',
                
             ]);

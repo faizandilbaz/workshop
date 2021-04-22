@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        // dd('admin index');
+        // dd('company index');
         return view('company.dashboard.index');
     }
 }

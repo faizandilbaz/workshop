@@ -22,14 +22,15 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard');
         } 
         elseif(Auth::guard('company')->attempt($cred)){
+            // dd($request);
             return redirect()->route('company.dashboard');
         }
         elseif(Auth::guard('team')->attempt($cred)){
-            // dd($request);
+            
             return redirect()->route('team.dashboard');
         }
           elseif(Auth::guard('user')->attempt($cred)){
-            return redirect()->route('user.dashboard');
+            return redirect()->route('employee.dashboard');
         }
       
         else {
@@ -42,7 +43,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return redirect()->route('/');
+        return redirect('/');
     }
 
 

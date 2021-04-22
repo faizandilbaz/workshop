@@ -56,7 +56,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                         </div>
-                                        <input type="text" class="form-control timepicker"
+                                        <input type="text" class="form-control datetimepicker"
                                             placeholder="Please choose starting  time...">
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                         </div>
-                                        <input type="text" class="form-control timepicker"
+                                        <input type="text" class="form-control datetimepicker"
                                             placeholder="Please choose End time...">
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="radio inlineblock">
                                 <input type="radio" id="options2" class="with-gap" value="2">
-                                <label for="options2">Multiple Choice Question</label>
+                                <label for="options1">Multiple Choice Question</label>
                             </div>
                         </div>
                     </div>
