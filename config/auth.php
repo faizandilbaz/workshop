@@ -91,7 +91,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Company::class,
         ], 
-        'team' => [
+        'teams' => [
             'driver' => 'eloquent',
             'model' => App\Models\Team::class,
         ],
