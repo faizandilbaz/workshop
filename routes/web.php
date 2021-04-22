@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('layout.admin');
+  return view('auth.login');
 });
 // Route::group(['middleware' => 'auth:admin'], function () {
 
@@ -24,17 +24,19 @@ Route::get('/', function () {
 
 ////////////////////////////////////////////////ADMIN///////////////////////////////////////////
 
+Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-post');
 
   Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Controllers\Admin'], function () {
 
 
-    Route::view('login', 'admin.auth.login')->name('login');
-    Route::post('login','AuthController@login');
+    // Route::view('login', 'admin.auth.login')->name('login');
     Route::group(['middleware' => 'auth:admin'], function () { 
     /*******************Logout ROUTES*************/       
-    Route::get('logout','AuthController@logout')->name('logout');
+    // Route::get('logout','AuthController@logout')->name('logout');
+    Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
+
     /*******************Dashoard ROUTES*************/
-    Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     ////////////////////////////////company/////////////////////////////
     Route::resource('company', 'CompanyController');
@@ -53,15 +55,17 @@ Route::get('/', function () {
 
   ///////////////////////////////////////////////////COMPANY//////////////////////////////////////////
   Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Company', 'as' => 'company.',], function () {
-    Route::view('login', 'company.auth.login')->name('login');
-    Route::post('login','AuthController@login');
+    // Route::view('login', 'company.auth.login')->name('login');
+    // Route::post('login','AuthController@login');
     Route::group(['middleware' => 'auth:company'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout','AuthController@logout')->name('logout');
+
     /*******************Register ROUTES*************/
     Route::view('register', 'company.auth.register')->name('register');
     /*******************Dashboard ROUTES*************/
-    Route::view('dashboard', 'company.dashboard.index')->name('dashboard');
+    // Route::view('dashboard', 'company.dashboard.index')->name('dashboard');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     ////////////////////////////////TEAMs/////////////////////////////
     Route::resource('team', 'TeamController');
     ////////////////////////////////EMPLOYEE/////////////////////////////
@@ -78,17 +82,19 @@ Route::get('/', function () {
 
 
   /////////////////////////////////////////////////////TEAM////////////////////////////////
-  Route::group(['prefix' => 'team', 'namespace' => 'Team', 'as' => 'team.',], function () {
-    Route::view('login', 'team.auth.login')->name('login');
-    Route::post('login','AuthController@login');
+  Route::group(['prefix' => 'team', 'namespace' => 'App\Http\Controllers\Team', 'as' => 'team.',], function () {
+    // Route::view('login', 'team.auth.login')->name('login');
+    // Route::post('login','AuthController@login');
     Route::group(['middleware' => 'auth:team'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout','AuthController@logout')->name('logout');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
     /*******************Register ROUTES*************/
     Route::view('register', 'team.auth.register')->name('register');
     /*******************Dashboard ROUTES*************/
 
-    Route::view('dashboard', 'team.dashboard.index')->name('dashboard');
+    // Route::view('dashboard', 'team.dashboard.index')->name('dashboard');
     ////////////////////////////////TEAMs/////////////////////////////
     Route::view('team/create', 'team.info.create')->name('info.create');
     Route::view('team/show', 'team.info.index')->name('info.index');
@@ -105,7 +111,7 @@ Route::get('/', function () {
 
 
   ///////////////////////////////////////////////////EMPLOYEE///////////////////////////////////////////
-  Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'as' => 'employee.',], function () {
+  Route::group(['prefix' => 'employee', 'namespace' => 'App\Http\Controllers\Employee', 'as' => 'employee.',], function () {
     Route::view('login', 'employee.auth.login')->name('login');
     Route::post('login','AuthController@login');
     Route::group(['middleware' => 'auth:user'], function () { 
