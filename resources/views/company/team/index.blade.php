@@ -40,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\Team::all() as $key => $team)
+                                @foreach (Auth::user()->teams as $key => $team)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>

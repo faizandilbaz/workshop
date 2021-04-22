@@ -16,6 +16,23 @@
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
+
+    <!-- Favicon-->
+    <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link
+        href="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}"
+        rel="stylesheet" />
+    <!-- Bootstrap Select Css -->
+    <link href="{{asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+
     @yield('style')
 </head>
 
@@ -46,7 +63,8 @@
     <div class="navbar-right">
         <ul class="navbar-nav">
             <li><a href="#search" class="main_search" title="Search..."><i class="zmdi zmdi-search"></i></a></li>
-            <li><a href="{{route('company.logout')}}" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
+            <li><a href="{{route('company.logout')}}" class="mega-menu" title="Sign Out"><i
+                        class="zmdi zmdi-power"></i></a></li>
         </ul>
     </div>
 
@@ -71,31 +89,35 @@
                 </li>
                 <li><a href="{{ route('company.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
                 </li>
-                
-               
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Work Shope</span></a>
+
+
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Work
+                            Shope</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.shop.create') }}">Create</a></li>
                         <li><a href="{{ route('company.shop.index') }}"> Work Shope Exam</a></li>
-                    
+
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i
+                            class="zmdi zmdi-apps"></i><span>Teams</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.team.create') }}">Add</a></li>
                         <li><a href="{{ route('company.team.index') }}">All Teams</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i
+                            class="zmdi zmdi-apps"></i><span>Employee</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.employee.create') }}">Add</a></li>
                         <li><a href="{{ route('company.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
-                 <li><a href="{{ route('company.profile.index') }}"><i class="zmdi zmdi-apps"></i><span>Profile</span></a>
-                   
-                </li> 
-               
+                <li><a href="{{ route('company.profile.index') }}"><i
+                            class="zmdi zmdi-apps"></i><span>Profile</span></a>
+
+                </li>
+
             </ul>
         </div>
     </aside>
@@ -270,10 +292,10 @@
     </aside>
 
     <!-- Main Content -->
-<section>
-    @yield('content')
-</section>
-   
+    <section>
+        @yield('content')
+    </section>
+
     <!-- Jquery Core Js -->
     <script src="{{ asset('admin/assets/bundles/libscripts.bundle.js') }}"></script>
     <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->

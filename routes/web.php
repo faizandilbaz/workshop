@@ -55,19 +55,12 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
   ///////////////////////////////////////////////////COMPANY//////////////////////////////////////////
   Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Company', 'as' => 'company.',], function () {
-    // Route::view('login', 'company.auth.login')->name('login');
-    // Route::post('login','AuthController@login');
+
     Route::group(['middleware' => 'auth:company'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-
-
-    /*******************Register ROUTES*************/
-    Route::view('register', 'company.auth.register')->name('register');
     /*******************Dashboard ROUTES*************/
-    // Route::view('dashboard', 'company.dashboard.index')->name('dashboard');
-    // Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     ////////////////////////////////TEAMs/////////////////////////////
     Route::resource('team', 'TeamController');
     ////////////////////////////////EMPLOYEE/////////////////////////////
