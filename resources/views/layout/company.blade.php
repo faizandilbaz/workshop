@@ -82,13 +82,13 @@
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('company.team') }}">Add</a></li>
+                        <li><a href="{{ route('company.team.create') }}">Add</a></li>
                         <li><a href="{{ route('company.team.index') }}">All Teams</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('company.employee') }}">Add</a></li>
+                        <li><a href="{{ route('company.employee.create') }}">Add</a></li>
                         <li><a href="{{ route('company.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>

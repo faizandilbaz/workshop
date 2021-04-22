@@ -11,11 +11,8 @@ class Team extends Model
 {
     use HasFactory, UserFunctions;
     protected $fillable = [
-        'name','email', 'password','image','detail','status','api_token'
+        'name','email', 'password','image','detail','status','api_token','company_id'
     ];
-    public function employee(){
-        return $this->hasMany(User::class);
-    }
     public function setImageAttribute($value){
         if(is_string($value)){
             $this->attributes['image'] = ImageHelper::saveImageFromApi($value,'images'); 
@@ -23,5 +20,14 @@ class Team extends Model
         else if(is_file($value)){
             $this->attributes['image'] = ImageHelper::saveImage($value,'images'); 
         }
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class,'company_id');
+    }
+    
+    public function employee(){
+        return $this->hasMany(User::class);
     }
 }

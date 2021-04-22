@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('company.employee.index');
+        return view('admin.team.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('company.employee.create');
+        return view('admin.team.create');
     }
 
     /**
@@ -36,18 +36,18 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        alert()->success('Employee Added Successfully', 'Team Added Successfully');
+        Team::create($request->all());
+        alert()->success('Team Added Successfully', 'Team Added Successfully');
         return redirect()->back(); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Team $team)
     {
         //
     }
@@ -55,41 +55,40 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('company.employee.edit',compact('user'));    
+        $team = Team::find($id);
+        return view('admin.team.edit',compact('team'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $user = User::find($id);
-        $user->update($request->all());
-        alert()->success('Employee Updated Successfully');
+        $team = Team::find($id);
+        $team->update($request->all());
+        alert()->success('Team Updated Successfully');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Team $team)
     {
-        $user = User::find($id);
-        $user->delete();
-        alert()->success('Employee Deleted Successfully');
+        $team->delete();
+        alert()->success('Team Deleted Successfully');
         return redirect()->back();
     }
 }

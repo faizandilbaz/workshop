@@ -29,40 +29,44 @@ Route::get('/', function () {
 
 
     Route::view('login', 'admin.auth.login')->name('login');
+    Route::post('login','AuthController@login');
+    Route::group(['middleware' => 'auth:admin'], function () { 
+    /*******************Logout ROUTES*************/       
+    Route::get('logout','AuthController@logout')->name('logout');
+    /*******************Dashoard ROUTES*************/
     Route::view('dashboard', 'admin.dashboard.index')->name('dashboard');
 
     ////////////////////////////////company/////////////////////////////
     Route::resource('company', 'CompanyController');
     ////////////////////////////////TEAMs/////////////////////////////
-    Route::view('team/create', 'admin.team.create')->name('team');
-    Route::view('team/show', 'admin.team.index')->name('team.index');
-    Route::view('team/edit', 'admin.team.edit')->name('team.edit');
+    Route::resource('team', 'TeamController');
     ////////////////////////////////EMPLOYEE/////////////////////////////
-    Route::view('employee/create', 'admin.employee.create')->name('employee');
-    Route::view('employee/show', 'admin.employee.index')->name('employee.index');
-    Route::view('employee/edit', 'admin.employee.edit')->name('employee.edit');
+    Route::resource('employee', 'EmployeeController');
+    Route::post('company/teams', 'EmployeeController@getTeamsByCompany')->name('company.teams');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('admin/profile', 'admin.profile.index')->name('profile.index');
+    Route::resource('admin', 'AdminController');
+  });
+
   });
 
 
   ///////////////////////////////////////////////////COMPANY//////////////////////////////////////////
-  Route::group(['prefix' => 'company', 'namespace' => 'Company', 'as' => 'company.',], function () {
+  Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Company', 'as' => 'company.',], function () {
     Route::view('login', 'company.auth.login')->name('login');
+    Route::post('login','AuthController@login');
+    Route::group(['middleware' => 'auth:company'], function () { 
+    /*******************Logout ROUTES*************/       
+    Route::get('logout','AuthController@logout')->name('logout');
+    /*******************Register ROUTES*************/
     Route::view('register', 'company.auth.register')->name('register');
-
+    /*******************Dashboard ROUTES*************/
     Route::view('dashboard', 'company.dashboard.index')->name('dashboard');
-    // Route::view('company/create', 'company.info.create')->name('info.create');
-    // Route::view('company/show', 'company.info.index')->name('info.index');
-    // Route::view('company/edit', 'company.info.edit')->name('info.edit');
     ////////////////////////////////TEAMs/////////////////////////////
-    Route::view('team/create', 'company.team.create')->name('team');
-    Route::view('team/show', 'company.team.index')->name('team.index');
-    Route::view('team/edit', 'company.team.edit')->name('team.edit');
+    Route::resource('team', 'TeamController');
     ////////////////////////////////EMPLOYEE/////////////////////////////
-    Route::view('employee/create', 'company.employee.create')->name('employee');
-    Route::view('employee/show', 'company.employee.index')->name('employee.index');
-    Route::view('employee/edit', 'company.employee.edit')->name('employee.edit');
+    Route::resource('employee', 'EmployeeController');
+
     ///////////////////////////////Work Shope/////////////////////////////
     Route::view('work/shop', 'company.workShop.physical.create')->name('shop.create');
     Route::view('work/show/shop', 'company.workShop.physical.index')->name('shop.index');
@@ -70,12 +74,19 @@ Route::get('/', function () {
     ////////////////////////////////Profile///////////////////////////////
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
   });
+  });
 
 
   /////////////////////////////////////////////////////TEAM////////////////////////////////
   Route::group(['prefix' => 'team', 'namespace' => 'Team', 'as' => 'team.',], function () {
     Route::view('login', 'team.auth.login')->name('login');
+    Route::post('login','AuthController@login');
+    Route::group(['middleware' => 'auth:team'], function () { 
+    /*******************Logout ROUTES*************/       
+    Route::get('logout','AuthController@logout')->name('logout');
+    /*******************Register ROUTES*************/
     Route::view('register', 'team.auth.register')->name('register');
+    /*******************Dashboard ROUTES*************/
 
     Route::view('dashboard', 'team.dashboard.index')->name('dashboard');
     ////////////////////////////////TEAMs/////////////////////////////
@@ -89,14 +100,20 @@ Route::get('/', function () {
     ////////////////////////////////Profile///////////////////////////////
     Route::view('team/profile', 'team.profile.index')->name('profile.index');
   });
+  });
 
 
 
   ///////////////////////////////////////////////////EMPLOYEE///////////////////////////////////////////
   Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'as' => 'employee.',], function () {
     Route::view('login', 'employee.auth.login')->name('login');
+    Route::post('login','AuthController@login');
+    Route::group(['middleware' => 'auth:user'], function () { 
+    /*******************Logout ROUTES*************/       
+    Route::get('logout','AuthController@logout')->name('logout');
+    /*******************Register ROUTES*************/
     Route::view('register', 'employee.auth.register')->name('register');
-
+    /*******************Dashboard ROUTES*************/
     Route::view('dashboard', 'employee.dashboard.index')->name('dashboard');
     ////////////////////////////////EMPLOYEE/////////////////////////////
     Route::view('show', 'employee.workShope.create')->name('workShope.create');
@@ -106,5 +123,6 @@ Route::get('/', function () {
     Route::view('profile', 'employee.profile.index')->name('profile.index');
     ////////////////////////////////Rank///////////////////////////////
     Route::view('rank', 'employee.rank.index')->name('rank.index');
+  });
   });
 

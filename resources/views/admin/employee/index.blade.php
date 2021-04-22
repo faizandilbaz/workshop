@@ -8,7 +8,7 @@
                 <div class="header">
                     <h2><strong>All</strong>Employee</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">Employee</li>
                         <li class="breadcrumb-item active">All</li>
                     </ul>
@@ -23,99 +23,34 @@
                                     <th>Company Name</th>
                                     <th>Team Name</th>
                                     <th>Employee Name</th>
-                                    <th>Employee Gmail</th>
-                                    <th>Employee Address</th>
+                                    <th>Employee Email</th>
+                                    <th>Employee Detail</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (App\Models\User::all() as $key => $user)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Company1</td>
-                                    <td>Team1</td>
-                                    <td>Employee1</td>
-                                    <td>employee1@mail.com</td>
-                                    <td></td>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$user->company->name}}</td>
+                                    <td>{{$user->team->name}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->detail}}</td>
                                     <td>
-                                        <a href="{{ route('admin.employee.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
+                                        <a href="{{ route('admin.employee.edit',$user->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        <form action="{{ route('admin.employee.destroy',$user->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger delete-btn"> Delete</button>
                                         </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Company2</td>
-                                    <td>Team2</td>
-                                    <td>Employee2</td>
-                                    <td>employee2@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.employee.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Company3</td>
-                                    <td>Team3</td>
-                                    <td>Employee3</td>
-                                    <td>employee3@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.employee.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Company4</td>
-                                    <td>Team4</td>
-                                    <td>Employee4</td>
-                                    <td>employee4@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.employee.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Company5</td>
-                                    <td>Team5</td>
-                                    <td>Employee5</td> 
-                                    <td>employee5@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.employee.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @endforeach
                              
                             </tbody>
                         </table>

@@ -30,7 +30,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Add Team</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">Teams</li>
                         <li class="breadcrumb-item active">Create</li>
                     </ul>
@@ -44,55 +44,57 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-                        <form action="#" method="POST">
+                        <form  action="{{route('admin.team.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="body">
                                 <div class="row">
-                                    <div class="form-group form-float col-md-6">
-                                        <select class="form-control show-tick  mr-3"  >
-                                            <option disabled>-- Select Company--</option>
-                                            <option value="">Company1</option>
-                                            <option value="">Company2</option>
-                                            <option value="">Company3</option>
-                                            <option value="">Company4</option>
-                                            <option value="">Company5</option>
-                                           
-                                        </select>
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <img id="preview_img" src="{{asset('images/users/user.png')}}" height="240" width="auto" style="padding-bottom: 10px;" alt="">
+                                            <input type="file" name="image" id="profile_image" onchange="loadPreview(this);" class="form-input-styled" required>
+                                            </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-float">
-                                            <input type="text" class="form-control" placeholder=" Enter Team"
-                                                name="name" required>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="form-group form-float col-md-6">
+                                                <select name="company_id" class="form-control show-tick  mr-3"  >
+                                                    <option disabled>-- Select Company--</option>
+                                                    @foreach (App\Models\Company::all() as $company)
+                                                    <option value="{{$company->id}}">{{$company->name}}</option> 
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-float">
+                                                    <input type="text" class="form-control" placeholder=" Enter Team"
+                                                        name="name" required>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="row">
+                                           
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" name="email"
+                                                    placeholder="Enter Email Address">
+        
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="form-group col-md-12 txt4">
+                                                <textarea rows="4" name="detail" placeholder="Enter Detail"
+                                                    class="form-control txt4"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div> 
-                                <div class="row">
-                                   
-                                    <div class="col-md-6">
-                                        <input type="gmail" class="form-control" name="gmail"
-                                            placeholder="gmail">
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="password" placeholder="Password">
-                                    </div>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    
-                                    <div class="col-md-6">
-                                        <input type="file" class="form-control" name="pitcher"
-                                            placeholder="Profile pitcher">
-
-                                    </div>
+                              
+                                <div class="text-right">
+                                    <button class="btn btn-raised btn-success waves-effect" type="submit">Create</button>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="form-group col-md-12 txt4">
-                                        <textarea rows="4" name="adress" placeholder="Enter adress"
-                                            class="form-control txt4"></textarea>
-                                    </div>
-                                </div>
-                                <a href="{{ route('admin.team') }}" class="btn btn-raised btn-success waves-effect" type="submit">Create</a>
                             </div>
                         </form>
                     </div>
@@ -102,4 +104,23 @@
     </div>
    
 </section>
+@endsection
+@section('script')
+<script>
+    function loadPreview(input, id) {
+      id = id || '#preview_img';
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+   
+          reader.onload = function (e) {
+              $(id)
+                      .attr('src', e.target.result)
+                      .width(345)
+                      .height(240);
+          };
+   
+          reader.readAsDataURL(input.files[0]);
+      }
+   }
+</script>
 @endsection

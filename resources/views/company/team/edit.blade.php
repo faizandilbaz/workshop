@@ -44,55 +44,51 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-                        <form action="#" method="POST">
+                        <form action="{{route('company.team.update',$team->id)}}" method="POST" enctype="multipart/form-data">
+                            @method('put')
+                            @csrf
                             <div class="body">
                                 <div class="row">
-                                    <div class="form-group form-float col-md-6">
-                                        <select class="form-control show-tick ml-3 mr-3"  >
-                                            {{-- <option disabled>-- Select Company--</option> --}}
-                                            <option value="">Company1</option>
-                                            {{-- <option value="">Company2</option>
-                                            <option value="">Company3</option>
-                                            <option value="">Company4</option>
-                                            <option value="">Company5</option> --}}
-                                           
-                                        </select>
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <img id="preview_img" src="{{asset($team->image)}}" height="240" width="auto" style="padding-bottom: 10px;" alt="">
+                                            <input type="file" name="image" id="profile_image" onchange="loadPreview(this);" class="form-input-styled">
+                                            </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-float">
-                                            <input type="text" class="form-control" value="" placeholder=" Enter Team"
-                                                name="name" required>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-float">
+                                                    <input type="text" class="form-control" value="{{$team->name}}"
+                                                        name="name" required>
+                                                </div>
+                                            </div>
+                                            <div class=" form-group col-md-6">
+                                                <input type="email" class="form-control" name="email"
+                                                value="{{$team->email}}">
+        
+                                            </div>
+                                        </div> 
+                                        <div class="row">
+                                           
+                                            
+                                            <div class="col-md-12">
+                                                <input type="password" class="form-control" name="password" placeholder="Leave It Blank">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="form-group col-md-12 txt4">
+                                                <textarea rows="4" name="detail" placeholder="Enter Detail"
+                                                    class="form-control txt4">{{$team->detail}}</textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div> 
-                                <div class="row">
-                                   
-                                    <div class="col-md-6">
-                                        <input type="gmail" class="form-control" name="gmail"
-                                            placeholder="gmail">
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="password" placeholder="Password">
-                                    </div>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    
-                                    <div class="col-md-6">
-                                        <input type="file" class="form-control" name="pitcher"
-                                            placeholder="Profile pitcher">
-
-                                    </div>
+                              
+                                <div class="text-right">
+                                    <button class="btn btn-raised btn-success waves-effect" type="submit">Update</button>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="form-group col-md-12 txt4">
-                                        <textarea rows="4" name="adress" placeholder="Enter adress"
-                                            class="form-control txt4"></textarea>
-                                    </div>
-                                </div>
-                                <a href="{{ route('company.team.index') }}" class="btn btn-raised btn-success waves-effect" type="submit">Update</a>
                             </div>
                         </form>
                     </div>

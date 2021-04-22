@@ -67,9 +67,11 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request,$id)
     {
-        //
+        $admin = Admin::find($id);
+        $admin->update($request->all());
+        return redirect()->back();
     }
 
     /**

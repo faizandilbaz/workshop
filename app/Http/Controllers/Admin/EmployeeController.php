@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Company;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.employee.index');
     }
 
     /**
@@ -24,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.employee.create');
     }
 
     /**
@@ -35,7 +38,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create($request->all());
+        alert()->success('User Added Successfully');
+        return redirect()->back(); 
     }
 
     /**
@@ -55,9 +60,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.employee.edit',compact('user'));
     }
 
     /**
@@ -67,9 +73,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request,$id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        alert()->success('Employee Updated Successfully');
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +87,20 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        alert()->success('Employee User Deleted Successfully');
+        return redirect()->back();
+    }
+    public function getTeamsByCompany(Request $request)
+    {
+        if($request->id == 'all'){
+            $teams = Team::all();
+        } else {
+            $teams = Company::find($request->id)->teams;
+        }
+        return response()->json($teams);
     }
 }

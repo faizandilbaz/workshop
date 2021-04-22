@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
-                    <form class="card auth_form" method="POST" action="#">
+                    <form class="card auth_form" method="POST" action="{{route('admin.login')}}">
                         @csrf
                         <div class="header">
                             <img class="logo" src="{{asset('admin/assets/images/logo.svg')}}" alt="">
@@ -44,7 +44,7 @@
                                 <input id="remember_me" type="checkbox">
                                 <label for="remember_me">Remember Me</label>
                             </div>
-                            <a href="{{ route('admin.dashboard') }}" type="submit" class="btn btn-primary btn-block waves-effect waves-light">SIGN IN</a>
+                            <a  type="submit" class="btn btn-primary btn-block waves-effect waves-light">SIGN IN</a>
                             <div class="signin_with mt-3">
                                 <p class="mb-0">or Sign Up using</p>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round facebook"><i class="zmdi zmdi-facebook"></i></button>

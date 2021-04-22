@@ -65,8 +65,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company :: find ($id);
-        // dd($id);
-
+        dd($company->team);
         return view('admin.company.edit',compact('company'));
     }
 

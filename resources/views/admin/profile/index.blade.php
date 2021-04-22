@@ -30,7 +30,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Profile</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">profile</li>
                         <li class="breadcrumb-item active">Update</li>
                     </ul>
@@ -40,41 +40,35 @@
         </div>
 
         <div class="card mcard_3">
-            <div class="body">
-                <a href="profile.html"><img src="{{asset ('admin/assets/images/profile_av.jpg') }}"
-                        class="rounded-circle shadow " alt="profile-image"></a>
-                <h4 class="m-t-10">Admin1</h4>
-             <div class="row">
-                 <div class="col-md-6">
-                    <input type="text" class="form-control" value="Company1" name="name" placeholder="Admin name">
-                 </div>
-                 
-                 <div class="col-md-6">
-                    <input type="gmail" value="admin@mail.com" class="form-control" name="gmail" placeholder="gmail">
-
-                 </div>
-             </div>
-             <br>
-                <div class="row">
-                    <div class="col-md-6">
-                    <input type="text" class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="file" class="form-control" name="pitcher" placeholder="Profile pitcher">
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="form-group col-md-12 txt4">
+            <form action="{{route('admin.admin.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                @method('put')
+                @csrf
+                <div class="body">
+                    <a href="profile.html"><img src="{{asset ('admin/assets/images/profile_av.jpg') }}"
+                            class="rounded-circle shadow " alt="profile-image"></a>
+                    <h4 class="m-t-10">Admin1</h4>
+        
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="{{Auth::user()->name}}" name="name" placeholder="Admin name">
+                        </div>
                         
-                        <textarea rows="4" name="adress" placeholder="Enter adress"
-                            class="form-control txt4"></textarea>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}">
+
+                        </div>
                     </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-raised btn-success waves-effect" type="submit">Update Profile</button>
+                    </div>                
                 </div>
-                <br>
-                <a href="#" class="btn btn-raised btn-success waves-effect mt-5 float-right" type="submit">Update</a>
-            </div>
+            </form>
         </div>
     </div>
 

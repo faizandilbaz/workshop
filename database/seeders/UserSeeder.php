@@ -19,8 +19,9 @@ class UserSeeder extends Seeder
 
                 'name' => 'user' . $i,
                 'email' =>'user'. $i.'@mail.com',
-                'password' => '1234'
-                
+                'password' => '1234',
+                'company_id' => $i,
+                'team_id' => $i,
                
             ]);
         }

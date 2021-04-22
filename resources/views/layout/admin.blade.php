@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>::Admin :: Home</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
@@ -68,7 +69,7 @@
     <div class="navbar-right">
         <ul class="navbar-nav">
             <li><a href="#search" class="main_search" title="Search..."><i class="zmdi zmdi-search"></i></a></li>
-            <li><a href="#" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
+            <li><a href="{{route('admin.logout')}}" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
         </ul>
     </div>
 
@@ -86,7 +87,7 @@
                         <a class="image" href="profile.html"><img
                                 src="{{ asset('admin/assets/images/profile_av.jpg') }}" alt="User"></a>
                         <div class="detail">
-                            <h4>Michael</h4>
+                            <h4>{{Auth::user()->name}}</h4>
                             <small>Super Admin</small>
                         </div>
                     </div>
@@ -102,13 +103,13 @@
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('admin.team') }}">Add</a></li>
+                        <li><a href="{{ route('admin.team.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.team.index') }}">All Teams</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('admin.employee') }}">Add</a></li>
+                        <li><a href="{{ route('admin.employee.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
@@ -305,7 +306,9 @@
 
     <script src="{{ asset('admin/assets/bundles/mainscripts.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/index.js') }}"></script>
+
     @yield('script')
+
 </body>
 
 </html>

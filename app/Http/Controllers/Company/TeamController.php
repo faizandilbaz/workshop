@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
-class TeamLeaderController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class TeamLeaderController extends Controller
      */
     public function index()
     {
-        //
+        return view('company.team.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class TeamLeaderController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.team.create');
     }
 
     /**
@@ -35,16 +36,18 @@ class TeamLeaderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Team::create($request->all());
+        alert()->success('Team Added Successfully', 'Team Added Successfully');
+        return redirect()->back(); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Team $team)
     {
         //
     }
@@ -52,34 +55,41 @@ class TeamLeaderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $team = Team::find($id);
+        return view('company.team.edit',compact('team'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $team = Team::find($id);
+        $team->update($request->all());
+        alert()->success('Team Updated Successfully');
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $team = Team::find($id);
+        $team->delete();
+        alert()->success('Team Deleted Successfully');
+        return redirect()->back();
     }
 }

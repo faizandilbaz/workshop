@@ -45,7 +45,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ], 
+        'team' => [
+            'driver' => 'session',
+            'provider' => 'teams',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -79,6 +86,14 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ], 
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Company::class,
+        ], 
+        'team' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Team::class,
         ],
 
         // 'users' => [

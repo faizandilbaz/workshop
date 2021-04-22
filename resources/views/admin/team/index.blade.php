@@ -20,97 +20,41 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Company Name</th>
+                                    <th>Team Image</th>
                                     <th>Team Name</th>
-                                    <th>Team Gmail</th>
-                                    <th>Team Addres</th>
+                                    <th>Team Email Address</th>
+                                    <th>Team Detail</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (App\Models\Team::all() as $key => $team)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Company1</td>
-                                    <td>Team1</td>
-                                    <td>Team1@mail.com</td>
-                                    <td></td>
+                                    <td>{{$key+1}}</td>
                                     <td>
-                                        <a href="{{ route('admin.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
+                                        <a href="#">
+                                            <img src="{{asset($team->image)}}" alt="" height="80px" width="80px"
+                                                class=" rounded-circle wth-35 hgt-35">
+                                        </a>
+                                    </td>
+                                    <td>{{$team->name}}</td>
+                                    <td>{{$team->email}}</td>
+                                    <td>{{$team->detail}}</td>
+                                    <td>
+                                        <a href="{{ route('admin.team.edit',$team->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        <form action="{{route('admin.team.destroy',$team->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button data-toggle="modal" data-target="#delete_modal" `
+                                                class="btn btn-danger delete-btn"> Delete</button>
                                         </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Company2</td>
-                                    <td>Team2</td>
-                                    <td>Team2@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Company3</td>
-                                    <td>Team3</td>
-                                    <td>Team3@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Company4</td>
-                                    <td>Team4</td>
-                                    <td>Team4@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Company5</td>
-                                    <td>Team5</td>
-                                    <td>Team5@mail.com</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('admin.team.edit',) }}" type="submit" class="btn btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                             
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

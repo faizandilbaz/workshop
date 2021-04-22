@@ -21,6 +21,7 @@ class TeamLeaderSeeder extends Seeder
                 'name' => 'team' . $i,
                 'email' =>'team'. $i.'@mail.com',
                 'password' => '1234',
+                'company_id' => $i
              
             ]);
         }
