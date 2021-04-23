@@ -27,7 +27,7 @@
             <!-- Basic Example | Horizontal Layout -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                   <a href="#" class="btn btn-raised btn-success waves-effect float-right" type="submit">Save</a>
+                    <a href="#" class="btn btn-raised btn-success waves-effect float-right" type="submit">Save</a>
                     <div class="card">
                         <div class="header">
                             <h2><strong>Work</strong>Shope</h2>
@@ -35,7 +35,7 @@
                         <div class="body">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <label>Start Time</label>
+                                    <label>Workshope Start Time</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>End Time</label>
+                                    <label>Workshope End Time</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -78,24 +78,37 @@
                                         class="form-control txt4"></textarea>
                                 </div>
                             </div>
-                            <div class="row align-right">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal"
-                                        data-target="#largeModal">Add Questions </button>
 
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Questionnaire End Time</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control datetimepicker"
+                                            placeholder="Please choose End time...">
+                                    </div>
                                 </div>
-
                             </div>
+                            <button type="button" class="btn btn-info waves-effect m-r-20 float-right add_question">Add
+                                Questions </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <h5 class="card-title text-center">Questions</h5>
+            <div>
+                <h1 style="text-align: center"> Created Question Here</h1>
+                <div class="question_append">
 
+                </div>
+
+            </div>
         </div>
 
     </div>
-    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    {{-- <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -123,13 +136,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <h5 class="card-title text-center">Questions</h5>
-    <div>
-        <h1 style="text-align: center"> Created Question Here</h1>
-    </div>
-   
+
+
 </section>
 @endsection
 @section('script')
@@ -143,6 +153,50 @@
     src="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
 </script>
 <script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.add_question').on('click',function(){
+           $('.question_append').append(
+            '<div class="row">'+
+                '<div class="form-group col-md-12">'+
+                    '<label>Question Statement</label>'+
+                    '<textarea rows="4" name="description" style="resize:none" placeholder="Enter Question Statement" class="form-control txt4"></textarea>'+
+                '</div>'+
+            '</div>'+
+            '<div class="row">'+
+                '<div class="col-md-5">'+
+                    '<div class="form-group form-float">'+
+                        '<input type="text" class="form-control" placeholder="Enter Option one" name="name" required>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-md-5">'+
+                    '<div class="form-group form-float">'+
+                        '<input type="text" class="form-control" placeholder=" Enter Option two" name="name" required>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-md-2">'+
+                    '<button type="button" class="btn btn-primary add_options" >+ </button>'+
+                '</div>'+
+            '</div>'+
+            '<div class="row options_append">'+
+            '</div>'
+           );
+        });
 
+        $('.question_append').on('click','.add_options',function(){
+            $('.options_append').append(
+                '<div class="col-md-5">'+
+                    '<div class="form-group form-float">'+
+                        '<input type="text" class="form-control" placeholder="Enter Option one" name="name" required>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-md-5">'+
+                    '<div class="form-group form-float">'+
+                        '<input type="text" class="form-control" placeholder=" Enter Option two" name="name" required>'+
+                    '</div>'+
+                '</div>'
+            )
+        });
+    });
+</script>
 @endsection
-}

@@ -21,6 +21,7 @@ class CreateWorkShopsTable extends Migration
             $table->timestamp('start')->nullable();
             $table->timestamp('end')->nullable();
             $table->timestamp('time')->nullable();
+            $table->timestamp('paper_start_time')->nullable();
             $table->timestamps();
         });
     }

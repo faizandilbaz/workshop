@@ -9,6 +9,6 @@ class WorkShop extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'heading','link','description','start','end','time'
+        'heading','link','description','start','end','time','paper_start_time'
     ];
 }

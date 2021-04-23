@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Company\WorkShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,9 +68,11 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::resource('employee', 'EmployeeController');
 
     ///////////////////////////////Work Shope/////////////////////////////
-    Route::view('work/shop', 'company.workShop.physical.create')->name('shop.create');
-    Route::view('work/show/shop', 'company.workShop.physical.index')->name('shop.index');
-    Route::view('work/shop/edit', 'company.workShop.physical.edit')->name('shop.physical.edit');
+    Route::resource('workshop', 'WorkShopController');
+    
+    Route::view('work/shop', 'company.workShop.create')->name('shop.create');
+    Route::view('work/show/shop', 'company.workShop.index')->name('shop.index');
+    Route::view('work/shop/edit', 'company.workShop.edit')->name('shop.physical.edit');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
     Route::put('company/update/{id}','CompanyController@update')->name('update');
