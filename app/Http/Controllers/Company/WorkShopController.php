@@ -37,7 +37,7 @@ class WorkShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $workShop = WorkShop::create($request->all());
         foreach($request->questions as $qkey=>$question){
            $question = Question::create([
@@ -49,8 +49,8 @@ class WorkShopController extends Controller
                     'question_id' => $question->id,
                     'option' => $option
                 ]);
-                foreach($request->correct as $crt){
-                    if($okey == $crt){
+                foreach($request->correct as $ckey=>$crt){
+                    if($okey == $crt-1){
                         $question->update([
                             'option_id' => $option->id
                         ]);
