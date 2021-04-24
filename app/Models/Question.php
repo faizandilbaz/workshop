@@ -9,6 +9,6 @@ class Question extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'type','statement','rightanswer','value','status'
+        'type','statement','rightanswer','value','status','option_id','workshop_id'
     ];
 }

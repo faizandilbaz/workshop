@@ -9,6 +9,6 @@ class Option extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'option'
+        'option','question_id'
     ];
 }
