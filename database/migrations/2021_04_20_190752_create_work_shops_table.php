@@ -18,10 +18,10 @@ class CreateWorkShopsTable extends Migration
             $table->string('heading')->nullable();
             $table->string('link')->nullable();
             $table->string('description')->nullable();
-            $table->timestamp('start')->nullable();
-            $table->timestamp('end')->nullable();
-            $table->timestamp('time')->nullable();
-            $table->timestamp('paper_start_time')->nullable();
+            $table->string('start')->nullable();
+            $table->string('end')->nullable();
+            $table->string('time')->nullable();
+            $table->string('paper_end_time')->nullable();
             $table->timestamps();
         });
     }

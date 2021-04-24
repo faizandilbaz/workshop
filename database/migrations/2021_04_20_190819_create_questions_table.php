@@ -15,10 +15,9 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
+            $table->foreignId('workshop_id');
+            $table->foreign('workshop_id')->references('id')->on('work_shops')->onDelete('cascade');
             $table->string('statement')->nullable();
-            $table->string('rightanswer')->nullable();
-            $table->string('value')->nullable();
             $table->string('status')->default('1');
             $table->timestamps();
         });

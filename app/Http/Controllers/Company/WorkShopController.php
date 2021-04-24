@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\Option;
+use App\Models\Question;
+use App\Models\WorkShop;
 use Illuminate\Http\Request;
 
 class WorkShopController extends Controller
@@ -35,7 +38,29 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $workShop = WorkShop::create($request->all());
+        foreach($request->questions as $qkey=>$question){
+           $question = Question::create([
+                'workshop_id' => $workShop->id,
+                'statement' => $question
+            ]);;
+            foreach($request->options[$qkey] as $okey=>$option){
+                $option = Option::create([
+                    'question_id' => $question->id,
+                    'option' => $option
+                ]);
+                foreach($request->correct as $crt){
+                    if($okey == $crt){
+                        $question->update([
+                            'option_id' => $option->id
+                        ]);
+                    }
+                }
+            }
+            
+        }
+        return redirect()->back();
+
     }
 
     /**

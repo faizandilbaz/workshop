@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySeeder::class);
         $this->call(TeamLeaderSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(WorkShopSeeder::class);
-        $this->call(QuestionSeeder::class);
-        $this->call(OptionSeeder::class);
+        // $this->call(WorkShopSeeder::class);
+        // $this->call(QuestionSeeder::class);
+        // $this->call(OptionSeeder::class);
     }
 }
