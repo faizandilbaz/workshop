@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkShopsTable extends Migration
+class CreateWorkshopEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateWorkShopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('work_shops', function (Blueprint $table) {
+        Schema::create('workshop_employees', function (Blueprint $table) {
             $table->id();
-            $table->string('heading')->nullable();
-            $table->string('link')->nullable();
-            $table->string('description')->nullable();
-            $table->timestamp('start')->nullable();
-            $table->timestamp('end')->nullable();
-            $table->timestamp('time')->nullable();
-            $table->timestamp('paper_end_time')->nullable();
+            $table->foreignId('workshop_id');
+            $table->foreign('workshop_id')->references('id')->on('work_shops')->onDelete('cascade');
+            $table->string('status')->default('0');
             $table->foreignId('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
@@ -35,6 +31,6 @@ class CreateWorkShopsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('work_shops');
+        Schema::dropIfExists('workshop_employees');
     }
 }

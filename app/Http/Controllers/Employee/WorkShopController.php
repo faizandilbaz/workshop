@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\WorkShop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkShopController extends Controller
 {
@@ -14,9 +17,15 @@ class WorkShopController extends Controller
      */
     public function index()
     {
-        //
+        $workshops = WorkShop::where('company_id',Auth::user()->company->id)->where('start','>',Carbon::today())->get();
+        return view('employee.workShope.upcoming')->with('workshops',$workshops);
     }
-
+    public function today()
+    {
+        $workshops = WorkShop::where('company_id',Auth::user()->company->id)->where('start','=',Carbon::today())->get();
+        dd($workshops);
+        return view('employee.workShope.today')->with('workshops',$workshops);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -82,4 +91,5 @@ class WorkShopController extends Controller
     {
         //
     }
+    
 }

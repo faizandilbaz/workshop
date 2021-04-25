@@ -120,7 +120,8 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::view('dashboard', 'employee.dashboard.index')->name('dashboard');
     ////////////////////////////////EMPLOYEE/////////////////////////////
     Route::view('show', 'employee.workShope.create')->name('workShope.create');
-    //  Route::view('employee/show', 'employee.info.index')->name('info.index');
+    Route::get('workshop/today', 'WorkShopController@today')->name('workshop.today');
+    Route::resource('workshop', 'WorkShopController');
     //  Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('profile', 'employee.profile.index')->name('profile.index');

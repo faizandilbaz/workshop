@@ -48,6 +48,12 @@ class Company extends Authenticatable
     public function teams(){
         return $this->hasMany(Team::class);
     }
+    public function workshops(){
+        return $this->hasMany(WorkShop::class);
+    }
+    public function workshopemployee(){
+        return $this->hasMany(WorkshopEmployee::class);
+    }
 
     public function setImageAttribute($value){
         if(is_string($value)){

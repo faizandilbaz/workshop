@@ -75,9 +75,9 @@
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>WorkShope</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('employee.workShope.create') }}">Today</a></li>
+                        <li><a href="{{ route('employee.workshop.today') }}">Today</a></li>
                         <li><a href="{{ route('employee.workShope.create') }}">Previous</a></li>
-                        <li><a href="{{ route('employee.workShope.create') }}">Upcoming</a></li>
+                        <li><a href="{{ route('employee.workshop.index') }}">Upcoming</a></li>
                          
                     </ul>
                 </li>

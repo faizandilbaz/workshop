@@ -37,12 +37,11 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Workshope Start Time</label>
-                                        <div class="input-group">
+                                        <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                                <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
-                                            <input type="text" name="start" class="form-control datetimepicker"
-                                                placeholder="Please choose starting  time...">
+                                            <input type="datetime-local" name="start" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -51,8 +50,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="text" name="end" class="form-control datetimepicker"
-                                                placeholder="Please choose End time...">
+                                            <input type="datetime-local"  name="end" class="form-control datetime"
+                                            placeholder="Ex: 30/07/2016 23:59">
                                         </div>
                                     </div>
                                 </div>
@@ -63,12 +62,14 @@
                                         <div class="form-group form-float">
                                             <input type="text" class="form-control" placeholder=" Enter Heading"
                                                 name="heading" required>
+                                            <input type="hidden" class="form-control" value="{{Auth::user()->id}}"
+                                                name="company_id" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <input type="url" class="form-control"
-                                                placeholder=" Enter link: http://, https://, ftp://" name="url"
+                                                placeholder=" Enter link: http://, https://, ftp://" name="link"
                                                 required>
                                         </div>
                                     </div>
@@ -88,7 +89,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="text" name="paper_end_time" class="form-control datetimepicker"
+                                            <input type="datetime-local" name="paper_end_time" class="form-control datetime"
                                                 placeholder="Please choose End time...">
                                         </div>
                                     </div>
