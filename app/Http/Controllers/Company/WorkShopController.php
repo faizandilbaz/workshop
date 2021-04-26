@@ -27,7 +27,7 @@ class WorkShopController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.workShop.create');
     }
 
     /**
