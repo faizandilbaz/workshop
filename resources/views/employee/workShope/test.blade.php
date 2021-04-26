@@ -28,42 +28,39 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Upcoming Workshops</h2>
+                    <h2>Profile</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Workshops</a></li>
-                        <li class="breadcrumb-item active">Upcoming Workshops</li>
-                        
+                        <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Employee</a></li>
+                        <li class="breadcrumb-item active">Workshop</li>
+                        <li class="breadcrumb-item active">{{$workshop->heading}}</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Upcomming</strong> Workshops</h2>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover theme-color c_table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Starting On</th>>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($workshops as $key=>$workshop)
-                                <tr>
-                                    <td>{{$key+1}}</td>
-                                    <td>{{$workshop->heading}}</td>
-                                    <td>{{$workshop->description}}</td>
-                                    <td>{{$workshop->start->format('l M d,Y h:m')}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>              
-                </div>
+
             </div>
         </div>
+        @foreach($results as $result)
+        <div class="card">
+            <div class="body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>{{$result->question->statement}}</p>
+                    </div>
+                    @foreach($result->question->options as $key => $option)
+                    <div class="col-md-6">
+                        <div class="light_dark">
+                            <div class="radio">
+                                <input type="radio" name="option" id="{{$option->option}}" value="{{$option->option}}" checked="">
+                                <label for="{{$option->option}}">{{$option->option}}</label>
+                            </div> 
+                        </div>                   
+                    </div>
+                    @endforeach
+                </div>
+                <a href="#" class="btn btn-raised btn-success waves-effect mt-5 float-right" type="submit">Update</a>
+            </div>
+        </div>
+        @endforeach
     </div>
+
 </section>
 @endsection

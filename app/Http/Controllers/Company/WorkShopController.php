@@ -50,14 +50,13 @@ class WorkShopController extends Controller
                     'option' => $option
                 ]);
                 foreach($request->correct as $ckey=>$crt){
-                    if($okey == $crt-1){
+                    if($okey == $crt){
                         $question->update([
                             'option_id' => $option->id
                         ]);
                     }
                 }
             }
-            
         }
         return redirect()->back();
 

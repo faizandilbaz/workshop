@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkshopEmployee extends Model
+class Result extends Model
 {
     use HasFactory; 
     protected $fillable = [
-        'status','workshop_id','user_id','result'
+        'workshop_id','user_id','option','question_id'
     ]; 
     public function workshop()
     {
@@ -17,6 +17,10 @@ class WorkshopEmployee extends Model
     }   
     public function employee()
     {
-        return $this->belongsTo(WorkShop::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }   
-} 
+    public function question()
+    {
+        return $this->belongsTo(Question::class,'question_id');
+    }   
+}

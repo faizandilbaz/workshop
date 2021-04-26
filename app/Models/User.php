@@ -42,9 +42,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Company::class,'company_id');
     }  
+    public function workshopemployee(){
+        return $this->hasMany(WorkshopEmployee::class);
+    }
     public function team()
     {
         return $this->belongsTo(Team::class,'team_id');
+    }
+    public function results(){
+        return $this->hasMany(Result::class);
     }
     /**
      * The attributes that should be hidden for arrays.

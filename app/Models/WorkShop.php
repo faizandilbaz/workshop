@@ -26,4 +26,7 @@ class WorkShop extends Model
     public function workshopemployee(){
         return $this->hasMany(WorkshopEmployee::class);
     }
+    public function results(){
+        return $this->hasMany(Result::class);
+    }
 }

@@ -42,20 +42,30 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
-                                    <th>Link</th>
                                     <th>Description</th>
                                     <th>Starting On</th>>
+                                    <th>Action</th>>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($workshops as $key=>$workshop)
+                                @if($workshop->start->format('d m,y') == Carbon\Carbon::today()->format('d m,y') || $workshop->end->format('d m,y') == Carbon\Carbon::today()->format('d m,y'))
                                 <tr>
                                     <td>{{$key+1}}</td>
-
                                     <td>{{$workshop->heading}}</td>
                                     <td>{{$workshop->description}}</td>
                                     <td>{{$workshop->start->format('l M d,Y h:m')}}</td>
+                                    <td>
+                                        @if($workshop->start->format('d m,y h:m') >= Carbon\Carbon::now()->format('d m,y h:m'))
+                                        <a href="{{route('employee.workshop.attend',$workshop->id)}}"><span class="badge badge-success">Attend</span></a>
+                                        @elseif($workshop->end->format('d m,y h:m') >= Carbon\Carbon::now()->format('d m,y h:m'))
+                                        <span class="badge badge-success">Give Test</span>
+                                        @elseif($workshop->paper_end_time->format('d m,y h:m') >= Carbon\Carbon::now()->format('d m,y h:m'))
+                                        <span class="badge badge-success">Time Ended</span>
+                                        @endif
+                                    </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

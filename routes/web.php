@@ -121,6 +121,8 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     ////////////////////////////////EMPLOYEE/////////////////////////////
     Route::view('show', 'employee.workShope.create')->name('workShope.create');
     Route::get('workshop/today', 'WorkShopController@today')->name('workshop.today');
+    Route::get('workshop/attend/{id}', 'WorkShopController@attend')->name('workshop.attend');
+    Route::get('workshop/test/{id}', 'WorkShopController@test')->name('workshop.test');
     Route::resource('workshop', 'WorkShopController');
     //  Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
     ////////////////////////////////Profile///////////////////////////////

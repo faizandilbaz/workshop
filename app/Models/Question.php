@@ -11,4 +11,10 @@ class Question extends Model
     protected $fillable = [
         'type','statement','rightanswer','value','status','option_id','workshop_id'
     ];
+    public function options(){
+        return $this->hasMany(Option::class);
+    }
+    public function results(){
+        return $this->hasMany(Result::class);
+    }
 }
