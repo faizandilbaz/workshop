@@ -18,113 +18,89 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-info">
-                        <h6 class="text-light">TOTAL ORDERS</h6>
-                        <h2 class="text-light">20</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-success">
-                        <h6 class="text-light">ORDER ACCEPTED</h6>
-                        <h2 class="text-light">12</h2>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
+                        <h4 class="mt-3">17.2k</h4>
+                        <span class="text-muted">Total WorkShop</span>
                         
-                    </div>
+                   </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-danger">
-                        <h6 class="text-light" >ORDER CANCELED</h6>
-                        <h2 class="text-light" >39</h2>
-                    
-                    </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon pink"><i class="zmdi zmdi-hc-fw"></i></div>
+                        <h4 class="mt-3">12k</h4>
+                        <span class="text-muted">Total Teams</span>
+                       
+                   </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-warning">
-                        <h6 class="text-light">ORDER PENDING</h6>
-                        <h2 class="text-light">8</h2>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon orange"><i class="zmdi zmdi-hc-fw"></i></div>
+                        <h4 class="mt-3">53.8k</h4>
+                        <span class="text-muted">Total Employee</span>
+                       
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
+                        <h4 class="mt-3">17.2k</h4>
+                        <span class="text-muted">Exams</span>
                         
-                    </div>
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon cyan"><i class="zmdi zmdi-hc-fw"></i></div>
+                        <h4 class="mt-3">01</h4>
+                        <span class="text-muted">Today WorkShop</span>
+                       
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
+                        <h4 class="mt-3">5</h4>
+                        <span class="text-muted">Upcoming WorkShope</span>
+                       
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon blue"><i class="zmdi zmdi-dns"></i></div>
+                        <h4 class="mt-3">89</h4>
+                        <span class="text-muted">Server Allocation</span>
+                        
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card w_data_1">
+                   <div class="body">
+                        <div class="w_icon blush"><i class="zmdi zmdi-headset-mic"></i></div>
+                        <h4 class="mt-3">17</h4>
+                        <span class="text-muted">Support Cost</span>
+                       
+                   </div>
                 </div>
             </div>
         </div>
-        <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-warning">
-                        <h6 class="text-light">ORDER DISPATCHED</h6>
-                        <h2 class="text-light">20 </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-info">
-                        <h6 class="text-light">ORDER DELIVERED</h6>
-                        <h2 class="text-light" >12 </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2">
-                    <div class="body bg-success">
-                        <h6 class="text-light">TOTAL CUSTOMER</h6>
-                        <h2 class="text-light" >39</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-danger">
-                        <h6 class="text-light">BLOCK CUSTOMER</h6>
-                        <h2 class="text-light">8</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-info">
-                        <h6 class="text-light">TOTAL VENDORS</h6>
-                        <h2 class="text-light">20</h2>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-danger">
-                        <h6 class="text-light">BLOCK VENDERS</h6>
-                        <h2 class="text-light">12 </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-warning">
-                        <h6 class="text-light" >BALANCE</h6>
-                        <h2 class="text-light">39</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-success">
-                        <h6 class="text-light">TOTAL PRODUCTS</h6>
-                        <h2 class="text-light">8</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+    </div> 
 </section>
- @endsection
+@endsection

@@ -77,7 +77,7 @@
     <aside id="leftsidebar" class="sidebar">
         <div class="navbar-brand">
             <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-            <a href="index.html"><img src="{{ asset('admin/assets/images/logo.svg') }}" width="25" alt="Aero"><span
+            <a href="index.html"><span
                     class="m-l-10">Admin</span></a>
         </div>
         <div class="menu">
@@ -85,10 +85,10 @@
                 <li>
                     <div class="user-info">
                         <a class="image" href="profile.html"><img
-                                src="{{ asset('admin/assets/images/profile_av.jpg') }}" alt="User"></a>
+                                src="{{ asset(Auth::user()->image) }}" alt="User"></a>
                         <div class="detail">
                             <h4>{{Auth::user()->name}}</h4>
-                            <small>Super Admin</small>
+                            <small>{{ Auth::user()->email }}</small>
                         </div>
                     </div>
                 </li>
@@ -101,19 +101,19 @@
                         <li><a href="{{ route('admin.company.index') }}">All Companies</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Teams</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('admin.team.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.team.index') }}">All Teams</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle">C<span>Employee</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('admin.employee.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('admin.profile.index') }}"><i class="zmdi zmdi-apps"></i><span>Profile</span></a>
+                <li><a href="{{ route('admin.profile.index') }}"><i class="zmdi zmdi-hc-fw"></i><span>Profile</span></a>
                    
                 </li> 
             </ul>

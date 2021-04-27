@@ -31,7 +31,7 @@
                     <h2>Profile</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
-                        <li class="breadcrumb-item active">profile</li>
+                        <li class="breadcrumb-item active">Profile</li>
                         <li class="breadcrumb-item active">Update</li>
                     </ul>
                 </div>
@@ -44,9 +44,14 @@
                 @method('put')
                 @csrf
                 <div class="body">
-                    <a href="profile.html"><img src="{{asset ('admin/assets/images/profile_av.jpg') }}"
-                            class="rounded-circle shadow " alt="profile-image"></a>
-                    <h4 class="m-t-10">Admin1</h4>
+                    <div class="mb-2"  style="text-align: center">
+                        <a href="#">
+                            <img src="{{asset(Auth::user()->image)}}" alt="" height="100px" width="100px"
+                                class=" rounded-circle wth-35 hgt-35">
+                        </a>
+                       
+                    </div>
+                    <h4 class="m-t-10">{{ Auth::user()->name }}</h4>
         
                     <div class="row">
                         <div class="col-md-6">
@@ -60,8 +65,13 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                         <input type="text" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <div class="col-md-6">
+                            
+                              
+                               <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
                         </div>
                     </div>
                     <div class="text-right">
