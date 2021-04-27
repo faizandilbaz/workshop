@@ -31,7 +31,7 @@
                     <h2>Profile</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Company</a></li>
-                        <li class="breadcrumb-item active">profile</li>
+                        <li class="breadcrumb-item active">Profile</li>
                         <li class="breadcrumb-item active">Update</li>
                     </ul>
                 </div>
@@ -49,17 +49,14 @@
                             @csrf
                             <div class="body">
                                 
-                                        <td>
+                                        <div class="mb-2"  style="text-align: center">
                                             <a href="#">
                                                 <img src="{{asset(Auth::user()->image)}}" alt="" height="100px" width="100px"
                                                     class=" rounded-circle wth-35 hgt-35">
                                             </a>
                                            
-                                        </td>
+                                        </div>
                                         
-                                    <br>
-                                    <br>
-                               
                                 <div class="row">
                                     <div class="col-md-6">
                                        <input type="text" class="form-control" value="{{Auth::user()->name}}" name="name" placeholder="company name">

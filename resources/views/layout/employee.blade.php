@@ -54,8 +54,8 @@
     <aside id="leftsidebar" class="sidebar">
         <div class="navbar-brand">
             <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-            <a href="index.html"><img src="{{ asset('admin/assets/images/logo.svg') }}" width="25" alt="Aero"><span
-                    class="m-l-10">Employee1</span></a>
+            <a href="index.html"><span
+                    class="m-l-10">Employee</span></a>
         </div>
         <div class="menu">
             <ul class="list">
@@ -73,7 +73,7 @@
                 </li>
                 <li><a href="{{ route('employee.rank.index') }}"><i class="zmdi zmdi-home"></i><span>Rank</span></a>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>WorkShope</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>WorkShope</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('employee.workshop.today') }}">Today</a></li>
                         <li><a href="{{ route('employee.workShope.create') }}">Previous</a></li>
@@ -81,7 +81,7 @@
                          
                     </ul>
                 </li>
-                <li><a href="{{ route('employee.profile.index') }}"><i class="zmdi zmdi-apps"></i><span>Profile</span></a>
+                <li><a href="{{ route('employee.profile.index') }}"><i class="zmdi zmdi-hc-fw"></i><span>Profile</span></a>
                    
                 </li> 
             </ul>
