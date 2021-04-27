@@ -27,108 +27,34 @@
                                     <th>Start</th>
                                     <th>END</th>
                                     <th>Link</th>
-                                    <th>Question</th>
+                                    <th>Description</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (Auth::user()->workshops as $key => $workshop)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Build Modren Skill</td>
-                                    <td>1:00 PM</td>
-                                    <td>3:30PM</td>
-                                    <td>https://www.youtube.com</td>
-
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$workshop->heading}}</td>
+                                    <td>{{$workshop->start->format('M d,Y H:i')}}</td>
+                                    <td>{{$workshop->end->format('M d,Y H:i')}}</td>
+                                    <td>{{$workshop->description}}</td>
+                                    <td>{{$workshop->link}}</td>
                                     <td>
-                                        <div id="wizard_vertical">
-                                            <h2>First Question</h2>
-                                            <section>
-                                                <p>How many Provinceses of pakistan? </p>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <div class="radio inlineblock m-r-20">
-                                                                <input type="radio" class="with-gap" >
-                                                                <label>One</label>
-                                                            </div>
-                                                            <div class="radio inlineblock">
-                                                                <input type="radio" class="with-gap" 
-                                                                    checked="">
-                                                                <label>Two</label>
-                                                            </div>
-                                                            <div class="radio inlineblock m-r-20">
-                                                                <input type="radio" class="with-gap" >
-                                                                <label>One</label>
-                                                            </div>
-                                                            <div class="radio inlineblock">
-                                                                <input type="radio" class="with-gap" 
-                                                                    checked="">
-                                                                <label>Two</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <a href="#" class="btn btn-raised btn-success waves-effect"
-                                                    type="submit">save</a>
-
-                                            </section>
-                                            <h2>Second Question</h2>
-                                            <section>
-                                                <p> Sargodha is famous for? </p>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="radio inlineblock m-r-20">
-                                                            <input type="radio" class="with-gap" value="5">
-                                                            <label>True</label>
-                                                        </div>
-                                                        <div class="radio inlineblock">
-                                                            <input type="radio" class="with-gap" value="6" checked="">
-                                                            <label>False</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="btn btn-raised btn-success waves-effect"
-                                                    type="submit">save</a>
-
-                                            </section>
-                                            <h2>Third Question</h2>
-                                            <section>
-                                                <p> How many Provinceses of pakistan? </p>
-                                                <a href="#" class="btn btn-raised btn-success waves-effect"
-                                                    type="submit">save</a>
-
-                                            </section>
-                                            <h2>Forth Question</h2>
-                                            <section>
-                                                <p> Sargodha is famous for? </p>
-                                                <a href="#" class="btn btn-raised btn-success waves-effect"
-                                                    type="submit">save</a>
-
-                                            </section>
-                                            <h2>Fifth Question</h2>
-                                            <section>
-                                                <p> How many Provinceses of pakistan? </p>
-                                                <a href="#" class="btn btn-raised btn-success waves-effect"
-                                                    type="submit">save</a>
-
-                                            </section>
-                                        </div>
+                                        <a href="{{ route('company.workshop.edit',$workshop->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('company.shop.physical.edit',) }}" type="submit" class="btn
-                                           btn-warning edit">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form action="#" method="POST">
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        <form action="{{route('company.workshop.destroy',$workshop->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button data-toggle="modal" data-target="#delete_modal"
+                                                class="btn btn-danger delete-btn"> Delete</button>
                                         </form>
                                     </td>
                                 </tr>
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -136,6 +62,7 @@
             </div>
         </div>
     </div>
+    
 </section>
 @endsection
 @section('script')

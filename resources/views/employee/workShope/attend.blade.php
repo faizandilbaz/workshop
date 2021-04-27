@@ -40,7 +40,14 @@
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="card mcard_3">
                         <div class="body">
-                            <h4 class="m-t-10">{{$workshop->heading}}</h4>                            
+                            <h4 class="m-t-10">{{$workshop->heading}}</h4>
+                            <div class="text-right">
+                                @if($workshop->workshopemployee->count() == '1')
+                                <a href="#"><span class="badge badge-success">Attendance Marked</span></a>
+                                @else
+                                <a href="{{route('employee.workshop.attended',$workshop->id)}}"><span class="badge badge-success">Make Attendance</span></a>
+                                @endif
+                            </div>                            
                             <div class="row">
                                 <div class="col-12 mb-4">
                                     @if($workshop->start->format('d m,y H:i') >= Carbon\Carbon::now()->format('d m,y H:i')  )

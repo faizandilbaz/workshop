@@ -17,7 +17,7 @@ class WorkShopController extends Controller
      */
     public function index()
     {
-        //
+        return view('company.workShop.index');
     }
 
     /**
@@ -58,6 +58,7 @@ class WorkShopController extends Controller
                 }
             }
         }
+        alert()->success('Workshop Stored Successfully');
         return redirect()->back();
 
     }
@@ -81,7 +82,8 @@ class WorkShopController extends Controller
      */
     public function edit($id)
     {
-        //
+        $workshop = WorkShop::find($id);
+        return view('company.workShop.edit',compact('workshop'));    
     }
 
     /**
@@ -93,7 +95,10 @@ class WorkShopController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $workshop = WorkShop::find($id);
+        $workshop->update($request->all());
+        alert()->success('Workshop Updated Successfully');
+        return redirect()->back();
     }
 
     /**
@@ -104,6 +109,9 @@ class WorkShopController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $workshop = WorkShop::find($id);
+        $workshop->delete();
+        alert()->success('Workshop Deleted Successfully');
+        return redirect()->back();
     }
 }

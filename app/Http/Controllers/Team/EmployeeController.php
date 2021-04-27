@@ -83,7 +83,7 @@ class EmployeeController extends Controller
         }
         else
         {
-            alert()->success('Password Not Matched,Re-Enter Password Please');
+            alert()->warning('Password Not Matched','Re-Enter Password Please');
         }
         
         return redirect()->back();

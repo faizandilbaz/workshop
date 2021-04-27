@@ -59,7 +59,7 @@
                                         <form action="{{route('company.team.destroy',$team->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button data-toggle="modal" data-target="#delete_modal" `
+                                            <button data-toggle="modal" data-target="#delete_modal"
                                                 class="btn btn-danger delete-btn"> Delete</button>
                                         </form>
                                     </td>

@@ -29,4 +29,7 @@ class WorkShop extends Model
     public function results(){
         return $this->hasMany(Result::class);
     }
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
 }

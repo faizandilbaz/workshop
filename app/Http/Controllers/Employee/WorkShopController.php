@@ -31,32 +31,25 @@ class WorkShopController extends Controller
     public function attend($id)
     {
         $workshop = WorkShop::find($id);
+        return view('employee.workShope.attend')->with('workshop',$workshop);
+    }    
+    public function attended($id)
+    {
+        $workshop = WorkShop::find($id);
         $workshopemployee = WorkshopEmployee::create([
-            'workshop_id' => $workshop->id,
+            'work_shop_id' => $workshop->id,
             'status' => '0',
             'user_id' => Auth::user()->id
         ]);
-        return view('employee.workShope.attend')->with('workshop',$workshop);
+        return redirect()->back();
     }    
+    
     public function test($id)
     {
         $workshop = WorkShop::find($id);
         $questions = Question::where('workshop_id',$id)->get();
-        
-            return view('employee.workShope.test')->with('questions',$questions);
+        return view('employee.workShope.test')->with('questions',$questions)->with('workshop',$workshop);
 
-        
-        
-        // foreach($questions as $question)
-        // {
-        //     $result = Result::create([
-        //         'workshop_id' => $workshop->id,
-        //         'question_id' => $question->id,
-        //         'user_id' => Auth::user()->id
-        //     ]);
-        // }
-        // $results = Result::where('workshop_id',$workshop->id)->get();
-        // return view('employee.workShope.test')->with('workshop',$workshop)->with('results',$results);
     }
     /**
      * Show the form for creating a new resource.
@@ -77,6 +70,22 @@ class WorkShopController extends Controller
     public function store(Request $request)
     {
         //
+    }  
+    public function resultstore(Request $request)
+    {
+        $mark = 0;
+        $workshopemployee = WorkshopEmployee::where('user_id',Auth::user()->id)->where('work_shop_id',$request->workshop)->first();
+        foreach($request->questions as $qId){
+           $question = Question::find($qId);
+            if($request->answer[$qId] == $question->option_id)
+            {
+                $mark = $mark += 1;
+            }
+        }
+        $workshopemployee->update([
+            'result' => $mark             
+        ]); 
+        return redirect()->back();
     }
 
     /**

@@ -70,8 +70,6 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     ///////////////////////////////Work Shope/////////////////////////////
     Route::resource('workshop', 'WorkShopController');
     
-    Route::view('work/shop', 'company.workShop.create')->name('shop.create');
-    Route::view('work/show/shop', 'company.workShop.index')->name('shop.index');
     Route::view('work/shop/edit', 'company.workShop.edit')->name('shop.physical.edit');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
@@ -122,7 +120,9 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::view('show', 'employee.workShope.create')->name('workShope.create');
     Route::get('workshop/today', 'WorkShopController@today')->name('workshop.today');
     Route::get('workshop/attend/{id}', 'WorkShopController@attend')->name('workshop.attend');
+    Route::get('workshop/attended/{id}', 'WorkShopController@attended')->name('workshop.attended');
     Route::get('workshop/test/{id}', 'WorkShopController@test')->name('workshop.test');
+    Route::post('result/store', 'WorkShopController@resultstore')->name('result.store');
     Route::resource('workshop', 'WorkShopController');
     //  Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
     ////////////////////////////////Profile///////////////////////////////

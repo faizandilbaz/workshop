@@ -9,11 +9,11 @@ class WorkshopEmployee extends Model
 {
     use HasFactory; 
     protected $fillable = [
-        'status','workshop_id','user_id','result'
+        'status','work_shop_id','user_id','result'
     ]; 
     public function workshop()
     {
-        return $this->belongsTo(WorkShop::class,'workshop_id');
+        return $this->belongsTo(WorkShop::class,'work_shop_id');
     }   
     public function employee()
     {

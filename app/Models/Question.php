@@ -17,4 +17,7 @@ class Question extends Model
     public function results(){
         return $this->hasMany(Result::class);
     }
+    public function workshop(){
+        return $this->hasMany(WorkShop::class,'workshop_id');
+    }
 }
