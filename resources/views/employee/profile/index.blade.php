@@ -31,7 +31,7 @@
                     <h2>Profile</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Employee</a></li>
-                        <li class="breadcrumb-item active">profile</li>
+                        <li class="breadcrumb-item active">Profile</li>
                         <li class="breadcrumb-item active">Update</li>
                     </ul>
                 </div>
@@ -39,41 +39,65 @@
             </div>
         </div>
 
-        <div class="card mcard_3">
-            <div class="body">
-                <a href="profile.html"><img src="{{asset ('admin/assets/images/profile_av.jpg') }}"
-                        class="rounded-circle shadow " alt="profile-image"></a>
-                <h4 class="m-t-10">Employee1</h4>
-             <div class="row">
-                 <div class="col-md-6">
-                    <input type="text" class="form-control" value="Employee1" name="name" placeholder="Employee name">
-                 </div>
-                 
-                 <div class="col-md-6">
-                    <input type="gmail" value="employee@mail.com" class="form-control" name="gmail" placeholder="gmail">
+        <div class="container-fluid">
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <form action="{{route('company.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                            @method('put')
+                            @csrf
+                            <div class="body">
+                                
+                                        <div class="mb-2"  style="text-align: center">
+                                            <a href="#">
+                                                <img src="{{asset(Auth::user()->image)}}" alt="" height="100px" width="100px"
+                                                    class=" rounded-circle wth-35 hgt-35">
+                                            </a>
+                                        <h2>{{Auth::user()->name }}</h2>
 
-                 </div>
-             </div>
-             <br>
-                <div class="row">
-                    <div class="col-md-6">
-                    <input type="text" class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="file" class="form-control" name="pitcher" placeholder="Profile pitcher">
-
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                       <input type="text" class="form-control" value="{{Auth::user()->name}}" name="name" placeholder="company name">
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                       <input type="gmail" value="{{Auth::user()->email}}" class="form-control" name="email" placeholder="gmail">
+                   
+                                    </div>
+                                </div>
+                                <br>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <div style="font-size: 10px">To Update Passeord*</div>
+                                           
+                                       <input type="password" class="form-control" name="password" placeholder="Enter New Password to Update ">
+                                       </div>
+                                       <div class="col-md-6">
+                                        <div style="font-size: 10px"> To update image*</div>
+                                          
+                                           <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
+                   
+                                       </div>
+                                   </div>
+                                   <br>
+                                   <div class="row">
+                                    <div class="form-group col-md-12 txt4">
+                                        <input value="{{Auth::user()->address}}" name="address" placeholder="Enter address"
+                                            class="form-control txt4">
+                                    </div> 
+                                    
+                                    <div class="form-group col-md-12 txt4">
+                                        <input value="{{Auth::user()->detail}}" name="detail" placeholder="Other Details"
+                                            class="form-control txt4">
+                                    </div>
+                                </div>
+                                <button class="btn btn-raised btn-success waves-effect" type="submit">Update</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="form-group col-md-12 txt4">
-                        
-                        <textarea rows="4" name="adress" placeholder="Enter adress"
-                            class="form-control txt4"></textarea>
-                    </div>
-                </div>
-                <br>
-                <a href="#" class="btn btn-raised btn-success waves-effect mt-5 float-right" type="submit">Update</a>
             </div>
         </div>
     </div>
