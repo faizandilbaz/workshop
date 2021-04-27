@@ -20,6 +20,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Employee Image</th>
                                     <th>Company Name</th>
                                     <th>Team Name</th>
                                     <th>Employee Name</th>
@@ -34,6 +35,12 @@
                                 @foreach (App\Models\User::all() as $key => $user)
                                 <tr>
                                     <td>{{$key+1}}</td>
+                                    <td>
+                                        <a href="#">
+                                            <img src="{{asset($user->image)}}" alt="" height="80px" width="80px"
+                                                class=" rounded-circle wth-35 hgt-35">
+                                        </a>
+                                    </td>
                                     <td>{{$user->company->name}}</td>
                                     <td>{{$user->team->name}}</td>
                                     <td>{{$user->name}}</td>

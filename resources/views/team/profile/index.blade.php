@@ -55,16 +55,28 @@
                  </div>
              </div>
              <br>
-                <div class="row">
-                    <div class="col-md-6">
-                    <input type="text" class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="file" class="form-control" name="pitcher" placeholder="Profile pitcher">
+             <div class="row">
+                 <div class="col-md-6">
+                     <div style="font-size: 10px">To Update Password*</div>
+                     
+                 <input type="password" class="form-control" name="password" placeholder="Enter New Password to Update ">
+                 </div>
+                 <div class="col-md-6">
+                  <div style="font-size: 10px">To Confirm Password*</div>
+                  
+                  <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password">
+              </div>
+             </div>
+             <br>
+             <div class="row">
+              <div class="col-md-12">
+               <div style="font-size: 10px"> To update image*</div>
+                 
+                  <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
 
-                    </div>
-                </div>
-                <br>
+              </div>
+          </div>
+          <br>
                 <div class="row">
                     <div class="form-group col-md-12 txt4">
                         

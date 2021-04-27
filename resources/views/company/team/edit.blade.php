@@ -70,10 +70,12 @@
                                             </div>
                                         </div> 
                                         <div class="row">
-                                           
-                                            
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <input type="password" class="form-control" name="password" placeholder="Leave It Blank">
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password">
                                             </div>
                                         </div>
                                         <br>

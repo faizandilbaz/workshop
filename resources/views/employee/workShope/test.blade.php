@@ -56,10 +56,10 @@
                     </div>
                     @endforeach
                 </div>
-                <a href="#" class="btn btn-raised btn-success waves-effect mt-5 float-right" type="submit">Update</a>
             </div>
         </div>
         @endforeach
+        <a href="#" class="btn btn-raised btn-success waves-effect mt-5 float-right" type="submit">Update</a>
     </div>
 
 </section>
