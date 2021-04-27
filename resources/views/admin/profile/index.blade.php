@@ -66,9 +66,15 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
                         <div class="col-md-6">
+                            <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
                             
                               
                                <input type="file" class="form-control" name="image" placeholder="Profile pitcher">

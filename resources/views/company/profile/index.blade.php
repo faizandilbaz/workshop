@@ -75,13 +75,22 @@
                                        <input type="password" class="form-control" name="password" placeholder="Enter New Password to Update ">
                                        </div>
                                        <div class="col-md-6">
-                                        <div style="font-size: 10px"> To update image*</div>
+                                        <div style="font-size: 10px">To Confirm Password*</div>
                                           
-                                           <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
+                                        <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password ">
                    
                                        </div>
                                    </div>
                                    <br>
+                                   <div class="row">
+                                    <div class="col-md-12">
+                                     <div style="font-size: 10px"> To update image*</div>
+                                       
+                                        <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
+                
+                                    </div>
+                                </div>
+                                <br>
                                    <div class="row">
                                     <div class="form-group col-md-12 txt4">
                                         <input value="{{Auth::user()->address}}" name="address" placeholder="Enter address"

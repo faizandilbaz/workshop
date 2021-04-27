@@ -54,14 +54,20 @@
                                             </div>
                                         </div> 
                                         <div class="row">
-                                            <div class="form-group  col-md-6">
+                                            <div class="form-group  col-md-12">
                                                 <input type="email" class="form-control" value="{{ $user->email }}" name="email"
                                                     placeholder="Enter Email Address">
                                             </div>
+                                        </div> 
+                                        <div class="row">
                                             <div class="form-group  col-md-6">
                                                 <input type="password" class="form-control" name="password" placeholder="Password-Leave It Blank To Unchange">
+
                                             </div>
-                                        </div>   
+                                            <div class="form-group  col-md-6">
+                                                <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password">
+                                            </div>
+                                        </div>     
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-md-12 txt4">

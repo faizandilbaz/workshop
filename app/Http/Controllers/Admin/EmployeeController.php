@@ -76,8 +76,15 @@ class EmployeeController extends Controller
     public function update(Request $request,$id)
     {
         $user = User::find($id);
-        $user->update($request->all());
-        alert()->success('Employee Updated Successfully');
+        if($request->password == $request->newpassword)
+        {
+            $user->update($request->all());
+            alert()->success('Employee Updated Successfully');
+        }else
+        {
+            alert()->success('Password Not Matched,Re-Enter Password Please');
+        }
+       
         return redirect()->back();
     }
 

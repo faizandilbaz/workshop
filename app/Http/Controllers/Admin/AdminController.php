@@ -71,8 +71,15 @@ class AdminController extends Controller
     public function update(Request $request,$id)
     {
         $admin = Admin::find($id);
-        $admin->update($request->all());
-        alert()->success('Your Profile Updated Updated Successfully');
+        if($request->password == $request->newpassword)
+        {
+            $admin->update($request->all());
+            alert()->success('Your Profile Updated Updated Successfully');
+        }
+        else
+        {
+            alert()->success('Password Not Matched,Re-Enter Password Please');
+        }
         return redirect()->back();
     }
 

@@ -65,7 +65,6 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company :: find ($id);
-        dd($company->team);
         return view('admin.company.edit',compact('company'));
     }
 
@@ -79,7 +78,15 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         $company = Company::find($id);
-        $company->update($request->all());
+        if($request->password == $request->newpassword)
+        {
+            $company->update($request->all());
+            alert()->success('Company Updated Successfully');
+        }
+        else
+        {
+            alert()->success('Password Not Matched,Re-Enter Password Please');
+        }
         return redirect()->back();
     }
 

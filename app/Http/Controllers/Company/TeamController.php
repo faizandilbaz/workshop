@@ -74,8 +74,16 @@ class TeamController extends Controller
     public function update(Request $request,$id)
     {
         $team = Team::find($id);
-        $team->update($request->all());
-        alert()->success('Team Updated Successfully');
+        if($request->password == $request->newpassword)
+        {
+            $team->update($request->all());
+            alert()->success('Team Updated Successfully');
+        }
+        else
+        {
+            alert()->success('Password Not Matched,Re-Enter Password Please');
+        }
+     
         return redirect()->back();
     }
 

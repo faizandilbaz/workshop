@@ -11,7 +11,15 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         $company = Company::find($id);
-        $company->update($request->all());
+        if($request->password == $request->newpassword)
+        {
+            $company->update($request->all());
+            alert()->success('Company Profile Updated Successfully');
+        }
+        else
+        {
+            alert()->success('Password Not Matched,Re-Enter Password Please');
+        }
         return redirect()->back();
     }
 }

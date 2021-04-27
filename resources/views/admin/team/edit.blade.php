@@ -75,13 +75,21 @@
                                         </div> 
                                         <div class="row">
                                            
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <input type="email" class="form-control" name="email"
                                                 value="{{$team->email}}">
         
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                           
                                             <div class="col-md-6">
                                                 <input type="password" class="form-control" name="password" placeholder="Leave It Blank">
+
+        
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password">
                                             </div>
                                         </div>
                                         <br>
