@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
+
 class CompanyController extends Controller
 {
     /**
@@ -85,7 +86,8 @@ class CompanyController extends Controller
         }
         else
         {
-            alert()->success('Password Not Matched,Re-Enter Password Please');
+            alert()->warning('Password Not Matched','Re-Enter Password Please');
+            // alert()->success('Password Not Matched,Re-Enter Password Please');
         }
         return redirect()->back();
     }

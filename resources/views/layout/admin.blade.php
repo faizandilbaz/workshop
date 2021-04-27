@@ -39,6 +39,7 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/select2.css') }}" />
 <!-- Custom Css -->
 <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @yield('style')
 </head>
 

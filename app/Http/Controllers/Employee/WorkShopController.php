@@ -41,17 +41,22 @@ class WorkShopController extends Controller
     public function test($id)
     {
         $workshop = WorkShop::find($id);
-        $questions = Question::where('workshop_id',$workshop->id)->get();
-        foreach($questions as $question)
-        {
-            $result = Result::create([
-                'workshop_id' => $workshop->id,
-                'question_id' => $question->id,
-                'user_id' => Auth::user()->id
-            ]);
-        }
-        $results = Result::where('workshop_id',$workshop->id)->get();
-        return view('employee.workShope.test')->with('workshop',$workshop)->with('results',$results);
+        $questions = Question::where('workshop_id',$id)->get();
+        
+            return view('employee.workShope.test')->with('questions',$questions);
+
+        
+        
+        // foreach($questions as $question)
+        // {
+        //     $result = Result::create([
+        //         'workshop_id' => $workshop->id,
+        //         'question_id' => $question->id,
+        //         'user_id' => Auth::user()->id
+        //     ]);
+        // }
+        // $results = Result::where('workshop_id',$workshop->id)->get();
+        // return view('employee.workShope.test')->with('workshop',$workshop)->with('results',$results);
     }
     /**
      * Show the form for creating a new resource.
