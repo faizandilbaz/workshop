@@ -22,49 +22,55 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card w_data_1">
-                       <div class="body">
-                            <div class="w_icon indigo"><i class="zmdi zmdi-hc-fw"></i></div>
-                            <h4 class="mt-3">45k</h4>
-                            <span class="text-muted">Attend WorkShope</span>
-                          
-                       </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card w_data_1">
-                       <div class="body">
-                            <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
-                            <h4 class="mt-3">17.2k</h4>
-                            <span class="text-muted">Total WorkShop</span>
-                            
-                       </div>
-                    </div>
+                    <a href="{{ route('employee.rank.index')}}">
+                        <div class="card w_data_1">
+                            <div class="body">
+                                    <div class="w_icon indigo"><i class="zmdi zmdi-hc-fw"></i></div>
+                                    <h4 class="mt-3">{{Auth::user()->workshopemployee->count()}}</h4>
+                                    <span class="text-muted">Attend WorkShope</span>
+                                
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card w_data_1">
-                       <div class="body">
-                            <div class="w_icon cyan"><i class="zmdi zmdi-hc-fw"></i></div>
-                            <h4 class="mt-3">01</h4>
-                            <span class="text-muted">Today WorkShop</span>
-                           
-                       </div>
-                    </div>
+                    <a href="{{ route('employee.workshop.previous') }}">
+                        <div class="card w_data_1">
+                            <div class="body">
+                                    <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
+                                    <h4 class="mt-3">{{$workshops->count()}}</h4>
+                                    <span class="text-muted">Total WorkShop</span>
+                                    
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card w_data_1">
-                       <div class="body">
-                            <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
-                            <h4 class="mt-3">5</h4>
-                            <span class="text-muted">Upcoming WorkShope</span>
-                           
-                       </div>
-                    </div>
+                    <a href="{{ route('employee.workshop.today') }}">
+                        <div class="card w_data_1">
+                            <div class="body">
+                                    <div class="w_icon cyan"><i class="zmdi zmdi-hc-fw"></i></div>
+                                    <h4 class="mt-3">{{$today->count()}}</h4>
+                                    <span class="text-muted">Today WorkShop</span>
+                                
+                            </div>
+                        </div>
+                    </a>
                 </div>
-              
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <a href="{{ route('employee.workshop.index') }}">
+                        <div class="card w_data_1">
+                            <div class="body">
+                                    <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
+                                    <h4 class="mt-3">{{$upcoming->count()}}</h4>
+                                    <span class="text-muted">Upcoming WorkShope</span>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div> 
 </section>
- @endsection
+@endsection

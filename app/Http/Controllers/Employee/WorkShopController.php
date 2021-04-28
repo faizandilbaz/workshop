@@ -25,8 +25,32 @@ class WorkShopController extends Controller
     }
     public function today()
     {
+        $results = 0;
+        $marks=0;
         $workshops = WorkShop::where('company_id',Auth::user()->company->id)->get();
-        return view('employee.workShope.today')->with('workshops',$workshops);
+        foreach($workshops as $workshop)
+        {
+            if($workshop->workshopemployee->count(1))
+            {
+                $option = Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first();
+                $marks = $option->status;
+                $results = $results += $option->result;
+            }
+            
+        } 
+        return view('employee.workShope.today')->with('workshops',$workshops)->with('marks',$marks)->with('results',$results);
+    }
+    public function previous()
+    {
+        $marks = 0;
+        $workshops = WorkShop::where('company_id',Auth::user()->company->id)->get();
+        foreach($workshops as $workshop)
+        {
+
+            $option = Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first();
+            $marks = $marks += $option->result;
+        } 
+        return view('employee.workShope.previous')->with('workshops',$workshops)->with('marks',$marks);
     }
     public function attend($id)
     {
@@ -38,7 +62,6 @@ class WorkShopController extends Controller
         $workshop = WorkShop::find($id);
         $workshopemployee = WorkshopEmployee::create([
             'work_shop_id' => $workshop->id,
-            'status' => '0',
             'user_id' => Auth::user()->id
         ]);
         return redirect()->back();
@@ -47,7 +70,7 @@ class WorkShopController extends Controller
     public function test($id)
     {
         $workshop = WorkShop::find($id);
-        $questions = Question::where('workshop_id',$id)->get();
+        $questions = Question::where('work_shop_id',$id)->get();
         return view('employee.workShope.test')->with('questions',$questions)->with('workshop',$workshop);
 
     }
@@ -83,9 +106,10 @@ class WorkShopController extends Controller
             }
         }
         $workshopemployee->update([
-            'result' => $mark             
+            'result' => $mark ,
+            'status' => '0'           
         ]); 
-        return redirect()->back();
+        return redirect()->route('employee.dashboard');
     }
 
     /**

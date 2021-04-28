@@ -30,9 +30,8 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Today Workshops</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Workshops</a></li>
-                        <li class="breadcrumb-item active">Today Workshops</li>
-                        
+                        <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Workshops</a></li>
+                        <li class="breadcrumb-item active">Running Workshops</li>
                     </ul>
                 </div>
                 <div class="card">
@@ -43,24 +42,34 @@
                                     <th>#</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>Starting On</th>>
-                                    <th>Action</th>>
+                                    <th>Starting On</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($workshops as $key=>$workshop)
-                                @if($workshop->start->format('d m,y') == Carbon\Carbon::today()->format('d m,y') || $workshop->end->format('d m,y') == Carbon\Carbon::today()->format('d m,y'))
+                                @if($workshop->start->toDateString() == Carbon\Carbon::today()->toDateString()  || $workshop->paper_end_time->toDateString()  == Carbon\Carbon::today()->toDateString())
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$workshop->heading}}</td>
                                     <td>{{$workshop->description}}</td>
-                                    <td>{{$workshop->start->format('l M d,Y h:m')}}</td>
+                                    <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>
                                     <td>
-                                        @if($workshop->start->format('d m,y h:m') >= Carbon\Carbon::now()->format('d m,y h:m'))
+                                        @php
+                                        @endphp
+                                        @if(Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->start)))
+                                        Coming Soon
+                                        @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->start)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->end)))
                                         <a href="{{route('employee.workshop.attend',$workshop->id)}}"><span class="badge badge-success">Attend</span></a>
-                                        @elseif($workshop->end->format('d m,y h:m') >= Carbon\Carbon::now()->format('d m,y h:m'))
-                                        <span class="badge badge-success">Give Test</span>
-                                        @elseif($workshop->paper_end_time->format('d m,y h:m') >= Carbon\Carbon::now()->format('d m,y h:m'))
+                                        @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->end)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->paper_end_time)))
+                                        @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->where('status','1')->first())
+                                        <a href="{{route('employee.workshop.test',$workshop->id)}}"><button class="btn btn-success">Give Test</button></a>
+                                        @elseif(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->where('status','0')->first())
+                                        Marks = {{ round((( $results / $workshop->questions->count() ) * 100), 2)   }}%
+                                        @else
+                                        <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-success">Mark Attendance</button></a>
+                                        @endif
+                                        @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->paper_end_time)))
                                         <span class="badge badge-success">Time Ended</span>
                                         @endif
                                     </td>

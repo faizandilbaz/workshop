@@ -28,10 +28,10 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Workshop Ranking</h2>
+                    <h2>Previous Workshops</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Workshops</a></li>
-                        <li class="breadcrumb-item active">Workshops Ranking</li>
+                        <li class="breadcrumb-item active">Running Workshops</li>
                     </ul>
                 </div>
                 <div class="card">
@@ -49,6 +49,7 @@
                             </thead>
                             <tbody>
                                 @foreach($workshops as $key=>$workshop)
+                                @if($workshop->paper_end_time->toDateString() < Carbon\Carbon::today()->toDateString() )
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$workshop->heading}}</td>
@@ -56,9 +57,14 @@
                                     <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>
                                     <td>{{$workshop->end->format('l M d,Y H:i A')}}</td>
                                     <td>
-                                        <a href="{{route('employee.rank.show',$workshop->id)}}"><button class="btn btn-success">View Detail</button></a>
+                                        @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
+                                         {{ round((( $marks / $workshop->questions->count() ) * 100), 2)  }} %
+                                        @else 
+                                            Unattended
+                                        @endif
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

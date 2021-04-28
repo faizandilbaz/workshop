@@ -17,6 +17,6 @@ class WorkshopEmployee extends Model
     }   
     public function employee()
     {
-        return $this->belongsTo(WorkShop::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }   
 } 

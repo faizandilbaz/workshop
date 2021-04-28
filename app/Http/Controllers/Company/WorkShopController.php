@@ -41,7 +41,7 @@ class WorkShopController extends Controller
         $workShop = WorkShop::create($request->all());
         foreach($request->questions as $qkey=>$question){
            $question = Question::create([
-                'workshop_id' => $workShop->id,
+                'work_shop_id' => $workShop->id,
                 'statement' => $question
             ]);;
             foreach($request->options[$qkey] as $okey=>$option){

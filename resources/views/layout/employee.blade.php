@@ -61,10 +61,9 @@
                 <li>
                     <div class="user-info">
                         <a class="image" href="profile.html"><img
-                                src="{{ asset('admin/assets/images/profile_av.jpg') }}" alt="User"></a>
+                                src="{{ asset(Auth::user()->image) }}" alt="User"></a>
                         <div class="detail">
-                            <h4>Employees</h4>
-                            <small>First</small>
+                            <h4>{{Auth::user()->name}}</h4>
                         </div>
                     </div>
                 </li>
@@ -74,14 +73,13 @@
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>WorkShope</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('employee.workshop.today') }}">Today</a></li>
-                        <li><a href="{{ route('employee.workShope.create') }}">Previous</a></li>
+                        <li><a href="{{ route('employee.workshop.today') }}">Running</a></li>
+                        <li><a href="{{ route('employee.workshop.previous') }}">Previous</a></li>
                         <li><a href="{{ route('employee.workshop.index') }}">Upcoming</a></li>
                          
                     </ul>
                 </li>
                 <li><a href="{{ route('employee.profile.index') }}"><i class="zmdi zmdi-hc-fw"></i><span>Profile</span></a>
-                   
                 </li> 
             </ul>
         </div>

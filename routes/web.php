@@ -115,20 +115,21 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     /*******************Register ROUTES*************/
     Route::view('register', 'employee.auth.register')->name('register');
     /*******************Dashboard ROUTES*************/
-    Route::view('dashboard', 'employee.dashboard.index')->name('dashboard');
-    ////////////////////////////////EMPLOYEE/////////////////////////////
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    ////////////////////////////////EMPLOYEE WORKSHOP /////////////////////////////
     Route::view('show', 'employee.workShope.create')->name('workShope.create');
-    Route::get('workshop/today', 'WorkShopController@today')->name('workshop.today');
+    Route::get('workshop/running', 'WorkShopController@today')->name('workshop.today');
+    Route::get('workshop/previous', 'WorkShopController@previous')->name('workshop.previous');
     Route::get('workshop/attend/{id}', 'WorkShopController@attend')->name('workshop.attend');
     Route::get('workshop/attended/{id}', 'WorkShopController@attended')->name('workshop.attended');
     Route::get('workshop/test/{id}', 'WorkShopController@test')->name('workshop.test');
     Route::post('result/store', 'WorkShopController@resultstore')->name('result.store');
     Route::resource('workshop', 'WorkShopController');
-    //  Route::view('employee/edit', 'employee.info.edit')->name('info.edit');
+    /*******************RANK ROUTES*************/
+    Route::get('rank', 'RankController@index')->name('rank.index');
+    Route::get('rank/{id}', 'RankController@show')->name('rank.show');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('profile', 'employee.profile.index')->name('profile.index');
-    ////////////////////////////////Rank///////////////////////////////
-    Route::view('rank', 'employee.rank.index')->name('rank.index');
   });
   });
 

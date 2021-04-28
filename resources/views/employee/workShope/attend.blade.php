@@ -41,47 +41,43 @@
                     <div class="card mcard_3">
                         <div class="body">
                             <h4 class="m-t-10">{{$workshop->heading}}</h4>
+                            <p>{{$workshop->description}}</p>
                             <div class="text-right">
-                                @if($workshop->workshopemployee->count() == '1')
-                                <a href="#"><span class="badge badge-success">Attendance Marked</span></a>
+                                @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
+                                <button class="btn btn-success">Attendance Marked</button>
                                 @else
-                                <a href="{{route('employee.workshop.attended',$workshop->id)}}"><span class="badge badge-success">Make Attendance</span></a>
+                                <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-success">Mark Attendance</button></a>
                                 @endif
                             </div>                            
                             <div class="row">
                                 <div class="col-12 mb-4">
-                                    @if($workshop->start->format('d m,y H:i') >= Carbon\Carbon::now()->format('d m,y H:i')  )
-                                    <a href="" class="btn btn-success">Watch Link Video</a>
-                                    @elseif(($workshop->end->format('d m,y H:i') >= Carbon\Carbon::now()->format('d m,y H:i')) < $workshop->paper_end_time->format('d m,y H:i'))
+                                    @if(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->start)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->end)))
+                                    @if($workshop->link)
+                                    <a href="{{url($workshop->link)}}" class="btn btn-success">Watch Link Video</a>
+                                    @endif
+                                    @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->end)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->paper_end_time)))
+                                    @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
                                     <a href="{{route('employee.workshop.test',$workshop->id)}}" class="btn btn-success">Give Test</a>
+                                    @else  
+                                    <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-success">Mark Attendance</button></a>
+                                    @endif
                                     @endif
                                 </div>
                                 <div class="col-4">                                    
                                     <small>Starting Time</small>
-                                    <h5>{{$workshop->start->format( 'l M d,Y H:i' )}}</h5>
+                                    <h5>{{$workshop->start->format( 'l M d,Y H:i A' )}}</h5>
                                 </div>
                                 <div class="col-4">                                    
                                     <small>Ending Time & Question Start Time</small>
-                                    <h5>{{$workshop->end->format( 'l M d,Y H:i' )}}</h5>
+                                    <h5>{{$workshop->end->format( 'l M d,Y H:i A' )}}</h5>
                                 </div>
                                 <div class="col-4">                                    
                                     <small>Question End Time</small>
-                                    <h5>{{$workshop->paper_end_time->format( 'l M d,Y H:i' )}}</h5>
+                                    <h5>{{$workshop->paper_end_time->format( 'l M d,Y H:i A' )}}</h5>
                                 </div>                            
                             </div>
                         </div>
                     </div>               
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body pt-0">
-                            <div class="embed-responsive embed-responsive-21by9">
-                                <iframe class="ytplayer" width="100%" height="400" src="{{$workshop->link}}?autoplay=1&controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                            
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
