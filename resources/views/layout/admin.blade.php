@@ -84,7 +84,7 @@
             <ul class="list">
                 <li>
                     <div class="user-info">
-                        <a class="image" href="profile.html"><img
+                        <a class="image" href=""><img
                                 src="{{ asset(Auth::user()->image) }}" alt="User"></a>
                         <div class="detail">
                             <h4>{{Auth::user()->name}}</h4>
