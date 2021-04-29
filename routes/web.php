@@ -100,6 +100,8 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::resource('employee', 'EmployeeController');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('team/profile', 'team.profile.index')->name('profile.index');
+    Route::put('team/update/{id}','TeamController@update')->name('update');
+
   });
   });
 
@@ -130,6 +132,8 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::get('rank/{id}', 'RankController@show')->name('rank.show');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('profile', 'employee.profile.index')->name('profile.index');
+    Route::put('employee/update/{id}','EmployeeController@update')->name('update');
+
   });
   });
 

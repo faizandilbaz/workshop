@@ -44,7 +44,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-                        <form action="{{route('company.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('employee.update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="body">
@@ -59,7 +59,7 @@
                                         </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                       <input type="text" class="form-control" value="{{Auth::user()->name}}" name="name" placeholder="company name">
+                                       <input type="text" class="form-control" value="{{Auth::user()->name}}" name="name" placeholder="Employee name">
                                     </div>
                                     
                                     <div class="col-md-6">

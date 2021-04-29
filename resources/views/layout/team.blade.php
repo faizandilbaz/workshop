@@ -53,8 +53,8 @@
     <aside id="leftsidebar" class="sidebar">
         <div class="navbar-brand">
             <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-            <a href="index.html"><img src="{{ asset('admin/assets/images/logo.svg') }}" width="25" alt="Aero"><span
-                    class="m-l-10">Teams1</span></a>
+            <a href="index.html">   <span
+                    class="m-l-10">Teams</span></a>
         </div>
         <div class="menu">
             <ul class="list">
@@ -63,7 +63,7 @@
                         <a class="image" href=""><img
                                 src="{{ asset(Auth::user()->image) }}" alt="User"></a>
                         <div class="detail">
-                            <h4>Auth::user()->name</h4>
+                            <h4>{{ Auth::user()->name }}</h4>
                             <small>{{ Auth::user()->email }}</small>
                         </div>
                     </div>
