@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\WorkShop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WorkShopController extends Controller
@@ -37,30 +38,28 @@ class WorkShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
+        //  dd($request->options[1] , $request->correct[1]);
         $workShop = WorkShop::create($request->all());
-        foreach($request->questions as $qkey=>$question){
-           $question = Question::create([
+        foreach ($request->questions as $qkey => $question) {
+            $question = Question::create([
                 'work_shop_id' => $workShop->id,
                 'statement' => $question
             ]);;
-            foreach($request->options[$qkey] as $okey=>$option){
-                $option = Option::create([
+            foreach ($request->options[$qkey] as $okey => $option) {
+                $optionN = Option::create([
                     'question_id' => $question->id,
                     'option' => $option
                 ]);
-                foreach($request->correct as $ckey=>$crt){
-                    if($okey == $crt){
-                        $question->update([
-                            'option_id' => $option->id
-                        ]);
-                    }
+                if ($request->correct[$qkey] == $okey+1) {
+                    $question->update([
+                        'option_id' => $optionN->id
+                    ]);
                 }
             }
         }
         alert()->success('Workshop Stored Successfully');
         return redirect()->back();
-
     }
 
     /**
@@ -83,7 +82,7 @@ class WorkShopController extends Controller
     public function edit($id)
     {
         $workshop = WorkShop::find($id);
-        return view('company.workShop.edit',compact('workshop'));    
+        return view('company.workShop.edit', compact('workshop'));
     }
 
     /**
