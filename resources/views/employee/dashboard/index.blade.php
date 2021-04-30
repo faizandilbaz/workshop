@@ -27,7 +27,7 @@
                             <div class="body">
                                     <div class="w_icon indigo"><i class="zmdi zmdi-hc-fw"></i></div>
                                     <h4 class="mt-3">{{Auth::user()->workshopemployee->count()}}</h4>
-                                    <span class="text-muted">Attend WorkShope</span>
+                                    <span class="text-muted">Attend WorkShop</span>
                                 
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <div class="body">
                                     <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
                                     <h4 class="mt-3">{{$upcoming->count()}}</h4>
-                                    <span class="text-muted">Upcoming WorkShope</span>
+                                    <span class="text-muted">Upcoming WorkShop</span>
                                 
                             </div>
                         </div>

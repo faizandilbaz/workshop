@@ -10,7 +10,7 @@
                     <h2><strong>Edit</strong> Team</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Company</a></li>
-                        <li class="breadcrumb-item active">WorkShope</li>
+                        <li class="breadcrumb-item active">WorkShop</li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ul>
                 </div>
@@ -29,7 +29,7 @@
                             <div class="body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Workshope Start Time</label>
+                                        <label>Workshop Start Time</label>
                                         <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
@@ -39,6 +39,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
+<<<<<<< HEAD
                                         <label>Workshope Start Time</label>
                                         <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
@@ -53,6 +54,10 @@
                                     <div class="col-sm-6">
                                         <label>Workshope End Time</label>
                                         <div class="input-group masked-input mb-3">
+=======
+                                        <label>Workshop End Time</label>
+                                        <div class="input-group">
+>>>>>>> f5e81731f9c01bbe37ada35c0eeea2f2c0f4dd65
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>

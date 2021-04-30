@@ -17,8 +17,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
+        <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
 
     <!-- Favicon-->
     <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
@@ -30,9 +29,12 @@
     <link href="{{asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+<<<<<<< HEAD
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+=======
+>>>>>>> f5e81731f9c01bbe37ada35c0eeea2f2c0f4dd65
 
     @yield('style')
 </head>
@@ -92,10 +94,10 @@
 
 
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Work
-                            Shope</span></a>
+                            Shop</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.workshop.create') }}">Create</a></li>
-                        <li><a href="{{ route('company.workshop.index') }}"> Work Shope Exam</a></li>
+                        <li><a href="{{ route('company.workshop.index') }}"> Work Shop Exam</a></li>
 
                     </ul>
                 </li>

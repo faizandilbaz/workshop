@@ -12,7 +12,7 @@
                     <h2>Company</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Company</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Work Shope</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Work Shop</a></li>
                         <li class="breadcrumb-item active">create</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i
@@ -31,27 +31,27 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="header">
-                            <h2><strong>Work</strong>Shope</h2>
+                            <h2><strong>Work</strong>Shop</h2>
                         </div>
                         <div class="body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Workshope Start Time</label>
+                                        <label>Workshop Start change hwa Time</label>
                                         <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
-                                            <input type="datetime-local" name="start" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
+                                            <input type="datetime-local" name="start" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Workshope End Time</label>
+                                        <label>Workshop End Time</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
                                             <input type="datetime-local"  name="end" class="form-control datetime"
-                                            placeholder="Ex: 30/07/2016 23:59">
+                                            placeholder="Ex: 30/07/2016 23:59" required>
                                         </div>
                                     </div>
                                 </div>
@@ -69,8 +69,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <input type="url" class="form-control"
-                                                placeholder=" Enter link: http://, https://, ftp://" name="link"
-                                                required>
+                                                placeholder=" Enter link: http://, https://, ftp://" name="link">
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +77,7 @@
                                     <div class="form-group col-md-12 txt4">
                                         <label>Description</label>
                                         <textarea rows="4" name="description" placeholder="Enter description"
-                                            class="form-control txt4"></textarea>
+                                            class="form-control txt4" required></textarea>
                                     </div>
                                 </div>
 
@@ -90,7 +89,7 @@
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
                                             <input type="datetime-local" name="paper_end_time" class="form-control datetime"
-                                                placeholder="Please choose End time...">
+                                                placeholder="Please choose End time..." required>
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +140,7 @@
             '<div class="row">'+
                 '<div class="form-group col-md-8">'+
                     '<label>Question Statement</label>'+
-                    '<textarea rows="4" name="questions['+q_id+']" style="resize:none" placeholder="Enter Question Statement" class="form-control txt4"></textarea>'+
+                    '<textarea rows="4" name="questions['+q_id+']" style="resize:none" placeholder="Enter Question Statement" class="form-control txt4" required></textarea>'+
                 '</div>'+
                 '<div class="col-md-2">'+
                 '<label>Correct Option</label>'+

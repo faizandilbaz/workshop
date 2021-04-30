@@ -11,7 +11,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Employee</a></li>
                         <li class="breadcrumb-item active">Workshop</li>
-                        <li class="breadcrumb-item active">workshope name</li>
+                        <li class="breadcrumb-item active">workshop name</li>
                     </ul>
                 </div>
 

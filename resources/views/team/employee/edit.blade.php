@@ -1,26 +1,5 @@
 @extends('layout.team')
 @section('style')
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- Favicon-->
-<link  rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
-<!-- Morris Chart Css-->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/morrisjs/morris.css') }}" />
-<!-- Colorpicker Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css') }}" />
-<!-- Multi Select Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/multi-select/css/multi-select.css') }}">
-<!-- Bootstrap Spinner Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/jquery-spinner/css/bootstrap-spinner.css') }}">
-<!-- Bootstrap Tagsinput Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
-<!-- Bootstrap Select Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css') }}" />
-<!-- noUISlider Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/nouislider/nouislider.min.css') }}" />
-<!-- Select2 -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/select2.css') }}" />
-<!-- Custom Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
 @endsection
 @section('content')
 <section class="content">
@@ -65,15 +44,20 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="email" class="form-control" value="{{ $user->email }}" name="email"
-                                                    placeholder="Enter Email Address">
+                                                    placeholder="Enter Email Address" required>
         
                                             </div>
                                         </div>   
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6"> 
+                                                <div style="font-size: 10px">Old Password*</div>
+
                                                 <input type="password" class="form-control" name="password" placeholder="Leave It Blank To Unchange">
                                             </div>
                                             <div class="col-md-6">
+                                                
+                                                <div style="font-size: 10px">If Updating*</div>
+
                                                 <input type="password" class="form-control" name="newpassword" placeholder="Confirm Password">
                                             </div>
                                         </div>

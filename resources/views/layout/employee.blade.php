@@ -74,7 +74,7 @@
                 </li>
                 <li><a href="{{ route('employee.rank.index') }}"><i class="zmdi zmdi-home"></i><span>Rank</span></a>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>WorkShope</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>WorkShop</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('employee.workshop.today') }}">Running</a></li>
                         <li><a href="{{ route('employee.workshop.previous') }}">Previous</a></li>
@@ -267,7 +267,7 @@
     <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
     <script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
     <!-- slimscroll, waves Scripts Plugin Js -->
-    ''
+    
     <script src="{{ asset('admin/assets/bundles/jvectormap.bundle.js') }}"></script> <!-- JVectorMap Plugin Js -->
     <script src="{{ asset('admin/assets/bundles/sparkline.bundle.js') }}"></script> <!-- Sparkline Plugin Js -->
     <script src="{{ asset('admin/assets/bundles/c3.bundle.js') }}"></script>

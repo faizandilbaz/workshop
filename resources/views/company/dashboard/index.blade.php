@@ -75,7 +75,7 @@
                    <div class="body">
                         <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
                         <h4 class="mt-3">5</h4>
-                        <span class="text-muted">Upcoming WorkShope</span>
+                        <span class="text-muted">Upcoming WorkShop</span>
                        
                    </div>
                 </div>
