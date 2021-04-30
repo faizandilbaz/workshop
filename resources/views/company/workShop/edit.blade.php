@@ -34,17 +34,38 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
-                                            <input type="text" name="start" value="{{$workshop->start->format('d/m/Y H:i A')}}" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
+                                            <input type="text" value="{{$workshop->start->format('d/m/Y H:i A')}}" class="form-control" placeholder="Ex: 30/07/2016 23:59" readonly>
+                                            <input type="hidden" value="{{$workshop->id}}" class="form-control" placeholder="Ex: 30/07/2016 23:59" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Workshope Start Time</label>
+                                        <div class="input-group masked-input mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
+                                            </div>
+                                            <input type="datetime-local" name="start" 
+                                             class="form-control datetime" placeholder="Ex: 30/07/2016 23:59" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Workshope End Time</label>
+                                        <div class="input-group masked-input mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
+                                            </div>
+                                            <input type="text" value="{{$workshop->end->format('d/m/Y H:i A')}}" class="form-control" placeholder="Ex: 30/07/2016 23:59" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Workshope End Time</label>
-                                        <div class="input-group">
+                                        <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                                <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
-                                            <input type="datetime-local"  name="end"  class="form-control datetime"
-                                            placeholder="{{$workshop->end->format('d/m/Y H:i A')}}">
+                                            <input type="datetime-local" name="end" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
                                         </div>
                                     </div>
                                 </div>
@@ -82,8 +103,17 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="text" name="paper_end_time" class="form-control datetime"
-                                                value="{{$workshop->paper_end_time->format('d/m/Y H:i A')}}">
+                                            <input type="text"  class="form-control"
+                                                value="{{$workshop->paper_end_time->format('d/m/Y H:i A')}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Questionnaire End Time</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                            </div>
+                                            <input type="datetime-local"  name="paper_end_time" value={{$workshop->paper_end_time}} class="form-control datetime">
                                         </div>
                                     </div>
                                 </div>
@@ -98,37 +128,42 @@
         </div>
     </div>
     <div class="row clearfix">
+        @foreach ($workshop->questions as $key => $question)
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="body">
-                    <h4>Questions</h4>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h4>{{$question->statement}}</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <button statement="{{$question->statement}}" id="{{$question->id}}" data-toggle="modal" data-target="#edit_modal"class="btn btn-info btn-icon float-right">
+                                <i class="zmdi zmdi-edit"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Team Name</th>
-                                    <th>Employee Name</th>
-                                    <th>Employee Email</th>
-                                    <th>Employee Detail</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($workshop->questions as $key => $question)
+                                @foreach ($question->options as $key => $option)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>{{$question->statement}}</td>
-                                    <td>{{$question->}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->detail}}</td>
+                                    <td>{{$option->option}}</td>
                                     <td>
-                                        <a href="{{ route('company.employee.edit',$user->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
+                                        <button data-toggle="modal" data-target="#edit_modals" 
+                                        id="{{$option->id}}" option="{{$option->option}}"  class="edit-btn btn btn-primary">Edit</button>
                                     </td>
                                     <td>
-                                        <form action="{{ route('company.employee.destroy',$user->id) }}" method="POST">
+                                        <form action="{{ route('company.option.destroy',$option->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger delete-btn"> Delete</button>
@@ -136,25 +171,74 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                             
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </section>
+<div id="edit_modal" class="modal fade">
+    <div class="modal-dialog">
+        <form action="{{route('company.question.update',$question->id)}}" method="POST" enctype="multipart/form-data">
+            @method('put')
+            @csrf  
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Update Question Statement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Question Statement</label>
+                        <textarea class="form-control"  id="statement" name="statement" required>{{$question->statement}}</textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="edit_modals" class="modal fade">
+    <div class="modal-dialog">
+        <form id="updateForm" method="POST" enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Update Option</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Option</label>
+                        <input type="text" class="form-control" name="option" value="{{$option->option}}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 @endsection
 @section('script')
-<!-- Jquery Validation Plugin Css -->
-<script src="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.js')}}"></script> <!-- JQuery Steps Plugin Js -->
-<script src="{{asset('admin/assets/js/pages/forms/form-wizard.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/momentjs/moment.js')}}"></script> <!-- Moment Plugin Js -->
-<!-- Bootstrap Material Datetime Picker Plugin Js -->
-<script
-    src="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
+<script>
+    $(document).ready(function(){
+        $('.edit-btn').click(function(){
+            let option = this.option;
+            let id = $(this).attr('id');
+            $('#option').val(option);
+            $('#id').val(id);
+            $('#updateForm').attr('action','{{route('company.option.update','')}}' +'/'+id);
+        });
+    });
 </script>
-<script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
-
 @endsection

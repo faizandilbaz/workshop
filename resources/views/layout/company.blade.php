@@ -32,12 +32,13 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     @yield('style')
 </head>
 
 <body class="theme-blush">
-
+    @include('sweet::alert')
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
