@@ -17,8 +17,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
+        <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
 
     <!-- Favicon-->
     <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
@@ -28,8 +27,6 @@
         rel="stylesheet" />
     <!-- Bootstrap Select Css -->
     <link href="{{asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
 
