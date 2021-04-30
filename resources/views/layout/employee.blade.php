@@ -72,7 +72,7 @@
                 </li>
                 <li><a href="{{ route('employee.rank.index') }}"><i class="zmdi zmdi-home"></i><span>Rank</span></a>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>WorkShope</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>WorkShop</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('employee.workshop.today') }}">Running</a></li>
                         <li><a href="{{ route('employee.workshop.previous') }}">Previous</a></li>

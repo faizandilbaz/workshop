@@ -91,10 +91,10 @@
 
 
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Work
-                            Shope</span></a>
+                            Shop</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.workshop.create') }}">Create</a></li>
-                        <li><a href="{{ route('company.workshop.index') }}"> Work Shope Exam</a></li>
+                        <li><a href="{{ route('company.workshop.index') }}"> Work Shop Exam</a></li>
 
                     </ul>
                 </li>

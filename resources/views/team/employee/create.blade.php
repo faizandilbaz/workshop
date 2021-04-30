@@ -1,26 +1,5 @@
 @extends('layout.team')
 @section('style')
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- Favicon-->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
-<!-- Morris Chart Css-->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/morrisjs/morris.css') }}" />
-<!-- Colorpicker Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css') }}" />
-<!-- Multi Select Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/multi-select/css/multi-select.css') }}">
-<!-- Bootstrap Spinner Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/jquery-spinner/css/bootstrap-spinner.css') }}">
-<!-- Bootstrap Tagsinput Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
-<!-- Bootstrap Select Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css') }}" />
-<!-- noUISlider Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/nouislider/nouislider.min.css') }}" />
-<!-- Select2 -->
-<link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/select2.css') }}" />
-<!-- Custom Css -->
-<link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
 @endsection
 @section('content')
 <section class="content">
@@ -51,7 +30,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <img id="preview_img" src="{{asset('images/users/user.png')}}" height="240" width="auto" style="padding-bottom: 10px;" alt="">
-                                            <input type="file" name="image" id="profile_image" onchange="loadPreview(this);" class="form-input-styled" required>
+                                            <input type="file" name="image" id="profile_image" onchange="loadPreview(this);" class="form-input-styled" >
                                             </div>
                                     </div>
                                     <div class="col-md-8">
@@ -61,20 +40,20 @@
                                                     <input type="text" class="form-control" placeholder=" Enter Employee Name"
                                                         name="name" required>
                                                     <input type="hidden" class="form-control" value="{{Auth::user()->company->id}}"
-                                                        name="company_id" required>
+                                                        name="company_id" >
                                                     <input type="hidden" class="form-control" value="{{Auth::user()->id}}"
-                                                        name="team_id" required>
+                                                        name="team_id" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="email" class="form-control" name="email"
-                                                    placeholder="Enter Email Address">
+                                                    placeholder="Enter Email Address" required>
         
                                             </div>
                                         </div>   
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                                <input type="password" class="form-control" name="password" placeholder="Password" required>
                                             </div>
                                         </div>
                                         <br>
