@@ -189,12 +189,19 @@
                     '<div class="form-group form-float">'+
                         '<input type="text" class="form-control" placeholder=" Enter Option" name="options['+q_id+'][]" required>'+
                     '</div>'+
+                '</div>'+
+                '<div>'+
+                    '<button type="button" class="btn btn-danger options_remove" q_id="'+q_id+'">-</button>'+
                 '</div>'
+
             )
         $('.page-loader-wrapper').hide();
             }
-           
 
+        });
+        $('.question_append').on('click','.options_remove',function(){
+            var id = $(this).attr('q_id');
+            $('.options_append-q_'+id).remove();
         });
     });
 </script>
