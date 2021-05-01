@@ -13,10 +13,11 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="theme-blush">
-
+    @include('sweet::alert')
     <div class="authentication">
         <div class="container">
             <div class="row">
