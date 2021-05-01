@@ -36,7 +36,7 @@
                         <div class="body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Workshop Start change hwa Time</label>
+                                        <label>Workshop Start Time</label>
                                         <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>

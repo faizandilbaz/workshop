@@ -7,6 +7,8 @@ use App\Models\Company;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class EmployeeController extends Controller
 {
@@ -38,6 +40,14 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|unique:users'
+        ]);
+
+        if($validator->fails()){
+            alert()->warning('Email Address already exists');
+            return redirect()->back();
+        }
         User::create($request->all());
         alert()->success('User Added Successfully');
         return redirect()->back(); 

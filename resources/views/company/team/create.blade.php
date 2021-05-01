@@ -58,7 +58,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-12 txt4">
                                                 <textarea rows="4" name="detail" placeholder="Enter Detail"
-                                                    class="form-control txt4"></textarea>
+                                                    class="form-control txt4" required></textarea>
                                             </div>
                                         </div>
                                     </div>

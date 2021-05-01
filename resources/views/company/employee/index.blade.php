@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\User::all() as $key => $user)
+                                @foreach (Auth::user()->employees as $key => $user)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$user->team->name}}</td>
@@ -41,11 +41,9 @@
                                         <a href="{{ route('company.employee.edit',$user->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('company.employee.destroy',$user->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger delete-btn"> Delete</button>
-                                        </form>
+                                        <button data-toggle="modal" id="{{$user->id}}" data-target="#delete_modal"
+                                                class="btn btn-danger delete-btn"> Delete</button>
+    
                                     </td>
                                 </tr>
                                 @endforeach
@@ -58,4 +56,24 @@
         </div>
     </div>
 </section>
+@if(Auth::user()->employees->count() == '1')
+<div id="delete_modal" class="modal fade">
+    <div class="modal-dialog">
+        <form action="{{route('company.employee.destroy',$user->id)}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('DELETE') 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Are You Sure to Delete this Employee?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Yes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endif
 @endsection

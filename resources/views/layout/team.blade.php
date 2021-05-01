@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="{{ route('company.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
+                <li><a href="{{ route('team.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
                 </li>
             
                 {{-- <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>

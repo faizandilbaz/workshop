@@ -46,12 +46,8 @@
                                         <a href="{{ route('admin.team.edit',$team->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="{{route('admin.team.destroy',$team->id)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button data-toggle="modal" data-target="#delete_modal" `
+                                        <button data-toggle="modal" id="{{$team->id}}" data-target="#delete_modal"
                                                 class="btn btn-danger delete-btn"> Delete</button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -63,4 +59,31 @@
         </div>
     </div>
 </section>
+@if(App\Models\Team::all()->count() == '1')
+
+<div id="delete_modal" class="modal fade">
+    <div class="modal-dialog">
+        <form action="{{route('company.team.destroy',$team->id)}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('DELETE') 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Are You Sure to Delete this Team?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-header">
+                    <p style="color:red;font-weight:bold;font-size: xx-large;">Alert: </p>
+                </div>
+                <div class="modal-header">
+                    <p class="modal-title mt-0" id="myModalLabels">If you delete this Team, All Employes assosiated with this will be Deleted Automatically.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Yes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endif
 @endsection
