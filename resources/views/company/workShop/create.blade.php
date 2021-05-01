@@ -41,7 +41,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
-                                            <input type="datetime-local" name="start" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59" required>
+                                            <input type="datetime-local" name="start" class="form-control datetime" onkeydown="return false" placeholder="Ex: 30/07/2016 23:59" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -50,7 +50,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="datetime-local"  name="end" class="form-control datetime"
+                                            <input type="datetime-local" onkeydown="return false"  name="end" class="form-control datetime"
                                             placeholder="Ex: 30/07/2016 23:59" required>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="datetime-local" name="paper_end_time" class="form-control datetime"
+                                            <input type="datetime-local" onkeydown="return false" name="paper_end_time" class="form-control datetime"
                                                 placeholder="Please choose End time..." required>
                                         </div>
                                     </div>
@@ -131,10 +131,12 @@
 <script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
 <script>
     let q_id = 0;
+    let counter;
 
     $(document).ready(function(){
         $('.add_question').on('click',function(){
            q_id++;
+           counter=2;
            $('.page-loader-wrapper').show();
            $('.question_append').append(
             '<div class="row">'+
@@ -171,6 +173,11 @@
         });
         $('.question_append').on('click','.add_options',function(){
             var id = $(this).attr('q_id');
+            if(counter == 4){
+                alert('LIMIT');
+            }else{
+                counter+=2;
+
             $('.page-loader-wrapper').show();
             $('.options_append-q_'+id).append(
                 '<div class="col-md-5">'+
@@ -185,6 +192,8 @@
                 '</div>'
             )
         $('.page-loader-wrapper').hide();
+            }
+           
 
         });
     });
