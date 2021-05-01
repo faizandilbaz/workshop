@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+use App\Models\Company;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -16,7 +20,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-       
+        
         if (Auth::guard('admin')->attempt($cred)) {  
             // dd($request);
             return redirect()->route('admin.dashboard');

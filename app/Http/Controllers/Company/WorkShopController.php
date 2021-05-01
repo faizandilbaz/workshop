@@ -39,27 +39,35 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
-        //  dd($request->options[1] , $request->correct[1]);
-        $workShop = WorkShop::create($request->all());
-        foreach ($request->questions as $qkey => $question) {
-            $question = Question::create([
-                'work_shop_id' => $workShop->id,
-                'statement' => $question
-            ]);;
-            foreach ($request->options[$qkey] as $okey => $option) {
-                $optionN = Option::create([
-                    'question_id' => $question->id,
-                    'option' => $option
-                ]);
-                if ($request->correct[$qkey] == $okey+1) {
-                    $question->update([
-                        'option_id' => $optionN->id
+        if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->end))->lt(Carbon::parse($request->start))) 
+        && ((Carbon::parse($request->paper_end_time))->lt(Carbon::parse($request->end))))
+        {
+            $workShop = WorkShop::create($request->all());
+            foreach ($request->questions as $qkey => $question) {
+                $question = Question::create([
+                    'work_shop_id' => $workShop->id,
+                    'statement' => $question
+                ]);;
+                foreach ($request->options[$qkey] as $okey => $option) {
+                    $optionN = Option::create([
+                        'question_id' => $question->id,
+                        'option' => $option
                     ]);
+                    if ($request->correct[$qkey] == $okey+1) {
+                        $question->update([
+                            'option_id' => $optionN->id
+                        ]);
+                    }
                 }
             }
+            alert()->success('Workshop Stored Successfully');
+            return redirect()->back();
         }
-        alert()->success('Workshop Stored Successfully');
-        return redirect()->back();
+        else{
+            alert()->warning('Time Adjustment Issue','Kindly Adjust Your Time Right');
+            return redirect()->back();
+        }
+     
     }
 
     /**
