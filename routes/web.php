@@ -69,6 +69,8 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
     ///////////////////////////////Work Shope/////////////////////////////
     Route::resource('workshop', 'WorkShopController');
+    Route::resource('question', 'QuestionController');
+    Route::resource('option', 'OptionController');
     
     Route::view('work/shop/edit', 'company.workShop.edit')->name('shop.physical.edit');
     ////////////////////////////////Profile///////////////////////////////

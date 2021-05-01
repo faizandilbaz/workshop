@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('work_shop_id');
             $table->foreign('work_shop_id')->references('id')->on('work_shops')->onDelete('cascade');
-            $table->string('statement')->nullable();
+            $table->text('statement')->nullable();
             $table->string('status')->default('1');
             $table->timestamps();
         });

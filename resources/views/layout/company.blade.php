@@ -29,12 +29,18 @@
     <link href="{{asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+<<<<<<< HEAD
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+=======
+>>>>>>> f5e81731f9c01bbe37ada35c0eeea2f2c0f4dd65
 
     @yield('style')
 </head>
 
 <body class="theme-blush">
-
+    @include('sweet::alert')
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
