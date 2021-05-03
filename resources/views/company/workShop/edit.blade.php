@@ -25,43 +25,18 @@
                     <div class="card">
                         <form action="{{route('company.workshop.update',$workshop->id)}}" method="POST" enctype="multipart/form-data">
                             @method('put')
-                            @csrf                            
+                            @csrf        
+                            {{-- {{dd($workshop)}}                     --}}
                             <div class="body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Workshop Start Time</label>
-                                        <div class="input-group masked-input mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
-                                            </div>
-                                            <input type="text" value="{{$workshop->start->format('d/m/Y H:i A')}}" class="form-control" placeholder="Ex: 30/07/2016 23:59" readonly>
-                                            <input type="hidden" value="{{$workshop->id}}" class="form-control" placeholder="Ex: 30/07/2016 23:59" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-<<<<<<< HEAD
                                         <label>Workshope Start Time</label>
                                         <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
                                             <input type="datetime-local" name="start" 
-                                             class="form-control datetime" placeholder="Ex: 30/07/2016 23:59" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label>Workshope End Time</label>
-                                        <div class="input-group masked-input mb-3">
-=======
-                                        <label>Workshop End Time</label>
-                                        <div class="input-group">
->>>>>>> f5e81731f9c01bbe37ada35c0eeea2f2c0f4dd65
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
-                                            </div>
-                                            <input type="text" value="{{$workshop->end->format('d/m/Y H:i A')}}" class="form-control" placeholder="Ex: 30/07/2016 23:59" readonly>
+                                             class="form-control datetime" value="{{Carbon\Carbon::parse($workshop->start)->format('Y-m-d\TH:i')}}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -70,7 +45,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
-                                            <input type="datetime-local" name="end" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
+                                            <input type="datetime-local" name="end" value="{{Carbon\Carbon::parse($workshop->end)->format('Y-m-d\TH:i')}}" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +84,7 @@
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
                                             <input type="text"  class="form-control"
-                                                value="{{$workshop->paper_end_time->format('d/m/Y H:i A')}}" readonly>
+                                                value="{{$workshop->end->format('d/m/Y H:i A')}}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -118,7 +93,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="datetime-local"  name="paper_end_time" value={{$workshop->paper_end_time}} class="form-control datetime">
+                                            <input type="datetime-local"  name="paper_end_time" value={{Carbon\Carbon::parse($workshop->paper_end_time)->format('Y-m-d\TH:i')}} class="form-control datetime">
                                         </div>
                                     </div>
                                 </div>
