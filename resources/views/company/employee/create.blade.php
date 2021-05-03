@@ -36,8 +36,8 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="form-group form-float col-md-6">
-                                                <select name="team_id" required class="form-control show-tick  mr-3">
-                                                    <option>-- Select Team--</option>
+                                                <select name="team_id"  class="form-control show-tick  mr-3"  required>
+                                                    <option selected disabled value="">-- Select Team--</option>
                                                     @foreach (Auth::user()->teams as $team)
                                                     <option value="{{$team->id}}">{{$team->name}}</option> 
                                                     @endforeach

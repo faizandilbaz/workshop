@@ -20,9 +20,12 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-        
+        $admin = Admin::where('email',$request->email)->first();
+        $team = Team::where('email',$request->email)->first();
+        $company = Company::where('email',$request->email)->first();
+        $user = User::where('email',$request->email)->first();
         if (Auth::guard('admin')->attempt($cred)) {  
-            // dd($request);
+
             return redirect()->route('admin.dashboard');
         } 
         elseif(Auth::guard('company')->attempt($cred)){
@@ -36,10 +39,13 @@ class AuthController extends Controller
           elseif(Auth::guard('user')->attempt($cred)){
             return redirect()->route('employee.dashboard');
         }
-      
+        elseif( !$admin && !$team && !$company && !$user )
+        {
+            alert()->warning('Please register your account');
+            return redirect()->back()->withInput();
+        }
         else {
-           
-            alert()->warning('Login attempt Failed', 'check credentials');
+            alert()->warning('Password Wrong', 'Check Credentials');
              return redirect()->back()->withInput();
         }
     }

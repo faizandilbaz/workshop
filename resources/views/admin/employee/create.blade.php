@@ -51,22 +51,22 @@
                                     <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <img id="preview_img" src="{{asset('images/users/user.png')}}" height="240" width="auto" style="padding-bottom: 10px;" alt="">
-                                            <input type="file" name="image" id="profile_image" onchange="loadPreview(this);" class="form-input-styled" required>
+                                            <input type="file" name="image" id="profile_image" onchange="loadPreview(this);" class="form-input-styled" >
                                             </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="form-group form-float col-md-6">
-                                                <select name="company_id" id="company" class="form-control show-tick  mr-3"  >
-                                                    <option>-- Select Company--</option>
+                                                <select name="company_id" id="company" class="form-control show-tick  mr-3" required >
+                                                    <option selected disabled value="">-- Select Company--</option>
                                                     @foreach (App\Models\Company::all() as $company)
                                                     <option value="{{$company->id}}">{{$company->name}} </option> 
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group form-float col-md-6">
-                                                <select name="team_id" id="teams" class="form-control show-tick  mr-3"  >
-                                                    <option>-- Select Team--</option>
+                                                <select name="team_id" id="teams" class="form-control show-tick  mr-3" required>
+                                                    <option selected disabled value="">-- Select Team--</option>
                                                     @foreach (App\Models\Team::all() as $team)
                                                     <option value="{{$team->id}}">{{$team->name}}</option> 
                                                     @endforeach
@@ -83,20 +83,20 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="email" class="form-control" name="email"
-                                                    placeholder="Enter Email Address">
+                                                    placeholder="Enter Email Address" required>
         
                                             </div>
                                         </div>   
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                                <input type="password" class="form-control" name="password" placeholder="Password" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-md-12 txt4">
                                                 <textarea rows="4" name="detail" placeholder="Enter Detail"
-                                                    class="form-control txt4"></textarea>
+                                                    class="form-control txt4" ></textarea>
                                             </div>
                                         </div>
                                     </div>

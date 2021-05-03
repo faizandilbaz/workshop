@@ -43,7 +43,7 @@
                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
                                        </div>
                                        <div class="col-md-6">
-                                           <input type="file" class="form-control" name="image" placeholder="Profile pitcher">
+                                           <input type="file" class="form-control" name="image" placeholder="Profile pitcher" required>
                    
                                        </div>
                                    </div>
@@ -51,12 +51,12 @@
                                    <div class="row">
                                     <div class="form-group col-md-12 txt4">
                                         <input name="address" placeholder="Enter address"
-                                            class="form-control txt4">
+                                            class="form-control txt4" required>
                                     </div> 
                                     
                                     <div class="form-group col-md-12 txt4">
                                         <input  name="detail" placeholder="Other Details"
-                                            class="form-control txt4">
+                                            class="form-control txt4" required>
                                     </div>
                                 </div>
                                 <button class="btn btn-raised btn-success waves-effect" type="submit">Create</button>

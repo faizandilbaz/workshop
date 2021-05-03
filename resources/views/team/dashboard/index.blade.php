@@ -18,113 +18,39 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-info">
-                        <h6 class="text-light">TOTAL ORDERS</h6>
-                        <h2 class="text-light">20</h2>
+            @foreach (Auth::user()->employee as $key => $user)
+            <div class="col-xl-4 col-lg-12 col-md-12">
+                <div class="card mcard_3">
+                    <div class="body">
+                        @if ($user->image)
+                        <a href=""><img src="{{asset($user->image)}}" class="rounded-circle" alt="profile-image"></a>
+
+                        @endif
+                        <h4 class="m-t-10">{{$user->name}}</h4>  
+                        @if($user->workshopemployees)                          
+                        <div class="row">
+                            <div class="col-4">                                    
+                                <small>Complete Attended Workshops</small>
+                                <h5>{{$user->workshopemployee->where('status','0')->count()}}</h5>
+                            </div>
+                            <div class="col-4">                                    
+                                <small>Attended Workshops</small>
+                                <h5>{{$user->workshopemployee->where('status','1')->count()}}</h5>
+                            </div>
+                            <div class="col-4">                                    
+                                <small>Obtain Marks</small>
+                                <h5>{{$user->workshopemployee->where('status','1')->sum('result')/$user->workshopemployee->where('status','1')->count() }}</h5>
+                            </div>                            
+                        </div>
+                        @endif
                     </div>
-                </div>
+                </div>                
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-success">
-                        <h6 class="text-light">ORDER ACCEPTED</h6>
-                        <h2 class="text-light">12</h2>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-danger">
-                        <h6 class="text-light" >ORDER CANCELED</h6>
-                        <h2 class="text-light" >39</h2>
-                    
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-warning">
-                        <h6 class="text-light">ORDER PENDING</h6>
-                        <h2 class="text-light">8</h2>
-                        
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-warning">
-                        <h6 class="text-light">ORDER DISPATCHED</h6>
-                        <h2 class="text-light">20 </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-info">
-                        <h6 class="text-light">ORDER DELIVERED</h6>
-                        <h2 class="text-light" >12 </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2">
-                    <div class="body bg-success">
-                        <h6 class="text-light">TOTAL CUSTOMER</h6>
-                        <h2 class="text-light" >39</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-danger">
-                        <h6 class="text-light">BLOCK CUSTOMER</h6>
-                        <h2 class="text-light">8</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-info">
-                        <h6 class="text-light">TOTAL VENDORS</h6>
-                        <h2 class="text-light">20</h2>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-danger">
-                        <h6 class="text-light">BLOCK VENDERS</h6>
-                        <h2 class="text-light">12 </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-warning">
-                        <h6 class="text-light" >BALANCE</h6>
-                        <h2 class="text-light">39</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card widget_2 ">
-                    <div class="body bg-success">
-                        <h6 class="text-light">TOTAL PRODUCTS</h6>
-                        <h2 class="text-light">8</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+    </div>
+       
 </section>
  @endsection

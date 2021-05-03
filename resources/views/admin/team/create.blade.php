@@ -57,7 +57,7 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="form-group form-float col-md-6">
-                                                <select name="company_id" class="form-control show-tick  mr-3"  >
+                                                <select name="company_id" class="form-control show-tick  mr-3"  required>
                                                     <option disabled>-- Select Company--</option>
                                                     @foreach (App\Models\Company::all() as $company)
                                                     <option value="{{$company->id}}">{{$company->name}}</option> 
@@ -75,18 +75,18 @@
                                            
                                             <div class="col-md-6">
                                                 <input type="email" class="form-control" name="email"
-                                                    placeholder="Enter Email Address">
+                                                    placeholder="Enter Email Address" required>
         
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                                <input type="password" class="form-control" name="password" placeholder="Password" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-md-12 txt4">
                                                 <textarea rows="4" name="detail" placeholder="Enter Detail"
-                                                    class="form-control txt4"></textarea>
+                                                    class="form-control txt4" required></textarea>
                                             </div>
                                         </div>
                                     </div>

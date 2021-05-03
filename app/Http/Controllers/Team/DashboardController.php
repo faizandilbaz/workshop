@@ -12,8 +12,6 @@ class DashboardController extends Controller
 {
     public function index(){
         $workshops = WorkShop::where('company_id',Auth::user()->company->id)->get();
-        $today = WorkShop::where('company_id',Auth::user()->company->id)->where('start','==',Carbon::now())->get();
-        $upcoming = WorkShop::where('company_id',Auth::user()->company->id)->where('start','>',Carbon::now())->get();
-        return view('team.dashboard.index')->with('workshops',$workshops)->with('today',$today)->with('upcoming',$upcoming);
+      return view('team.dashboard.index')->with('workshops',$workshops);
     }
 }

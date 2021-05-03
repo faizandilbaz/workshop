@@ -30,7 +30,7 @@
                         </div>
                         <div class="body">
                             <div class="input-group mb-3">
-                                <input type="email" name="email" class="form-control" placeholder=" Enter email">
+                                <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder=" Enter email">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
                                 </div>
