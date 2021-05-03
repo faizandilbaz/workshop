@@ -132,6 +132,9 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     /*******************RANK ROUTES*************/
     Route::get('rank', 'RankController@index')->name('rank.index');
     Route::get('rank/{id}', 'RankController@show')->name('rank.show');
+    /*******************CHALLENGE ROUTES*************/
+    Route::resource('challenge', 'ChallengeController');
+    Route::get('challenge/stores/{id}', 'ChallengeController@stores')->name('challenge.stores');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('profile', 'employee.profile.index')->name('profile.index');
     Route::put('employee/update/{id}','EmployeeController@update')->name('update');

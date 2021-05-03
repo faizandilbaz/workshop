@@ -43,6 +43,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Company::class,'company_id');
     }  
+    public function challenges(){
+        return $this->hasMany(Challenge::class,'challenger_id');
+    }
+    public function users(){
+        return $this->hasMany(Challenge::class,'user_id');
+    }
     public function workshopemployee(){
         return $this->hasMany(WorkshopEmployee::class);
     }

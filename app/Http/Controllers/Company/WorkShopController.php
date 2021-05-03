@@ -39,8 +39,8 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
-        if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->end))->lt(Carbon::parse($request->start))) 
-        && ((Carbon::parse($request->paper_end_time))->lt(Carbon::parse($request->end))))
+        if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
+        && ((Carbon::parse($request->end))->lt(Carbon::parse($request->paper_end_time))))
         {
             $workShop = WorkShop::create($request->all());
             foreach ($request->questions as $qkey => $question) {

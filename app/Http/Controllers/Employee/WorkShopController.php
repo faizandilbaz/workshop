@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Challenge;
 use App\Models\Question;
 use App\Models\Result;
 use App\Models\WorkShop;
@@ -108,6 +109,11 @@ class WorkShopController extends Controller
         $workshopemployee->update([
             'result' => $mark ,
             'status' => '0'           
+        ]); 
+        $challenge = Challenge::where('challenger_id',Auth::user()->id)->where('work_shop_id',$request->workshop)->first();
+        $challenge->update([
+            'result' => $mark ,
+            'status' => 'Completed'           
         ]); 
         return redirect()->route('employee.dashboard');
     }
