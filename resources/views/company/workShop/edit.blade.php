@@ -78,7 +78,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Questionnaire End Time</label>
+                                        <label>Questionnaire Start Time</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
