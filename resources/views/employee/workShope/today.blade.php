@@ -39,7 +39,6 @@
                         <table class="table table-hover theme-color c_table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Starting On</th>
@@ -48,9 +47,8 @@
                             </thead>
                             <tbody>
                                 @foreach($workshops as $key=>$workshop)
-                                @if($workshop->start->toDateString() == Carbon\Carbon::today()->toDateString()  || $workshop->paper_end_time->toDateString()  == Carbon\Carbon::today()->toDateString())
+                                @if(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->start))  && Carbon\Carbon::now()->lte(Carbon\Carbon::parse($workshop->paper_end_time)))
                                 <tr>
-                                    <td>{{$key+1}}</td>
                                     <td>{{$workshop->heading}}</td>
                                     <td>{{$workshop->description}}</td>
                                     <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>
@@ -67,7 +65,7 @@
                                         @elseif(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->where('status','0')->first())
                                         Marks = {{ round((( $results / $workshop->questions->count() ) * 100), 2)   }}%
                                         @else
-                                        <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-success">Mark Attendance</button></a>
+                                        <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-danger">Mark Attendance</button></a>
                                         @endif
                                         @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->paper_end_time)))
                                         <span class="badge badge-success">Time Ended</span>

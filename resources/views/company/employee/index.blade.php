@@ -56,7 +56,7 @@
         </div>
     </div>
 </section>
-@if(Auth::user()->employees->count() == '1')
+@if(Auth::user()->employees->count() > '0')
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
         <form action="{{route('company.employee.destroy',$user->id)}}" method="POST" enctype="multipart/form-data">

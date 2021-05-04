@@ -58,10 +58,9 @@
         </div>
     </div>
 </section>
-@if(Auth::user()->employees->count() == '1')
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
-        <form action="{{route('team.employee.destroy',$user->id)}}" method="POST" enctype="multipart/form-data">
+        <form id="deleteForm" method="POST" enctype="multipart/form-data">
             @csrf
             @method('DELETE') 
             <div class="modal-content">
@@ -77,5 +76,15 @@
         </form>
     </div>
 </div>
-@endif
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+        $('.delete-btn').click(function(){
+            let id = $(this).attr('id');
+            $('#id').val(id);
+            $('#deleteForm').attr('action','{{route('team.employee.destroy','')}}' +'/'+id);
+        });
+    });
+</script>
 @endsection

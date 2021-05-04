@@ -24,7 +24,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">17.2k</h4>
+                        <h4 class="mt-3">{{Auth::user()->workshops->count()}}</h4>
                         <span class="text-muted">Total WorkShop</span>
                         
                    </div>
@@ -34,7 +34,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon pink"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">12k</h4>
+                        <h4 class="mt-3">{{Auth::user()->teams->count()}}</h4>
                         <span class="text-muted">Total Teams</span>
                        
                    </div>
@@ -44,7 +44,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon orange"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">53.8k</h4>
+                        <h4 class="mt-3">{{Auth::user()->employees->count()}}</h4>
                         <span class="text-muted">Total Employee</span>
                        
                    </div>

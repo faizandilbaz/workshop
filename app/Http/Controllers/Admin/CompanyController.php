@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
@@ -39,7 +40,16 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|unique:companies',
+            'name' => 'required|unique:companies'
+        ]);
+
+        if($validator->fails()){
+            alert()->warning($validator->errors()->first());
+            return redirect()->back();
+        }
+
         Company::create($request->all());
         alert()->success('Company Added Successfully', 'Company Added Successfully');
         return redirect()->back(); 
@@ -79,17 +89,65 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         $company = Company::find($id);
-        if($request->password == $request->newpassword)
+        if($company ->email == $request->email && $company ->name == $request->name)
         {
-            $company->update($request->all());
-            alert()->success('Company Updated Successfully');
+            if($request->password == $request->newpassword)
+            {
+                $company->update($request->all());
+                alert()->success('Company Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+                // alert()->success('Password Not Matched,Re-Enter Password Please');
+            }
+            return redirect()->back();
+
         }
-        else
+        if($company ->email != $request->email){
+            $validator = Validator::make($request->all(),[
+                'email' => 'required|unique:companies'
+            ]);
+    
+            if($validator->fails()){
+                alert()->warning('Email Address  already exists');
+                return redirect()->back();
+            }
+            if($request->password == $request->newpassword)
+            {
+                $company->update($request->all());
+                alert()->success('Company Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+                // alert()->success('Password Not Matched,Re-Enter Password Please');
+            }
+            return redirect()->back();
+        }
+        if($company ->name != $request->name)
         {
-            alert()->warning('Password Not Matched','Re-Enter Password Please');
-            // alert()->success('Password Not Matched,Re-Enter Password Please');
+
+            $validators = Validator::make($request->all(),[
+                'name' => 'required|unique:companies'
+            ]);
+            if($validators->fails()){
+                alert()->warning('Company Name already exists');
+                return redirect()->back();
+            }
+            if($request->password == $request->newpassword)
+            {
+                $company->update($request->all());
+                alert()->success('Company Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+                // alert()->success('Password Not Matched,Re-Enter Password Please');
+            }
+            return redirect()->back();
         }
-        return redirect()->back();
+     
     }
 
     /**

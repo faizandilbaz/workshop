@@ -109,7 +109,7 @@
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle">C<span>Employee</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('admin.employee.create') }}">Add</a></li>
+                        <li><a data-toggle="modal" data-target="#edit_modal">Add</a></li>
                         <li><a href="{{ route('admin.employee.index') }}">All Employee</a></li>
                     </ul>
                 </li>
@@ -293,7 +293,34 @@
 <section>
     @yield('content')
 </section>
-   
+<div id="edit_modal" class="modal fade">
+    <div class="modal-dialog">
+        <form action="{{ route( 'admin.company.teams' ) }}"  method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Select Company</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">Companies Name</label>
+                        <select name="company" id="" class="form-control">
+                            <option value="">Select Company</option>
+                            @foreach(App\Models\Company::all() as $company)
+                            <option value="{{$company->id}}">{{$company->name}}</option>
+                            @endforeach
+                        </select>                   
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
     <!-- Jquery Core Js -->
     <script src="{{ asset('admin/assets/bundles/libscripts.bundle.js') }}"></script>
     <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->

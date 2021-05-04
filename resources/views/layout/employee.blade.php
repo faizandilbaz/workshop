@@ -84,8 +84,7 @@
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>Challenge</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('employee.challenge.index') }}">Create Challenge</a></li>
-                         
+                        <li><a href="{{ route('employee.challenge.index') }}">Challenge</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('employee.profile.index') }}"><i class="zmdi zmdi-hc-fw"></i><span>Profile</span></a>

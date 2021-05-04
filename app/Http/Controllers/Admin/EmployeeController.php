@@ -29,7 +29,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('admin.employee.create');
+        // return view('admin.employee.create');
     }
 
     /**
@@ -43,14 +43,13 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(),[
             'email' => 'required|unique:users'
         ]);
-
         if($validator->fails()){
             alert()->warning('Email Address already exists');
-            return redirect()->back();
+            return redirect()->route('admin.employee.index');
         }
         User::create($request->all());
         alert()->success('User Added Successfully');
-        return redirect()->back(); 
+        return redirect()->route('admin.employee.index'); 
     }
 
     /**
@@ -59,9 +58,10 @@ class EmployeeController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $company = Company::find($id);
+        return view('admin.employee.create',compact('company'));
     }
 
     /**
@@ -86,16 +86,31 @@ class EmployeeController extends Controller
     public function update(Request $request,$id)
     {
         $user = User::find($id);
-        if($request->password == $request->newpassword)
-        {
-            $user->update($request->all());
-            alert()->success('Employee Updated Successfully');
-        }else
-        {
-            alert()->warning('Password Not Matched','Re-Enter Password Please');
+        if($user ->email != $request->email){
+            $validator = Validator::make($request->all(),[
+                'email' => 'required|unique:users'
+            ]);
+
+            if($validator->fails()){
+                alert()->warning('Email Address already exists');
+                return redirect()->back();
+            }
         }
+        if($user ->email == $request->email )
+        {
+            if($request->password == $request->newpassword)
+            {
+                $user->update($request->all());
+                alert()->success('Employee Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+            }
        
-        return redirect()->back();
+            return redirect()->back();
+        }
+        
     }
 
     /**
@@ -113,11 +128,7 @@ class EmployeeController extends Controller
     }
     public function getTeamsByCompany(Request $request)
     {
-        if($request->id == 'all'){
-            $teams = Team::all();
-        } else {
-            $teams = Company::find($request->id)->teams;
-        }
-        return response()->json($teams);
+        $company = Company::find($request->company);
+        return view('admin.employee.create',compact('company'));
     }
 }

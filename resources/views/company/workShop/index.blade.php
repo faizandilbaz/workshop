@@ -26,7 +26,6 @@
                                     <th>Heading</th>
                                     <th>Start</th>
                                     <th>END</th>
-                                    <th>Link</th>
                                     <th>Description</th>
                                     <th>Action</th>
                                     <th>Action</th>
@@ -41,7 +40,6 @@
                                     <td>{{$workshop->start->format('M d,Y H:i')}}</td>
                                     <td>{{$workshop->end->format('M d,Y H:i')}}</td>
                                     <td>{{$workshop->description}}</td>
-                                    <td>{{$workshop->link}}</td>
                                     <td>
                                         <a href="{{ route('company.workshop.edit',$workshop->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>

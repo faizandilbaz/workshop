@@ -46,7 +46,7 @@
                                 @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
                                 <button class="btn btn-success">Attendance Marked</button>
                                 @else
-                                <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-success">Mark Attendance</button></a>
+                                <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-danger">Mark Attendance</button></a>
                                 @endif
                             </div>                            
                             <div class="row">
@@ -59,7 +59,7 @@
                                     @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
                                     <a href="{{route('employee.workshop.test',$workshop->id)}}" class="btn btn-success">Give Test</a>
                                     @else  
-                                    <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-success">Mark Attendance</button></a>
+                                    <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-danger">Mark Attendance</button></a>
                                     @endif
                                     @endif
                                 </div>

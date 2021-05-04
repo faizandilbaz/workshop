@@ -1,5 +1,8 @@
 @extends('layout.company')
 @section('style')
+<style>
+    
+</style>
 @endsection
 @section('content')
 <form action="{{route('company.workshop.store')}}" method="post">
@@ -44,7 +47,7 @@
                                                         class="zmdi zmdi-calendar-note"></i></span>
                                             </div>
                                             <input type="datetime-local" name="start" class="form-control datetime"
-                                                onkeydown="return false" placeholder="Ex: 30/07/2016 23:59" required>
+                                                onkeydown="return false" value="{{old('start')}}" placeholder="Ex: 30/07/2016 23:59" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -54,7 +57,7 @@
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
                                             <input type="datetime-local" onkeydown="return false" name="end"
-                                                class="form-control datetime" placeholder="Ex: 30/07/2016 23:59"
+                                                class="form-control datetime" value="{{old('end')}}" placeholder="Ex: 30/07/2016 23:59"
                                                 required>
                                         </div>
                                     </div>
@@ -64,7 +67,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
-                                            <input type="text" class="form-control" placeholder=" Enter Heading"
+                                            <input type="text" class="form-control" value="{{old('heading')}}" placeholder=" Enter Heading"
                                                 name="heading" required>
                                             <input type="hidden" class="form-control" value="{{Auth::user()->id}}"
                                                 name="company_id" required>
@@ -73,15 +76,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <input type="url" class="form-control"
-                                                placeholder=" Enter link: http://, https://, ftp://" name="link">
+                                                placeholder=" Enter link: http://, https://, ftp://" value="{{old('link')}}" name="link">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-12 txt4">
                                         <label>Description</label>
-                                        <textarea rows="4" name="description" placeholder="Enter description"
-                                            class="form-control txt4" required></textarea>
+                                        <textarea rows="4" name="description"  placeholder="Enter description"
+                                            class="form-control txt4" required>{{old('description')}}</textarea>
                                     </div>
                                 </div>
 
@@ -92,7 +95,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                             </div>
-                                            <input type="datetime-local" onkeydown="return false" name="paper_end_time"
+                                            <input type="datetime-local" value="{{old('paper_end_time')}}" onkeydown="return false" name="paper_end_time"
                                                 class="form-control datetime" placeholder="Please choose End time..."
                                                 required>
                                         </div>

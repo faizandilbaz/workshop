@@ -64,7 +64,7 @@
         </div>
     </div>
 </section>
-@if(App\Models\Company::all()->count() == '1')
+@if(App\Models\Company::all()->count() > '0')
 
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">

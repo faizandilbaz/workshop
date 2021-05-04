@@ -7,7 +7,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Add Employee</h2>
+                    <h2>Add Employee of {{$company->name}}</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">Employee</li>
@@ -35,18 +35,11 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="row">
-                                            <div class="form-group form-float col-md-6">
-                                                <select name="company_id" id="company" class="form-control show-tick  mr-3" required >
-                                                    <option selected disabled value="">-- Select Company--</option>
-                                                    @foreach (App\Models\Company::all() as $company)
-                                                    <option value="{{$company->id}}">{{$company->name}} </option> 
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group form-float col-md-6">
-                                                <select name="team_id" id="teams" class="form-control show-tick  mr-3" required>
+                                           
+                                            <div class="form-group form-float col-md-12">
+                                                <select name="team_id"  class="form-control show-tick  mr-3" required>
                                                     <option selected disabled value="">-- Select Team--</option>
-                                                    @foreach (App\Models\Team::all() as $team)
+                                                    @foreach( $company->teams as $team)
                                                     <option value="{{$team->id}}">{{$team->name}}</option> 
                                                     @endforeach
                                                 </select>
@@ -58,6 +51,8 @@
                                                 <div class="form-group form-float">
                                                     <input type="text" class="form-control" placeholder=" Enter Employee Name"
                                                         name="name" required>
+                                                        <input type="hidden" value="{{$company->id}}" class="form-control" placeholder=" Enter Employee Name"
+                                                        name="company_id" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -95,37 +90,8 @@
 </section>
 @endsection
 @section('script')
-<script>
-    $(document).ready(function(){
-        let id; 
-    
-        $('#company').on('change', function() {
-            id = this.value;
-            fetchTeamByCompany(id);
-        });
-        function fetchTeamByCompany(id){
-            $.ajax({
-                url: "{{route('admin.company.teams')}}",
-                method: 'post',
-                data: {
-                    id: id
-                },
-                success: function(result){
-                    appendTeamList(result,$('#teams'));
-                }
-            });
-        }
-        
-        function appendTeamList(result,div) {
-            div.empty();
-            div.append('<option selected disabled>Select Team</option>');
-            for (i=0;i<result.length;i++){
-                div.append('<option value="'+result[i].id+'">'+result[i].name+'</option>');
-            }
-        }
-    
-    });
-</script>
+
+
 <script>
     function loadPreview(input, id) {
       id = id || '#preview_img';
@@ -138,7 +104,6 @@
                       .width(345)
                       .height(240);
           };
-   
           reader.readAsDataURL(input.files[0]);
       }
    }

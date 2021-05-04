@@ -39,7 +39,6 @@
                         <table class="table table-hover theme-color c_table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Starting On</th>
@@ -49,9 +48,8 @@
                             </thead>
                             <tbody>
                                 @foreach($workshops as $key=>$workshop)
-                                @if($workshop->paper_end_time->toDateString() < Carbon\Carbon::today()->toDateString() )
+                                @if(Carbon\Carbon::now()->gt(Carbon\Carbon::parse($workshop->paper_end_time)))
                                 <tr>
-                                    <td>{{$key+1}}</td>
                                     <td>{{$workshop->heading}}</td>
                                     <td>{{$workshop->description}}</td>
                                     <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>

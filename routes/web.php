@@ -44,7 +44,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::resource('team', 'TeamController');
     ////////////////////////////////EMPLOYEE/////////////////////////////
     Route::resource('employee', 'EmployeeController');
-    Route::post('company/teams', 'EmployeeController@getTeamsByCompany')->name('company.teams');
+    Route::post('employee/creates', 'EmployeeController@getTeamsByCompany')->name('company.teams');
     ////////////////////////////////Profile///////////////////////////////
     Route::view('admin/profile', 'admin.profile.index')->name('profile.index');
     Route::resource('admin', 'AdminController');

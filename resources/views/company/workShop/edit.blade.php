@@ -127,29 +127,36 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Team Name</th>
-                                    <th>Action</th>
+                                    <th>Option</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($question->options as $key => $option)
-                                <tr>
+                                @if($question->option_id == $option->id)
+                                <tr style="background-color: rgb(150, 240, 150);">
                                     <td>{{$key+1}}</td>
-                                    <td>{{$option->option}}</td>
+                                    <td>
+                                        {{$option->option}}
+                                    </td>
                                     <td>
                                         <button data-toggle="modal" data-target="#edit_modals" 
                                         id="{{$option->id}}" option="{{$option->option}}"  class="edit-btn btn btn-primary">Edit</button>
                                     </td>
+                                </tr>
+                                @else 
+                                <tr>
+                                    <td>{{$key+1}}</td>
                                     <td>
-                                        <form action="{{ route('company.option.destroy',$option->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger delete-btn"> Delete</button>
-                                        </form>
+                                        {{$option->option}}
+                                    </td>
+                                    <td>
+                                        <button data-toggle="modal" data-target="#edit_modals" 
+                                        id="{{$option->id}}" option="{{$option->option}}"  class="edit-btn btn btn-primary">Edit</button>
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

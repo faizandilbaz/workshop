@@ -47,9 +47,11 @@ class WorkShopController extends Controller
         $workshops = WorkShop::where('company_id',Auth::user()->company->id)->get();
         foreach($workshops as $workshop)
         {
-
-            $option = Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first();
-            $marks = $marks += $option->result;
+            if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
+            {
+                $option = Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first();
+                $marks = $marks += $option->result;
+            }
         } 
         return view('employee.workShope.previous')->with('workshops',$workshops)->with('marks',$marks);
     }
@@ -111,10 +113,13 @@ class WorkShopController extends Controller
             'status' => '0'           
         ]); 
         $challenge = Challenge::where('challenger_id',Auth::user()->id)->where('work_shop_id',$request->workshop)->first();
-        $challenge->update([
-            'result' => $mark ,
-            'status' => 'Completed'           
-        ]); 
+        if($challenge == '1')
+        {
+            $challenge->update([
+                'result' => $mark ,
+                'status' => 'Completed'           
+            ]); 
+        }
         return redirect()->route('employee.dashboard');
     }
 

@@ -5,22 +5,71 @@ namespace App\Http\Controllers\Team;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
     public function update(Request $request, $id)
     {
         $team = Team::find($id);
-        if($request->password == $request->newpassword)
+        if($team ->email == $request->email && $team ->name == $request->name)
         {
-            $team = Team::find($id);
-            alert()->success('Team Updated Successfully');
+            if($request->password == $request->newpassword)
+            {
+                $team->update($request->all());
+                alert()->success('team Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+                // alert()->success('Password Not Matched,Re-Enter Password Please');
+            }
+            return redirect()->back();
+
         }
-        else
+        if($team ->email != $request->email){
+            $validator = Validator::make($request->all(),[
+                'email' => 'required|unique:companies'
+            ]);
+    
+            if($validator->fails()){
+                alert()->warning('Email Address  already exists');
+                return redirect()->back();
+            }
+            if($request->password == $request->newpassword)
+            {
+                $team->update($request->all());
+                alert()->success('team Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+                // alert()->success('Password Not Matched,Re-Enter Password Please');
+            }
+            return redirect()->back();
+        }
+        if($team ->name != $request->name)
         {
-            alert()->warning('Password Not Matched','Re-Enter Password Please');
+
+            $validators = Validator::make($request->all(),[
+                'name' => 'required|unique:companies'
+            ]);
+            if($validators->fails()){
+                alert()->warning('team Name already exists');
+                return redirect()->back();
+            }
+            if($request->password == $request->newpassword)
+            {
+                $team->update($request->all());
+                alert()->success('team Updated Successfully');
+            }
+            else
+            {
+                alert()->warning('Password Not Matched','Re-Enter Password Please');
+                // alert()->success('Password Not Matched,Re-Enter Password Please');
+            }
+            return redirect()->back();
         }
-        $team->update($request->all());
         return redirect()->back();
     }
 }

@@ -65,7 +65,7 @@ class WorkShopController extends Controller
         }
         else{
             alert()->warning('Time Adjustment Issue','Kindly Put Time Rightly');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
      
     }

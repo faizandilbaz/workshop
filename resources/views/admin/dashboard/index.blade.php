@@ -21,40 +21,44 @@
      <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card w_data_1">
-                   <div class="body">
-                        <div class="w_icon indigo"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">45k</h4>
-                        <span class="text-muted">Total Companys</span>
-                      
-                   </div>
-                </div>
+                <a href="{{ route('admin.company.index')}}">
+                    <div class="card w_data_1">
+                        <div class="body">
+                            <div class="w_icon indigo"><i class="zmdi zmdi-hc-fw"></i></div>
+                            <h4 class="mt-3">{{App\Models\Company::all()->count()}}</h4>
+                            <span class="text-muted">Total Companys</span>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card w_data_1">
-                   <div class="body">
-                        <div class="w_icon pink"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">12k</h4>
-                        <span class="text-muted">Total Teams</span>
-                       
-                   </div>
-                </div>
+                <a href="{{ route('admin.team.index')}}">
+                    <div class="card w_data_1">
+                        <div class="body">
+                            <div class="w_icon pink"><i class="zmdi zmdi-hc-fw"></i></div>
+                            <h4 class="mt-3">{{App\Models\Team::all()->count()}}</h4>
+                            <span class="text-muted">Total Teams</span>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card w_data_1">
-                   <div class="body">
-                        <div class="w_icon orange"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">53.8k</h4>
-                        <span class="text-muted">Total Employee</span>
-                       
-                   </div>
-                </div>
+                <a href="{{ route('admin.employee.index')}}">
+                    <div class="card w_data_1">
+                        <div class="body">
+                            <div class="w_icon orange"><i class="zmdi zmdi-hc-fw"></i></div>
+                            <h4 class="mt-3">{{App\Models\User::all()->count()}}</h4>
+                            <span class="text-muted">Total Employee</span>
+                        
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">17.2k</h4>
+                        <h4 class="mt-3">{{App\Models\Workshop::all()->count()}}</h4>
                         <span class="text-muted">Total WorkShop</span>
                         
                    </div>
@@ -64,7 +68,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon cyan"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">01</h4>
+                        <h4 class="mt-3">{{App\Models\Workshop::where('start',Carbon\Carbon::today())->count()}}</h4>
                         <span class="text-muted">Today WorkShop</span>
                        
                    </div>
@@ -74,7 +78,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
-                        <h4 class="mt-3">5</h4>
+                        <h4 class="mt-3">{{App\Models\Workshop::where('paper_end_time','<',Carbon\Carbon::today())->count()}}</h4>
                         <span class="text-muted">Upcoming WorkShop</span>
                        
                    </div>

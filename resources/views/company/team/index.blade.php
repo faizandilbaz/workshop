@@ -69,7 +69,7 @@
         </div>
     </div>
 </section>
-@if(Auth::user()->teams->count() == '1')
+@if(Auth::user()->teams->count() > '0')
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
         <form action="{{route('company.team.destroy',$team->id)}}" method="POST" enctype="multipart/form-data">
