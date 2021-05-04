@@ -30,7 +30,6 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
   Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Controllers\Admin'], function () {
 
 
-    // Route::view('login', 'admin.auth.login')->name('login');
     Route::group(['middleware' => 'auth:admin'], function () { 
     /*******************Logout ROUTES*************/       
     // Route::get('logout','AuthController@logout')->name('logout');
@@ -82,8 +81,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
   /////////////////////////////////////////////////////TEAM////////////////////////////////
   Route::group(['prefix' => 'team', 'namespace' => 'App\Http\Controllers\Team', 'as' => 'team.',], function () {
-    // Route::view('login', 'team.auth.login')->name('login');
-    // Route::post('login','AuthController@login');
+
     Route::group(['middleware' => 'auth:team'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
@@ -111,8 +109,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
   ///////////////////////////////////////////////////EMPLOYEE///////////////////////////////////////////
   Route::group(['prefix' => 'employee', 'namespace' => 'App\Http\Controllers\Employee', 'as' => 'employee.',], function () {
-    Route::view('login', 'employee.auth.login')->name('login');
-    Route::post('login','AuthController@login');
+   
     Route::group(['middleware' => 'auth:user'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
