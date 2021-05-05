@@ -145,7 +145,7 @@
                                         id="{{$option->id}}" option="{{$option->option}}"  class="edit-btn btn btn-primary">Edit</button>
                                     </td>
                                 </tr>
-                                @else 
+                                 @else 
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>
@@ -204,7 +204,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Option</label>
-                        <input type="text" class="form-control" name="option" value="{{$option->option}}">
+                        <input type="text" id="option" class="form-control" name="option" value="">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -220,7 +220,7 @@
 <script>
     $(document).ready(function(){
         $('.edit-btn').click(function(){
-            let option = this.option;
+            let option = $(this).attr('option');
             let id = $(this).attr('id');
             $('#option').val(option);
             $('#id').val(id);

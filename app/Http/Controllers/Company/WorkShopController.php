@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helpers\MailHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\WorkShop;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkShopController extends Controller
 {
@@ -39,6 +41,7 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
+        
         if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
         && ((Carbon::parse($request->end))->lt(Carbon::parse($request->paper_end_time))))
         {
@@ -60,6 +63,7 @@ class WorkShopController extends Controller
                     }
                 }
             }
+            MailHelper::workshop(Auth::user());
             alert()->success('Workshop Stored Successfully');
             return redirect()->back();
         }
@@ -103,9 +107,24 @@ class WorkShopController extends Controller
     public function update(Request $request, $id)
     {
         $workshop = WorkShop::find($id);
-        $workshop->update($request->all());
-        alert()->success('Workshop Updated Successfully');
-        return redirect()->back();
+        if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
+        && ((Carbon::parse($request->end))->lt(Carbon::parse($request->paper_end_time))))
+        {
+            if(Carbon::now() > Carbon::parse($workshop->start)){
+                alert()->warning('Workshop has stated cannot update');
+                return redirect()->back()->withInput();
+            }
+            else{
+                $workshop->update($request->all());
+                alert()->success('Workshop Updated Successfully');
+                return redirect()->back();
+            }
+          
+        }
+        else{
+            alert()->warning('Time Adjustment Issue','Kindly Put Time Rightly');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

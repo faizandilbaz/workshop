@@ -1,8 +1,7 @@
 @extends('layout.company')
 @section('style')
-<style>
-    
-</style>
+<link rel="stylesheet" href="{{asset('assets/plugins/select2/select2.css')}}" />
+
 @endsection
 @section('content')
 <form action="{{route('company.workshop.store')}}" method="post">
@@ -40,7 +39,7 @@
                             <div class="body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Workshop Start change hwa Time</label>
+                                        <label>Workshop Start Time</label>
                                         <div class="input-group masked-input mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i
@@ -141,11 +140,15 @@
     src="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
 </script>
 <script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
+<script src="{{asset('assets/js/pages/forms/advanced-form-elements.js')}}"></script>
+        <script src="{{asset('assets/plugins/select2/select2.min.js')}}"></script> 
 <script>
     let q_id = 0;
     let counter;
 
     $(document).ready(function(){
+        
+
         $('.add_question').on('click',function(){
            q_id++;
            counter=2;
@@ -158,10 +161,14 @@
                     '<textarea rows="4" name="questions['+q_id+']" style="resize:none" placeholder="Enter Question Statement" class="form-control txt4" required></textarea>'+
                 '</div>'+
                 '<div class="col-md-2">'+
-                '<label>Correct Option</label>'+
-                    '<div class="form-group form-float">'+
-                        '<input type="text" class="form-control" placeholder="Corect Option Number" name="correct['+q_id+']" required>'+
-                    '</div>'+
+                    '<lable>Select Correct Option</lable>'+
+                    ' <select class="form-control show-tick " name="correct['+q_id+']" data-placeholder="Corect Option Number" required>'+
+                        '<option selected disabled>Correct Option Number</option>'+
+                        '<option value="1">Option: 1</option>'+
+                        '<option value="2">Option: 2</option>'+
+                        '<option value="3">Option: 3</option>'+
+                        '<option value="4">Option: 4</option>'+
+                    '</select>'+
                 '</div>'+
             '</div>'+
             '<div class="row">'+
@@ -189,7 +196,11 @@
             var id = $(this).attr('q_id');
             var count =$('.check_'+id).attr('counter');
             if(count == 4)
-                alert('LIMIT');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Only Four options are Allowed!',
+                });
             else{
                 $(this).attr('counter',4);
             $('.options_append-q_'+id).append(
@@ -224,4 +235,7 @@
         
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 @endsection

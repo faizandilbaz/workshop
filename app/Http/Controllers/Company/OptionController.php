@@ -71,7 +71,9 @@ class OptionController extends Controller
     public function update(Request $request, $id)
     {
         $option = Option::find($id);
-        $option->update($request->all());
+        $option->update([
+            'option' => $request->option
+        ]);
         alert()->success('Option Updated Successfully');
         return redirect()->back();
     }
