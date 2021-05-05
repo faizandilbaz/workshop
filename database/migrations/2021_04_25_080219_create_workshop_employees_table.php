@@ -17,7 +17,7 @@ class CreateWorkshopEmployeesTable extends Migration
             $table->id();
             $table->foreignId('work_shop_id');
             $table->foreign('work_shop_id')->references('id')->on('work_shops')->onDelete('cascade');
-            $table->string('status')->default('1');
+            $table->string('status')->default(1);
             $table->string('result')->nullable();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

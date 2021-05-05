@@ -51,15 +51,15 @@
                             <div class="row">
                                 <div class="col-12 mb-4">
                                     @if(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->start)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->end)))
-                                    @if($workshop->link)
-                                    <a href="{{url($workshop->link)}}" class="btn btn-success">Watch Link Video</a>
-                                    @endif
-                                    @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->end)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->paper_end_time)))
-                                    @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
-                                    <a href="{{route('employee.workshop.test',$workshop->id)}}" class="btn btn-success">Give Test</a>
-                                    @else  
-                                    <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-danger">Mark Attendance</button></a>
-                                    @endif
+                                        @if($workshop->link)
+                                        <a target="_blank" href="{{url($workshop->link)}}" class="btn btn-success">Watch Link Video</a>
+                                        @endif
+                                        @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->end)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->paper_end_time)))
+                                            @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
+                                            <a href="{{route('employee.workshop.test',$workshop->id)}}" class="btn btn-success">Give Test</a>
+                                            @elseif(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first()->status == 1)
+                                            <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-danger">Mark Attendance</button></a>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="col-4">                                    

@@ -43,7 +43,7 @@
                                         @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->start)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->end)))
                                         <a href="{{route('employee.workshop.attend',$workshop->id)}}"><span class="badge badge-success">Attend</span></a>
                                         @elseif(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->end)) && Carbon\Carbon::now()->lt(Carbon\Carbon::parse($workshop->paper_end_time)))
-                                        @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->where('status','1')->first())
+                                        @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->where('status','0')->first())
                                         <a href="{{route('employee.challenge.show',$workshop->id)}}"><button class="btn btn-success">Challenge</button></a>
                                         @else
                                         <a href="{{route('employee.workshop.attended',$workshop->id)}}"><button class="btn btn-danger">Mark Attendance</button></a>

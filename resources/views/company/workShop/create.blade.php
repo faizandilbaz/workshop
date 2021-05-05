@@ -114,7 +114,7 @@
                 </div>
                 <h5 class="card-title text-center">Questions</h5>
                 <div>
-                    <h1 style="text-align: center"> Created Question Here</h1>
+                    <h1 style="text-align: center"> Created Questions Here</h1>
                     <div class="question_append">
 
                     </div>
@@ -164,8 +164,8 @@
                 '</div>'+
                 '<div class="col-md-2">'+
                     '<lable>Select Correct Option</lable>'+
-                    ' <select class="form-control show-tick append_more_'+q_id+'"  name="correct['+q_id+']" data-placeholder="Corect Option Number" required>'+
-                        '<option selected disabled >Correct Option Number</option>'+
+                    ' <select class="form-control show-tick append_more_'+q_id+'"  name="correct['+q_id+']" data-placeholder="Corect Option Number" required="true">'+
+                        '<option selected disabled value="">Correct Option Number</option>'+
                         '<option value="1">Option: 1</option>'+
                         '<option value="2" >Option: 2</option>'+
                     '</select>'+

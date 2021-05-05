@@ -55,7 +55,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$workshop->heading}}</td>
                                     <td>{{$workshop->description}}</td>
-                                    <td>{{$workshop->start->format('l M d,Y h:m')}}</td>
+                                    <td>{{$workshop->start->format('M d,Y H:i A')}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
