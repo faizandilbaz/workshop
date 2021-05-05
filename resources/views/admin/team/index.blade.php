@@ -8,7 +8,7 @@
                 <div class="header">
                     <h2><strong>All</strong>Teams</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">Team</li>
                         <li class="breadcrumb-item active">All</li>
                     </ul>
@@ -22,6 +22,7 @@
                                     <th>#</th>
                                     <th>Team Image</th>
                                     <th>Team Name</th>
+                                    <th>Team Company Name</th>
                                     <th>Team Email Address</th>
                                     <th>Team Detail</th>
                                     <th>Action</th>
@@ -40,6 +41,7 @@
                                         </a>
                                     </td>
                                     <td>{{$team->name}}</td>
+                                    <td>{{$team->company->name}}</td>
                                     <td>{{$team->email}}</td>
                                     <td>{{$team->detail}}</td>
                                     <td>
@@ -63,7 +65,7 @@
 
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
-        <form action="{{route('company.team.destroy',$team->id)}}" method="POST" enctype="multipart/form-data">
+        <form id="deleteForm" method="POST" enctype="multipart/form-data">
             @csrf
             @method('DELETE') 
             <div class="modal-content">
@@ -86,4 +88,15 @@
     </div>
 </div>
 @endif
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+        $('.delete-btn').click(function(){
+            let id = $(this).attr('id');
+            $('#id').val(id);
+            $('#deleteForm').attr('action','{{route('admin.team.destroy','')}}' +'/'+id);
+        });
+    });
+</script>
 @endsection

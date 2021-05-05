@@ -30,7 +30,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>Upcoming Workshops</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Workshops</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Workshops</a></li>
                         <li class="breadcrumb-item active">Upcoming Workshops</li>
                         
                     </ul>

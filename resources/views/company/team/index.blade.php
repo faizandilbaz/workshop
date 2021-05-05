@@ -18,7 +18,7 @@
                 <div class="header">
                     <h2><strong>All</strong>Teams</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Company</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i>Company</a></li>
                         <li class="breadcrumb-item active">Team</li>
                         <li class="breadcrumb-item active">All</li>
                     </ul>
@@ -69,10 +69,9 @@
         </div>
     </div>
 </section>
-@if(Auth::user()->teams->count() > '0')
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
-        <form action="{{route('company.team.destroy',$team->id)}}" method="POST" enctype="multipart/form-data">
+        <form id="deleteForm" method="POST" enctype="multipart/form-data">
             @csrf
             @method('DELETE') 
             <div class="modal-content">
@@ -94,5 +93,15 @@
         </form>
     </div>
 </div>
-@endif
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+        $('.delete-btn').click(function(){
+            let id = $(this).attr('id');
+            $('#id').val(id);
+            $('#deleteForm').attr('action','{{route('company.team.destroy','')}}' +'/'+id);
+        });
+    });
+</script>
 @endsection

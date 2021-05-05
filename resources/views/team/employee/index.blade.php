@@ -8,7 +8,7 @@
                 <div class="header">
                     <h2><strong>All</strong>Employee</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Team</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('team.dashboard')}}"><i class="zmdi zmdi-home"></i>Team</a></li>
                         <li class="breadcrumb-item active">Employee</li>
                         <li class="breadcrumb-item active">All</li>
                     </ul>

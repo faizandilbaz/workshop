@@ -6,7 +6,7 @@
             <div class="col-lg-7 col-md-6 col-sm-12">
                 <h2>Dashboard</h2>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Employee</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Employee</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ul>
                 <button class="btn btn-primary btn-icon mobile_menu" type="button"><i
@@ -61,10 +61,9 @@
                     <a href="{{ route('employee.workshop.index') }}">
                         <div class="card w_data_1">
                             <div class="body">
-                                    <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
-                                    <h4 class="mt-3">{{$upcoming->count()}}</h4>
-                                    <span class="text-muted">Upcoming WorkShop</span>
-                                
+                                <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
+                                <h4 class="mt-3">{{$upcoming->count()}}</h4>
+                                <span class="text-muted">Upcoming WorkShop</span>
                             </div>
                         </div>
                     </a>
