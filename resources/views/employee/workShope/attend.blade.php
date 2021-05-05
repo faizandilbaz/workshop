@@ -41,7 +41,6 @@
                     <div class="card mcard_3">
                         <div class="body">
                             <h4 class="m-t-10">{{$workshop->heading}}</h4>
-                            <p>{{$workshop->description}}</p>
                             <div class="text-right">
                                 @if(Auth::user()->workshopemployee->where('work_shop_id',$workshop->id)->first())
                                 <button class="btn btn-success">Attendance Marked</button>
@@ -76,6 +75,12 @@
                                     <h5>{{$workshop->paper_end_time->format( 'l M d,Y H:i A' )}}</h5>
                                 </div>                            
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>{!! $workshop->description !!}</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>               
                 </div>

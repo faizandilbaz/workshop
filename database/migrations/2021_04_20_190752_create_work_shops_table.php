@@ -17,7 +17,7 @@ class CreateWorkShopsTable extends Migration
             $table->id();
             $table->string('heading')->nullable();
             $table->string('link')->nullable();
-            $table->string('description')->nullable();
+            $table->longtext('description')->nullable();
             $table->timestamp('start')->nullable();
             $table->timestamp('end')->nullable();
             $table->timestamp('time')->nullable();

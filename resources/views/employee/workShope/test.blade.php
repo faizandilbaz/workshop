@@ -19,12 +19,12 @@
         </div>
         <form  action="{{route('employee.result.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
-            @foreach($questions as $question)
+            @foreach($questions as $key => $question)
             <div class="card">
                 <div class="body">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>{{$question->statement}}</p>
+                            <p>Question No.{{$key+1}} : {{$question->statement}} ?</p>
                         </div>
                         @foreach($question->options as $key => $option)
                         <div class="col-md-6">

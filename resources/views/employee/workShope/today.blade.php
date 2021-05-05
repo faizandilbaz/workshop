@@ -40,7 +40,6 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Description</th>
                                     <th>Starting On</th>
                                     <th>Action</th>
                                 </tr>
@@ -50,7 +49,6 @@
                                 @if(Carbon\Carbon::now()->gte(Carbon\Carbon::parse($workshop->start))  && Carbon\Carbon::now()->lte(Carbon\Carbon::parse($workshop->paper_end_time)))
                                 <tr>
                                     <td>{{$workshop->heading}}</td>
-                                    <td>{{$workshop->description}}</td>
                                     <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>
                                     <td>
                                         @php
