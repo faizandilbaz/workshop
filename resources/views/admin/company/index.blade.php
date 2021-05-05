@@ -8,7 +8,7 @@
                 <div class="header">
                     <h2><strong>All</strong>Companys</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">Company</li>
                         <li class="breadcrumb-item active">All</li>
                     </ul>
@@ -64,11 +64,9 @@
         </div>
     </div>
 </section>
-@if(App\Models\Company::all()->count() > '0')
-
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
-        <form action="{{route('admin.company.destroy',$company->id)}}" method="POST" enctype="multipart/form-data">
+        <form id="deleteForm" method="POST" enctype="multipart/form-data">
             @csrf
             @method('DELETE') 
             <div class="modal-content">
@@ -90,5 +88,15 @@
         </form>
     </div>
 </div>
-@endif
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+        $('.delete-btn').click(function(){
+            let id = $(this).attr('id');
+            $('#id').val(id);
+            $('#deleteForm').attr('action','{{route('admin.company.destroy','')}}' +'/'+id);
+        });
+    });
+</script>
 @endsection

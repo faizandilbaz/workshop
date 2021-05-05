@@ -1,6 +1,7 @@
 @extends('layout.company')
 @section('style')
-<link rel="stylesheet" href="{{asset('assets/plugins/select2/select2.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/assets/plugins/select2/select2.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/assets/plugins/summernote/dist/summernote.css')}}"/>
 
 @endsection
 @section('content')
@@ -13,7 +14,7 @@
                     <div class="col-lg-7 col-md-6 col-sm-12">
                         <h2>Company</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Company</a>
+                            <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i> Company</a>
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Work Shop</a></li>
                             <li class="breadcrumb-item active">create</li>
@@ -80,10 +81,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-12 txt4">
+                                    <div class="form-group col-md-12">
                                         <label>Description</label>
                                         <textarea rows="4" name="description"  placeholder="Enter description"
-                                            class="form-control txt4" required>{{old('description')}}</textarea>
+                                            class="form-control summernote" required>{{old('description')}}</textarea>
                                     </div>
                                 </div>
 
@@ -130,6 +131,7 @@
 
 @endsection
 @section('script')
+<script src="{{asset('admin/assets/plugins/summernote/dist/summernote.js')}}"></script>
 {{-- <script src="{{asset('admin/assets/plugins/jquery-validation/jquery.validate.js')}}"></script> --}}
 <!-- Jquery Validation Plugin Css -->
 <script src="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.js')}}"></script> <!-- JQuery Steps Plugin Js -->

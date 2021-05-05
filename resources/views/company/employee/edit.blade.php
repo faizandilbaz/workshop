@@ -9,7 +9,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2><strong>Edit</strong> Employee</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Company</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i>Company</a></li>
                         <li class="breadcrumb-item active">Employee</li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ul>

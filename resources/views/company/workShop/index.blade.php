@@ -11,7 +11,7 @@
                 <div class="header">
                     <h2><strong>All</strong>Work Shop</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Company</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i>Company</a></li>
                         <li class="breadcrumb-item active">WorkShop</li>
                         <li class="breadcrumb-item active">All</li>
                     </ul>

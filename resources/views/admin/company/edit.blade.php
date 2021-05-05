@@ -10,7 +10,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2><strong>Edit</strong> Comany</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="zmdi zmdi-home"></i>Admin</a></li>
                         <li class="breadcrumb-item active">Company</li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ul>

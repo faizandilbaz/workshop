@@ -1,5 +1,6 @@
 @extends('layout.company')
 @section('style')
+<link rel="stylesheet" href="{{asset('admin/assets/plugins/summernote/dist/summernote.css')}}"/>
 @endsection
 @section('content')
 <section class="content">
@@ -9,7 +10,7 @@
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2><strong>Edit</strong> Team</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i>Company</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i>Company</a></li>
                         <li class="breadcrumb-item active">WorkShop</li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ul>
@@ -72,7 +73,7 @@
                                     <div class="form-group col-md-12 txt4">
                                         <label>Description</label>
                                         <textarea rows="4" name="description" placeholder="Enter description"
-                                            class="form-control txt4">{{$workshop->description}}</textarea>
+                                            class="form-control summernote">{{$workshop->description}}</textarea>
                                     </div>
                                 </div>
 
@@ -217,6 +218,7 @@
 </div>
 @endsection
 @section('script')
+<script src="{{asset('admin/assets/plugins/summernote/dist/summernote.js')}}"></script>
 <script>
     $(document).ready(function(){
         $('.edit-btn').click(function(){
