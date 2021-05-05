@@ -162,12 +162,10 @@
                 '</div>'+
                 '<div class="col-md-2">'+
                     '<lable>Select Correct Option</lable>'+
-                    ' <select class="form-control show-tick " name="correct['+q_id+']" data-placeholder="Corect Option Number" required>'+
-                        '<option selected disabled>Correct Option Number</option>'+
+                    ' <select class="form-control show-tick append_more_'+q_id+'"  name="correct['+q_id+']" data-placeholder="Corect Option Number" required>'+
+                        '<option selected disabled >Correct Option Number</option>'+
                         '<option value="1">Option: 1</option>'+
-                        '<option value="2">Option: 2</option>'+
-                        '<option value="3">Option: 3</option>'+
-                        '<option value="4">Option: 4</option>'+
+                        '<option value="2" >Option: 2</option>'+
                     '</select>'+
                 '</div>'+
             '</div>'+
@@ -217,7 +215,11 @@
                 '<div>'+
                     '<button type="button" class="btn btn-danger options_remove" counter="'+counter+'" q_id="'+id+'">-</button>'+
                 '</div>'  
-            )
+            );
+            $('.append_more_'+id).append(
+                '<option value="1">Option: 3</option>'+
+                '<option value="2" >Option: 4</option>'
+            );
             }
         });
         $('.question_append').on('click','.options_remove',function(){

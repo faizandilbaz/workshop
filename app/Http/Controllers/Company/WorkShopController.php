@@ -41,34 +41,39 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
-        
-        if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
-        && ((Carbon::parse($request->end))->lt(Carbon::parse($request->paper_end_time))))
-        {
-            $workShop = WorkShop::create($request->all());
-            foreach ($request->questions as $qkey => $question) {
-                $question = Question::create([
-                    'work_shop_id' => $workShop->id,
-                    'statement' => $question
-                ]);;
-                foreach ($request->options[$qkey] as $okey => $option) {
-                    $optionN = Option::create([
-                        'question_id' => $question->id,
-                        'option' => $option
-                    ]);
-                    if ($request->correct[$qkey] == $okey+1) {
-                        $question->update([
-                            'option_id' => $optionN->id
+        if($request->questions){
+            if((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
+            && ((Carbon::parse($request->end))->lt(Carbon::parse($request->paper_end_time))))
+            {
+                $workShop = WorkShop::create($request->all());
+                foreach ($request->questions as $qkey => $question) {
+                    $question = Question::create([
+                        'work_shop_id' => $workShop->id,
+                        'statement' => $question
+                    ]);;
+                    foreach ($request->options[$qkey] as $okey => $option) {
+                        $optionN = Option::create([
+                            'question_id' => $question->id,
+                            'option' => $option
                         ]);
+                        if ($request->correct[$qkey] == $okey+1) {
+                            $question->update([
+                                'option_id' => $optionN->id
+                            ]);
+                        }
                     }
                 }
+                MailHelper::workshop(Auth::user());
+                alert()->success('Workshop Stored Successfully');
+                return redirect()->back();
             }
-            MailHelper::workshop(Auth::user());
-            alert()->success('Workshop Stored Successfully');
-            return redirect()->back();
+            else{
+                alert()->warning('Time Adjustment Issue','Kindly Put Time Rightly');
+                return redirect()->back()->withInput();
+            }
         }
         else{
-            alert()->warning('Time Adjustment Issue','Kindly Put Time Rightly');
+            alert()->warning('No Question were Added');
             return redirect()->back()->withInput();
         }
      
