@@ -33,7 +33,7 @@
                                     </div>
                                     
                                     <div class="col-md-6">
-                                       <input type="gmail" class="form-control" name="email" placeholder="Email" required>
+                                       <input type="email" class="form-control" name="email" placeholder="Email" required>
                    
                                     </div>
                                 </div>
