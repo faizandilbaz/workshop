@@ -58,7 +58,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon green"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">{{App\Models\Workshop::all()->count()}}</h4>
+                        <h4 class="mt-3">{{App\Models\WorkShop::all()->count()}}</h4>
                         <span class="text-muted">Total WorkShop</span>
                    </div>
                 </div>
@@ -67,7 +67,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon cyan"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">{{App\Models\Workshop::where('start',Carbon\Carbon::today())->count()}}</h4>
+                        <h4 class="mt-3">{{App\Models\WorkShop::where('start',Carbon\Carbon::today())->count()}}</h4>
                         <span class="text-muted">Today WorkShop</span>
                        
                    </div>
@@ -77,7 +77,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
-                        <h4 class="mt-3">{{App\Models\Workshop::where('paper_end_time','<',Carbon\Carbon::today())->count()}}</h4>
+                        <h4 class="mt-3">{{App\Models\WorkShop::where('paper_end_time','<',Carbon\Carbon::today())->count()}}</h4>
                         <span class="text-muted">Upcoming WorkShop</span>
                        
                    </div>
