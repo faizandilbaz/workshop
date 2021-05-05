@@ -229,6 +229,8 @@
             $('.check_'+id).attr("counter", function() { return $('.check_'+id).attr("counter") - 2 });
 
             $('.options_append-q_'+id).children().remove();
+            $('.append_more_'+id).find("option:last").remove();
+            $('.append_more_'+id).find("option:last").remove();
         });
         
             $('.remove_question').on('click',function(){
