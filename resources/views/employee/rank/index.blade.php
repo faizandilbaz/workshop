@@ -41,7 +41,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
-                                    <th>Description</th>
                                     <th>Starting On</th>
                                     <th>End On</th>
                                     <th>Marks</th>
@@ -52,7 +51,6 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$workshop->heading}}</td>
-                                    <td>{{$workshop->description}}</td>
                                     <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>
                                     <td>{{$workshop->end->format('l M d,Y H:i A')}}</td>
                                     <td>

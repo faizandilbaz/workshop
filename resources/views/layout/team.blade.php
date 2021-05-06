@@ -71,13 +71,17 @@
                 </li>
                 <li><a href="{{ route('team.dashboard') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
                 </li>
-            
-                {{-- <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Teams</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Projects</span></a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('team.info.create') }}">Add</a></li>
-                        <li><a href="{{ route('team.info.index') }}">All Teams</a></li>
+                        <li>
+                            <a href="{{ route('team.project.new') }}">New  
+                                <span class="badge badge-danger">{{Auth::user()->projects->where('status','Pending')->count()}}</span> 
+
+                            </a>
+                        </li>
+                        <li><a href="{{ route('team.employee.index') }}">All Employee</a></li>
                     </ul>
-                </li> --}}
+                </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('team.employee.create') }}">Add</a></li>

@@ -48,6 +48,9 @@ class Company extends Authenticatable
     public function teams(){
         return $this->hasMany(Team::class);
     }
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
     public function employees(){
         return $this->hasMany(User::class);
     }

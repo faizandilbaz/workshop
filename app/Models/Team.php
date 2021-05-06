@@ -19,7 +19,7 @@ class Team extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email', 'password','image','detail','status','api_token','company_id'
+        'name','email', 'password','image','detail','status','api_token','company_id','points'
     ];
    
 
@@ -62,6 +62,9 @@ class Team extends Authenticatable
     
     public function employee(){
         return $this->hasMany(User::class);
+    }
+    public function projects(){
+        return $this->hasMany(Project::class);
     }
 }
 

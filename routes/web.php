@@ -75,6 +75,8 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     ////////////////////////////////Profile///////////////////////////////
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
     Route::put('company/update/{id}','CompanyController@update')->name('update');
+    ////////////////////////////////PROJECT CONTROLLERS/////////////////////////////
+    Route::resource('project', 'ProjectController');
   });
   });
 
@@ -101,6 +103,11 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     ////////////////////////////////Profile///////////////////////////////
     Route::view('team/profile', 'team.profile.index')->name('profile.index');
     Route::put('team/update/{id}','TeamController@update')->name('update');
+     ////////////////////////////////PROJECT CONTROLLERS/////////////////////////////
+     Route::view('project/new', 'team.project.new')->name('project.new');
+     Route::get('project/accepted', 'ProjectController@accepted')->name('project.accepted');
+     Route::get('project/decline', 'ProjectController@decline')->name('project.decline');
+     Route::resource('project', 'ProjectController');
 
   });
   });

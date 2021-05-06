@@ -46,7 +46,7 @@ class EmployeeController extends Controller
             return redirect()->back();
         }
         User::create($request->all());
-        alert()->success('Employee Added Successfully', 'Team Added Successfully');
+        alert()->success('Employee Added Successfully');
         return redirect()->back(); 
     }
 

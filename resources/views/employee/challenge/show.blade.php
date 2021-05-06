@@ -25,10 +25,10 @@
                                     <th>Percentage</th>
                                     @if(Auth::user()->challenges->where('work_shop_id',$workshop->id)->first())
                                     <th>Your Right Answer</th>
-                                    <th>Action</th>
-                                    @else 
                                     <th>Status</th>
+                                    @else 
                                     <th>Action</th>
+                                    <th>Status</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -41,24 +41,28 @@
                                     <td>{{$workshop->questions->count()}}</td>
                                     <td>{{$workshopemployee->result}}</td>
                                     <td>{{ round((( $workshopemployee->result / $workshop->questions->count() ) * 100)),2  }} %</td>
-                                    @if(Auth::user()->challenges->where('work_shop_id',$workshop->id)->first())
+                                    @if(Auth::user()->challenges->where('user_id',$workshopemployee->employee->id)->first())
                                     <td>{{$challenge->result}}</td>
                                     <td>
                                         @if($challenge->result > $workshopemployee->result)
-                                        <button class="btn btn-success">Win</button>
+                                        <button class="btn btn-success">You Win</button>
                                         @elseif($challenge->result < $workshopemployee->result)
-                                        <button class="btn btn-danger">Loss</button>
+                                        <button class="btn btn-danger">You Loss</button>
                                         @else 
-                                        <button class="btn btn-primary">Equal</button>
+                                        <button class="btn btn-primary">Tied Challenge</button>
                                         @endif
                                     </td>
                                     @else 
-                                    <td><button class="btn btn-success">Completed</button></td>
+                                    @if(Auth::user()->challenges->where('work_shop_id',$workshop->id)->count() == 0 ))
                                     <td>
                                         <a href="{{route('employee.challenge.stores',$workshopemployee->id)}}">
                                             <button class="btn btn-primary">Challenge</button>
                                         </a>
                                     </td>
+                                    @else 
+                                    <td></td>
+                                    @endif
+                                    <td><button class="btn btn-success">Completed</button></td>
                                     @endif 
                                 </tr>
                                 @endif

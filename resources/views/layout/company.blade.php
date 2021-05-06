@@ -98,6 +98,13 @@
 
                     </ul>
                 </li>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Project</span></a>
+                    <ul class="ml-menu">
+                        <li><a href="{{ route('company.project.create') }}">Create</a></li>
+                        <li><a href="{{ route('company.project.index') }}"> Manage Projects</a></li>
+
+                    </ul>
+                </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Teams</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.team.create') }}">Add</a></li>

@@ -40,7 +40,6 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Description</th>
                                     <th>Starting On</th>
                                     <th>End On</th>
                                     <th>Marks</th>
@@ -51,7 +50,6 @@
                                 @if(Carbon\Carbon::now()->gt(Carbon\Carbon::parse($workshop->paper_end_time)))
                                 <tr>
                                     <td>{{$workshop->heading}}</td>
-                                    <td>{{$workshop->description}}</td>
                                     <td>{{$workshop->start->format('l M d,Y H:i A')}}</td>
                                     <td>{{$workshop->end->format('l M d,Y H:i A')}}</td>
                                     <td>

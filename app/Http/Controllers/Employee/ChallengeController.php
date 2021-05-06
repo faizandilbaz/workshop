@@ -51,6 +51,7 @@ class ChallengeController extends Controller
             'work_shop_employee_id' => $workshopemployee->id,
             'challenger_id' => Auth::user()->id
         ]);
+        alert()->success('Challenge Created Successfully');
         return redirect()->route('employee.workshop.test',$workshopemployee->workshop->id);
     }
 
@@ -66,7 +67,6 @@ class ChallengeController extends Controller
         $workshopemployees = WorkshopEmployee::orderBy('result','DESC')->where('work_shop_id',$workshop->id)->where('status',0)->get();
         $challenge = Challenge::where('challenger_id',Auth::user()->id)->first();
         return view('employee.challenge.show')->with('workshopemployees',$workshopemployees)->with('workshop',$workshop)->with('challenge',$challenge);
-   
     }
 
     /**
