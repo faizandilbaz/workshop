@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Team;
+namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project;
+use App\Models\Employeenote;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class EmployeenoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,46 +36,29 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employeenote =  Employeenote::create($request->all());
+        alert()->success('Message Send Successfully');
+        return redirect()->back(); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Employeenote  $employeenote
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employeenote $employeenote)
     {
-        $project = Project::find($id);
-        return view('team.project.show',compact('project'));   
-    }
-    public function accepted($id)
-    {
-        $project = Project::find($id);
-        $project->update([
-            'status' => 'Accepted'
-        ]);
-        alert()->success('Project Accepted Successfully');
-        return redirect()->back();
-    }
-    public function decline($id)
-    {
-        $project = Project::find($id);
-        $project->update([
-            'status' => 'Decline'
-        ]);
-        alert()->success('Project Offer Decline Successfully');
-        return redirect()->back();
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Employeenote  $employeenote
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Employeenote $employeenote)
     {
         //
     }
@@ -84,28 +67,28 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Employeenote  $employeenote
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
     {
-        $project = Project::find($id);
-        $project->update([
-            'note' => $request->note,
-            'status' => "Completed"
-        ]);
-        alert()->success('Project Mark Completed Successfully');
+        $employeenote = Employeenote::find($id);
+        $employeenote->update($request->all());
+        alert()->success('Reply Send Successfully');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Employeenote  $employeenote
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+        $employeenote = Employeenote::find($id);
+        $employeenote->delete();
+        alert()->success('Message Deleted Successfully');
+        return redirect()->back();
     }
 }

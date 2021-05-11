@@ -39,10 +39,6 @@ class ProjectController extends Controller
     {
         $project =  Project::create(
         [ 'dpoints' => $request->points ]+$request->all());
-        $team = Team::find($request->team_id);
-        $team->update([
-            'points' => $team->points += $request->points         
-            ]); 
         alert()->success('Project Created Successfully');
         return redirect()->back(); 
     }
@@ -53,10 +49,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
-    }
+        $project = Project::find($id);
+        return view('company.project.show',compact('project'));     }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,6 +78,19 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $project->update($request->all());
         alert()->success('Project Updated Successfully');
+        return redirect()->back();
+    }
+    public function points(Request $request,$id)
+    {
+        $project = Project::find($id);
+        $team = Team::where('id',$project->team->id)->first();
+        $project->update([
+            'getpoints' => $request->getpoints
+        ]);
+        $team->update([
+            'points' => $request->getpoints + $team->points
+        ]);
+        alert()->success('Points Assigned To Team Successfully');
         return redirect()->back();
     }
 

@@ -66,5 +66,13 @@ class Team extends Authenticatable
     public function projects(){
         return $this->hasMany(Project::class);
     }
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
+    public function employeenotes(){
+        return $this->hasMany(Employeenote::class);
+    }
 }
-

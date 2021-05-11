@@ -76,7 +76,12 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::view('company/profile', 'company.profile.index')->name('profile.index');
     Route::put('company/update/{id}','CompanyController@update')->name('update');
     ////////////////////////////////PROJECT CONTROLLERS/////////////////////////////
+    Route::view('project/accepted', 'company.project.accepted')->name('project.accepted');
+    Route::view('project/decline', 'company.project.decline')->name('project.decline');
+    Route::view('project/completed', 'company.project.completed')->name('project.completed');
+    Route::put('project/points/{id}','ProjectController@points')->name('project.points');
     Route::resource('project', 'ProjectController');
+    Route::resource('note', 'NoteController');
   });
   });
 
@@ -105,9 +110,20 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::put('team/update/{id}','TeamController@update')->name('update');
      ////////////////////////////////PROJECT CONTROLLERS/////////////////////////////
      Route::view('project/new', 'team.project.new')->name('project.new');
-     Route::get('project/accepted', 'ProjectController@accepted')->name('project.accepted');
-     Route::get('project/decline', 'ProjectController@decline')->name('project.decline');
+     Route::view('project/accepted', 'team.project.accept')->name('project.accept');
+     Route::view('project/decline', 'team.project.decline')->name('project.declines');
+     Route::view('project/complete', 'team.project.completed')->name('project.completed');
+     Route::get('project/accepted/{id}', 'ProjectController@accepted')->name('project.accepted');
+     Route::get('project/decline/{id}', 'ProjectController@decline')->name('project.decline');
+     Route::get('project/complete/{id}', 'ProjectController@complete')->name('project.complete');
      Route::resource('project', 'ProjectController');
+     Route::resource('note', 'NoteController');
+    ////////////////////////////////TASK CONTROLLERS/////////////////////////////
+    Route::put('task/points/{id}','TaskController@points')->name('task.points');
+    Route::resource('task', 'TaskController');
+    Route::resource('employeenote', 'EmployeenoteController');
+
+
 
   });
   });
@@ -142,7 +158,13 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     ////////////////////////////////Profile///////////////////////////////
     Route::view('profile', 'employee.profile.index')->name('profile.index');
     Route::put('employee/update/{id}','EmployeeController@update')->name('update');
-
+    ////////////////////////////////TASK CONTROLLERS/////////////////////////////
+    Route::view('task/running', 'employee.task.running')->name('task.running');
+    Route::view('task/completed', 'employee.task.completed')->name('task.completed');
+    Route::get('task/running/{id}', 'TaskController@accepted')->name('task.accepted');
+    Route::get('task/complete/{id}', 'TaskController@complete')->name('task.complete');
+    Route::resource('task', 'TaskController');
+    Route::resource('employeenote', 'EmployeenoteController');
   });
   });
 

@@ -1,4 +1,4 @@
-@extends('layout.team')
+@extends('layout.employee')
 @section('content')
 <section class="content">
 
@@ -6,10 +6,11 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="header">
-                    <h2><strong>Decline</strong> Projects</h2>
+                    <h2><strong>Completed </strong> Tasks</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('team.dashboard')}}"><i class="zmdi zmdi-home"></i>Team</a></li>
-                        <li class="breadcrumb-item active">Accepted Projects</li>
+                        <li class="breadcrumb-item"><a href="{{route('employee.dashboard')}}"><i class="zmdi zmdi-home"></i>Team</a></li>
+                        <li class="breadcrumb-item active">Completed Tasks</li>
+                        <li class="breadcrumb-item active">All</li>
                     </ul>
                 </div>
                 <div class="body">
@@ -20,27 +21,28 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Team Name</th>
-                                    <th>Project Title</th>
-                                    <th>Project Points</th>
+                                    <th>Task Title</th>
+                                    <th>Task Points</th>
                                     <th>Status</th>
                                     <th>Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (Auth::user()->projects->where('status','Accepted') as $key => $project)
+                                @foreach (Auth::user()->tasks->where('status','Completed') as $key => $task)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>{{$project->team->name}}</td>
-                                    <td>{{$project->title}}</td>
-                                    <td>{{$project->points}}</td>
+                                    <td>{{$task->team->name}}</td>
+                                    <td>{{$task->title}}</td>
+                                    <td>{{$task->points}}</td>
                                     <td>
-                                        <button class="btn btn-success">{{$project->status}}</button>
+                                        <button class="btn btn-danger">{{$task->status}}</button>
                                     </td>
                                     <td>
-                                        <a href="{{ route('team.project.show',$project->id) }}" type="submit" class="btn btn-primary edit">Detail</a>
+                                        <a href="{{route('employee.task.show',$task->id)}}" type="submit" class="btn btn-primary edit">Detail</a>
                                     </td>
                                 </tr>
                                 @endforeach
+                             
                             </tbody>
                         </table>
                     </div>

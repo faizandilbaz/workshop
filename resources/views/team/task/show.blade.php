@@ -1,4 +1,4 @@
-@extends('layout.company')
+@extends('layout.team')
 @section('style')
 <link rel="stylesheet" href="{{asset('admin/assets/plugins/summernote/dist/summernote.css')}}"/>
 <link rel="stylesheet" href="{{asset('admin/assets/plugins/select2/select2.css')}}" />
@@ -9,19 +9,19 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Project Detail</h2>
+                    <h2>{{$task->employee->name}} Task Detail</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('team.dashboard')}}"><i class="zmdi zmdi-home"></i> Team</a></li>
-                        <li class="breadcrumb-item">{{$project->title}}</li>
+                        <li class="breadcrumb-item">{{$task->title}}</li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ul>
                     <button class="btn btn-primary btn-icon mobile_menu" type="button"><i class="zmdi zmdi-sort-amount-desc"></i></button>
                 </div>
-                <div class="col-lg-5 col-md-6 col-sm-12">                
-                    <button class="btn btn-primary  float-right" data-toggle="modal" id="{{$project->id}}" data-target="#message_modal"   type="button"> Send Message </button>
-                    <button class="btn btn-info  float-right" type="button"> {{$project->status}}</button>
-                    @if($project->getpoints == 0)
-                    <button data-toggle="modal" id="{{$project->id}}" data-target="#approved_modal" class="btn btn-success  float-right approve-btn" type="button">Give Points</button>
+                <div class="col-lg-5 col-md-6 col-sm-12">  
+                    <button class="btn btn-danger  float-right" data-toggle="modal" id="{{$task->id}}" data-target="#message_modal"   type="button"> Send Message </button>              
+                    <button class="btn btn-info  float-right" type="button"> {{$task->status}}</button>
+                    @if($task->getpoints == 0)
+                    <button data-toggle="modal" id="{{$task->id}}" data-target="#approved_modal" class="btn btn-success  float-right approve-btn" type="button">Give Points</button>
                     @endif
                 </div>
             </div>
@@ -32,56 +32,59 @@
                     <div class="card mcard_4">
                         <div class="body">
                             <div class="user">
-                                <h5 class="mt-3 mb-1">{{$project->title}}</h5>
-                                @if($project->deadline)
+                                <h5 class="mt-3 mb-1">{{$task->title}}</h5>
+                                @if($task->deadline)
                                 <ul class="list-unstyled mt-3 d-flex">
-                                    <li class="mr-3"><strong>DeadLine Date:-</strong> {{$project->deadline->format('M d,Y H:i A')}}</li>
+                                    <li class="mr-3"><strong>DeadLine Date:-</strong> {{$task->deadline->format('M d,Y H:i A')}}</li>
                                 </ul>
                                 @endif
                             </div>
                             <div class="progress-container progress-success">
                                 <span class="progress-badge">Total Points</span>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="{{$project->points}}" style="width: {{$project->points}}%;">
-                                        <span class="progress-value">{{$project->points}}</span>
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$task->points}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$task->points}}%;">
+                                        <span class="progress-value">{{$task->points}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="progress-container progress-danger">
                                 <span class="progress-badge">Total Points Give</span>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{$project->getpoints}}" aria-valuemin="0" aria-valuemax="{{$project->getpoints}}" style="width: {{$project->getpoints}}%;">
-                                        <span class="progress-value">{{$project->getpoints}}</span>
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{$task->getpoints}}" aria-valuemin="0" aria-valuemax="{{$task->getpoints}}" style="width: {{$task->getpoints}}%;">
+                                        <span class="progress-value">{{$task->getpoints}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+              
                 <div class="col-lg-8 col-md-12">
                     <div class="card">
                         <div class="body">
                             <h5>Description</h5>
-                            <span>{!! $project->description !!}</span>
+                            <span>{!! $task->description !!}</span>
                         </div>
                     </div>
+                    @if($task->note)
                     <div class="card">
                         <div class="body">
-                            <h5>Team Leader Report</h5>
-                            <span>{!! $project->note !!}</span>
+                            <h5>Your Submitted Report</h5>
+                            <span>{!! $task->note !!}</span>
                         </div>
-                    </div>   
-                    @foreach($project->notes as $note)
+                    </div> 
+                    @endif
+                    @foreach($task->employeenotes as $note)
                     <div class="card">
                         <div class="body">
                             <h5>
-                                {{$note->title}} 
-                                <button data-toggle="modal" id="{{$note->id}}" data-target="#delete_modal" 
-                                    class="btn btn-danger float-right btn-sm delete-btn"><i class="zmdi zmdi-delete"></i></button>
-                                @if($note->team_id)
+                                {{$note->title}}  
+                                <button data-toggle="modal" id="{{$note->id}}" data-target="#deletemessage_modal" 
+                                    class="btn btn-danger float-right btn-sm deletemessage-btn"><i class="zmdi zmdi-delete"></i></button>
+                                @if($note->employee_id)
                                 @if($note->reply == Null)
-                                <button data-toggle="modal" id="{{$note->id}}" data-target="#update_modal" class="btn btn-success update-btn float-right btn-sm">Reply</button>  
-                                @endif
+                               <button data-toggle="modal" id="{{$note->id}}" data-target="#update_modal" class="btn btn-success update-btn float-right btn-sm">Reply</button>  
+                                 @endif
                                  @endif
                             </h5>
                             <div class="status online message-data">
@@ -110,7 +113,7 @@
 </section>
 <div id="approved_modal" class="modal fade">
     <div class="modal-dialog">
-        <form action="{{route('company.project.points',$project->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('team.task.points',$task->id)}}" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="modal-content">
@@ -120,8 +123,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Give Points Out of {{$project->points}}</label>
-                        <input type="text" class="form-control" name="getpoints" placeholder="Give Points To Team">
+                        <label for="name">Give Points Out of {{$task->points}}</label>
+                        <input type="text" class="form-control" name="getpoints" placeholder="Give Points To Employee">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -132,9 +135,27 @@
         </form>
     </div>
 </div>
+<div id="deletemessage_modal" class="modal fade">
+    <div class="modal-dialog">
+        <form id="deletemessageForm" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('DELETE') 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Are You Sure to Delete this Message?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Yes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="message_modal" class="modal fade">
     <div class="modal-dialog">
-        <form action="{{route('company.note.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('team.employeenote.store')}}" method="POST" enctype="multipart/form-data">
             @method('POST')
             @csrf
             <div class="modal-content">
@@ -151,8 +172,9 @@
                         <label for="name">Message</label>
                         <textarea rows="4" name="message"  placeholder="Enter Note"
                         class="form-control summernote" ></textarea> 
-                        <input type="hidden" class="form-control" name="project_id" value="{{$project->id}}">                   
-                        <input type="hidden" class="form-control" name="company_id" value="{{Auth::user()->id}}">                   
+                        <input type="hidden" class="form-control" name="project_id" value="{{$task->project->id}}">                   
+                        <input type="hidden" class="form-control" name="task_id" value="{{$task->id}}">                   
+                        <input type="hidden" class="form-control" name="team_id" value="{{Auth::user()->id}}">                   
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -163,7 +185,6 @@
         </form>
     </div>
 </div>
-
 <div id="update_modal" class="modal fade">
     <div class="modal-dialog">
         <form id="updateForm" method="POST" enctype="multipart/form-data">
@@ -194,28 +215,19 @@
 @section('script')
 <script>
     $(document).ready(function(){
+        $('.deletemessage-btn').click(function(){
+            let id = $(this).attr('id');
+            $('#id').val(id);
+            $('#deletemessageForm').attr('action','{{route('team.employeenote.destroy','')}}' +'/'+id);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
         $('.update-btn').click(function(){
             let id = $(this).attr('id');
             $('#id').val(id);
-            $('#updateForm').attr('action','{{route('company.note.update','')}}' +'/'+id);
-        });
-    });
-</script>
-<script>
-    $(document).ready(function(){
-        $('.delete-btn').click(function(){
-            let id = $(this).attr('id');
-            $('#id').val(id);
-            $('#deleteForm').attr('action','{{route('company.note.destroy','')}}' +'/'+id);
-        });
-    });
-</script>
-<script>
-    $(document).ready(function(){
-        $('.approve-btn').click(function(){
-            let id = $(this).attr('id');
-            $('#id').val(id);
-            $('#deleteForm').attr('action','{{route('team.task.destroy','')}}' +'/'+id);
+            $('#updateForm').attr('action','{{route('team.employeenote.update','')}}' +'/'+id);
         });
     });
 </script>

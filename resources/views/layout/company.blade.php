@@ -17,20 +17,13 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
-
-    <!-- Favicon-->
-    <link rel="stylesheet" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
     <!-- Bootstrap Material Datetime Picker Css -->
     <link
         href="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}"
         rel="stylesheet" />
     <!-- Bootstrap Select Css -->
     <link href="{{asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="{{asset('admin/assets/css/style.min.css')}}">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     @yield('style')
@@ -101,7 +94,26 @@
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Project</span></a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('company.project.create') }}">Create</a></li>
-                        <li><a href="{{ route('company.project.index') }}"> Manage Projects</a></li>
+                        <li>
+                            <a href="{{ route('company.project.index') }}">Pending  
+                                <span class="badge badge-danger">{{Auth::user()->projects->where('status','Pending')->count()}}</span> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('company.project.accepted') }}">Accepted  
+                                <span class="badge badge-success">{{Auth::user()->projects->where('status','Accepted')->count()}}</span> 
+                            </a>                       
+                        </li>
+                        <li>
+                            <a href="{{ route('company.project.completed') }}">Completed  
+                                <span class="badge badge-info">{{Auth::user()->projects->where('status','Completed')->count()}}</span> 
+                            </a>                       
+                        </li>
+                        <li>
+                            <a href="{{ route('company.project.decline') }}">Decline  
+                                <span class="badge badge-primary">{{Auth::user()->projects->where('status','Decline')->count()}}</span> 
+                            </a>                       
+                        </li>
 
                     </ul>
                 </li>

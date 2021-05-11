@@ -6,10 +6,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="header">
-                    <h2><strong>Pending </strong>Projects</h2>
+                    <h2><strong>Completed </strong>Projects</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i>Company</a></li>
-                        <li class="breadcrumb-item active">Pending Projects</li>
+                        <li class="breadcrumb-item active">Completed Projects</li>
                     </ul>
                 </div>
                 <div class="body">
@@ -23,13 +23,14 @@
                                     <th>Project Title</th>
                                     <th>Project Points</th>
                                     <th>Status</th>
+                                    <th>Detail</th>
                                     <th>Action</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (Auth::user()->projects->where('status','Pending') as $key => $project)
+                                @foreach (Auth::user()->projects->where('status','Completed') as $key => $project)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$project->team->name}}</td>
@@ -38,14 +39,17 @@
                                     <td>
                                         @if($project->status == "Pending")
                                         <button class="btn btn-primary">Pending</button>
-                                        @elseif($project->status == "Compeleted")
-                                        <button class="btn btn-success">Compeleted</button>
+                                        @elseif($project->status == "Completed")
+                                        <button class="btn btn-success">Completed</button>
                                         @elseif($project->status == "Accepted")
                                         <button class="btn btn-info">Accepted</button>
                                         @else 
                                         <button class="btn btn-danger">Rejected</button>
                                         @endif
                                     </td>
+                                    <td>
+                                        <a href="{{ route('company.project.show',$project->id) }}" type="submit" class="btn btn-info edit">Detail</a>
+                                    </td>   
                                     <td>
                                         <a href="{{ route('company.project.edit',$project->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>

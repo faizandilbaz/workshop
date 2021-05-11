@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Team;
+namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return view('employee.task.index');
     }
 
     /**
@@ -42,40 +42,22 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $project = Project::find($id);
-        return view('team.project.show',compact('project'));   
-    }
-    public function accepted($id)
-    {
-        $project = Project::find($id);
-        $project->update([
-            'status' => 'Accepted'
-        ]);
-        alert()->success('Project Accepted Successfully');
-        return redirect()->back();
-    }
-    public function decline($id)
-    {
-        $project = Project::find($id);
-        $project->update([
-            'status' => 'Decline'
-        ]);
-        alert()->success('Project Offer Decline Successfully');
-        return redirect()->back();
+        $task = Task::find($id);
+        return view('employee.task.show',compact('task'));   
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Task $task)
     {
         //
     }
@@ -84,28 +66,37 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
     {
-        $project = Project::find($id);
-        $project->update([
+        $task = Task::find($id);
+        $task->update([
             'note' => $request->note,
             'status' => "Completed"
         ]);
-        alert()->success('Project Mark Completed Successfully');
+        alert()->success('Task Mark Completed Successfully');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Task $task)
     {
         //
+    }
+    public function accepted($id)
+    {
+        $task = Task::find($id);
+        $task->update([
+            'status' => 'Running'
+        ]);
+        alert()->success('Task Marked in Running State Successfully');
+        return redirect()->back();
     }
 }

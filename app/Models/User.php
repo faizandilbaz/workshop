@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email', 'password','image','detail','status','api_token','company_id','team_id'
+        'name','email', 'password','image','detail','status','api_token','company_id','team_id','points'
 
     ];
     public function setPasswordAttribute($value){
@@ -80,5 +80,11 @@ class User extends Authenticatable
     public function totalworkshop()
     {
         return $this->hasMany(Workshop::class)->where('company_id',Auth::user()->company->id)->count();
+    }
+    public function tasks(){
+        return $this->hasMany(Task::class,'employee_id');
+    }
+    public function employeenotes(){
+        return $this->hasMany(Employeenote::class,'employee_id');
     }
 }

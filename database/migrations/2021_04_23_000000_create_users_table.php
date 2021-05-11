@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('api_token')->nullable();
             $table->string('status')->default('1');
+            $table->integer('points')->default('0');
             $table->foreignId('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreignId('team_id');

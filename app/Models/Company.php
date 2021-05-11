@@ -69,5 +69,8 @@ class Company extends Authenticatable
             $this->attributes['image'] = ImageHelper::saveImage($value,'images'); 
         }
     }
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
 }
 

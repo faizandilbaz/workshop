@@ -87,6 +87,25 @@
                         <li><a href="{{ route('employee.challenge.index') }}">Challenge</a></li>
                     </ul>
                 </li>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i>  <span>Task</span></a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('employee.task.index') }}">New
+                                <span class="badge badge-primary">{{Auth::user()->tasks->where('status','Pending')->count()}}</span> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('employee.task.running') }}">Running
+                                <span class="badge badge-danger">{{Auth::user()->tasks->where('status','Running')->count()}}</span> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('employee.task.completed') }}">Completed
+                                <span class="badge badge-success">{{Auth::user()->tasks->where('status','Completed')->count()}}</span>         
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="{{ route('employee.profile.index') }}"><i class="zmdi zmdi-hc-fw"></i><span>Profile</span></a>
                 </li> 
             </ul>

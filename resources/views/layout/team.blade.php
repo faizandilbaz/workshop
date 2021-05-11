@@ -7,7 +7,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
     <title>::Teams :: Home</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Favicon-->
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/charts-c3/plugin.css') }}" />
@@ -16,6 +17,15 @@
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.min.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.css')}}">
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}"
+        rel="stylesheet" />
+    <!-- Bootstrap Select Css -->
+    <link href="{{asset('admin/assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @yield('style')
 </head>
@@ -76,10 +86,23 @@
                         <li>
                             <a href="{{ route('team.project.new') }}">New  
                                 <span class="badge badge-danger">{{Auth::user()->projects->where('status','Pending')->count()}}</span> 
-
                             </a>
                         </li>
-                        <li><a href="{{ route('team.employee.index') }}">All Employee</a></li>
+                        <li>
+                            <a href="{{ route('team.project.accept') }}">Accepted  
+                                <span class="badge badge-success">{{Auth::user()->projects->where('status','Accepted')->count()}}</span> 
+                            </a>                       
+                        </li>
+                        <li>
+                            <a href="{{ route('team.project.completed') }}">Completed  
+                                <span class="badge badge-info">{{Auth::user()->projects->where('status','Completed')->count()}}</span> 
+                            </a>                       
+                        </li>
+                        <li>
+                            <a href="{{ route('team.project.declines') }}">Decline  
+                                <span class="badge badge-primary">{{Auth::user()->projects->where('status','Decline')->count()}}</span> 
+                            </a>                       
+                        </li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Employee</span></a>
@@ -274,8 +297,7 @@
     <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
     <script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
     <!-- slimscroll, waves Scripts Plugin Js -->
-    
-    <script src="{{ asset('admin/assets/bundles/jvectormap.bundle.js') }}"></script> <!-- JVectorMap Plugin Js -->
+    ''
     <script src="{{ asset('admin/assets/bundles/sparkline.bundle.js') }}"></script> <!-- Sparkline Plugin Js -->
     <script src="{{ asset('admin/assets/bundles/c3.bundle.js') }}"></script>
 

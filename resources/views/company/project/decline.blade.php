@@ -6,10 +6,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="header">
-                    <h2><strong>Pending </strong>Projects</h2>
+                    <h2><strong>Decline</strong> Projects</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}"><i class="zmdi zmdi-home"></i>Company</a></li>
-                        <li class="breadcrumb-item active">Pending Projects</li>
+                        <li class="breadcrumb-item active">Decline Projects</li>
                     </ul>
                 </div>
                 <div class="body">
@@ -29,7 +29,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (Auth::user()->projects->where('status','Pending') as $key => $project)
+                                @foreach (Auth::user()->projects->where('status','Decline') as $key => $project)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$project->team->name}}</td>
