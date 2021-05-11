@@ -115,7 +115,7 @@
                 <div class="body">
                     <div class="row">
                         <div class="col-md-10">
-                            <h4>{{$question->statement}}</h4>
+                            <h4>Question No.{{$key+1}} - {{$question->statement}}</h4>
                         </div>
                         <div class="col-md-2">
                             <button statement="{{$question->statement}}" id="{{$question->id}}" data-toggle="modal" data-target="#edit_modal"class="btn btn-info btn-icon float-right">

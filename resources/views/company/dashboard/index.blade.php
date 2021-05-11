@@ -59,7 +59,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon cyan"><i class="zmdi zmdi-hc-fw"></i></div>
-                        <h4 class="mt-3">{{Auth::user()->workshops->where('start',Carbon\Carbon::today())->count()}}</h4>
+                        <h4 class="mt-3">{{$today->count()}}</h4>
                         <span class="text-muted">Today WorkShop</span>
                        
                    </div>
@@ -69,7 +69,7 @@
                 <div class="card w_data_1">
                    <div class="body">
                         <div class="w_icon dark"><i class="zmdi zmdi-hc-fw"></i></i></div>
-                        <h4 class="mt-3">{{Auth::user()->workshops->where('paper_end_time','<',Carbon\Carbon::today())->count()}}</h4>
+                        <h4 class="mt-3">{{$upcoming->count()}}</h4>
                         <span class="text-muted">Upcoming WorkShop</span>
                    </div>
                 </div>
