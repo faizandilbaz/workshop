@@ -55,7 +55,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
   ///////////////////////////////////////////////////COMPANY//////////////////////////////////////////
   Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Company', 'as' => 'company.',], function () {
-
+    Route::post('workshop/check','WorkShopController@checkworkshop')->name('workshop.check');
     Route::group(['middleware' => 'auth:company'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
@@ -68,6 +68,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
     ///////////////////////////////Work Shope/////////////////////////////
     Route::resource('workshop', 'WorkShopController');
+   
     Route::resource('question', 'QuestionController');
     Route::resource('option', 'OptionController');
     

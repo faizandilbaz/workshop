@@ -19,7 +19,6 @@
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12">  
                     <button class="btn btn-danger  float-right" data-toggle="modal" id="{{$project->id}}" data-target="#message_modal"   type="button"> Send Message </button>              
-                    <button class="btn btn-primary  float-right" type="button"> {{$project->dpoints}} Points</button>
                     <button class="btn btn-info  float-right" type="button"> {{$project->status}}</button>
                     @if($project->status == "Accepted")
                     <button data-toggle="modal" id="{{$project->id}}" data-target="#complete_modal" class="btn btn-success  float-right complete-btn" type="button">Complete Task</button>
@@ -36,23 +35,23 @@
                                 <h5 class="mt-3 mb-1">{{$project->title}}</h5>
                                 @if($project->deadline)
                                 <ul class="list-unstyled mt-3 d-flex">
-                                    <li class="mr-3"><strong>DeadLine Date:-</strong> {{$project->deadline->format('M d,Y H:i A')}}</li>
+                                    <li class="mr-3" id="deadline" deadline="{{$project->deadline}}"><strong>DeadLine Date:-</strong>{{$project->deadline->format('M d,Y H:i A')}}</li>
                                 </ul>
                                 @endif
                             </div>
                             <div class="progress-container progress-success">
                                 <span class="progress-badge">Total Points</span>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                                        <span class="progress-value">100</span>
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="" aria-valuemax="{{$project->points}}" style="width:%;">
+                                        <span class="progress-value">{{$project->points}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="progress-container progress-danger">
-                                <span class="progress-badge">Total Points Gained</span>
+                                <span class="progress-badge">Remaining Points</span>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{$project->getpoints}}" aria-valuemin="0" aria-valuemax="{{$project->getpoints}}" style="width: {{$project->getpoints}}%;">
-                                        <span class="progress-value">{{$project->getpoints}}</span>
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{$project->dpoints}}" aria-valuemin="0" aria-valuemax="{{$project->points}}" style="width: {{$project->dpoints}}%;">
+                                        <span class="progress-value">{{$project->dpoints}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +132,7 @@
                     <div class="card">
                         <div class="body">
                             <h5>Assign Task To Employees</h5>
-                            <form  action="{{route('team.task.store')}}" method="POST" enctype="multipart/form-data">
+                            <form  action="{{route('team.task.store')}}" method="POST" enctype="multipart/form-data" id="assignform">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -166,7 +165,7 @@
                                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                                     </div>
                                                     <input type="datetime-local" onkeydown="return false" name="deadline"
-                                                        class="form-control datetime"  placeholder="Ex: 30/07/2016 23:59">
+                                                        class="form-control datetime"  placeholder="Ex: 30/07/2016 23:59" id="assigndate">
                                                 </div>
                                             </div>
                                             <div class=" form-group col-md-6">
@@ -403,6 +402,13 @@
             $('#id').val(id);
             $('#updateForm').attr('action','{{route('team.note.update','')}}' +'/'+id);
         });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+      let deadline = $('#deadline').attr('deadline')
+      
     });
 </script>
 <script src="{{asset('admin/assets/plugins/summernote/dist/summernote.js')}}"></script>  

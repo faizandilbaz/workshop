@@ -8,6 +8,7 @@ use App\Models\Option;
 use App\Models\Question;
 use App\Models\WorkShop;
 use Carbon\Carbon;
+use Dotenv\Util\Regex;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,7 +64,7 @@ class WorkShopController extends Controller
                         }
                     }
                 }
-                MailHelper::workshop(Auth::user());
+                // MailHelper::workshop(Auth::user());
                 alert()->success('Workshop Stored Successfully');
                 return redirect()->back();
             }
@@ -144,5 +145,30 @@ class WorkShopController extends Controller
         $workshop->delete();
         alert()->success('Workshop Deleted Successfully');
         return redirect()->back();
+    }
+
+    public function checkworkshop(Request $request)
+    {
+        if ($request->heading == null || $request->link == null || $request->desc == null) {
+            return response()->json(4);
+        }
+        
+        elseif(Carbon::now()>=Carbon::parse($request->start) || $request->start == null){
+           return response()->json(1);
+        } 
+        
+        
+        elseif(Carbon::parse($request->start)>Carbon::parse($request->end) || $request->end == null ){
+           return response()->json(2);
+        }
+        
+        elseif(Carbon::parse($request->end)>Carbon::parse($request->paper_end_time) || $request->paper_end_time == null){
+           return response()->json(3);
+        }
+        elseif((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
+            && ((Carbon::parse($request->end))->lt(Carbon::parse($request->paper_end_time))))
+            {
+                return response()->json(0);
+            }
     }
 }

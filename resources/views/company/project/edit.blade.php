@@ -59,17 +59,17 @@
                                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                                     </div>
                                                     <input type="text"  value="{{$project->deadline->format('d/m/Y H:i A')}}"
-                                                        class="form-control "  readonly>
+                                                        class="form-control"  readonly>
                                                 </div>
                                             </div>
-                                          
+                                            
                                             <div class="form-group col-md-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                                     </div>
                                                     <input type="datetime-local" onkeydown="return false" name="deadline"
-                                                        class="form-control datetime" value="{{$project->deadline}}" placeholder="Ex: 30/07/2016 23:59">
+                                                        class="form-control datetime" value="{{$project->deadline}}" placeholder="Ex: 30/07/2016 23:59" required>
                                                 </div>
                                             </div>
                                            
