@@ -125,7 +125,7 @@
                                 <i class="zmdi zmdi-delete"></i>
                             </button>
                             &nbsp;
-                            <button statement="{{$question->statement}}" id="{{$question->id}}" data-toggle="modal" data-target="#edit_modal"class="btn btn-info btn-icon float-right">
+                            <button statement="{{$question->statement}}" id="{{$question->id}}" data-toggle="modal" data-target="#edit_modal"class="btn btn-info btn-icon float-right edit_question">
                                 <i class="zmdi zmdi-edit"></i>
                             </button>
                         </div>
@@ -220,7 +220,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Question Statement</label>
-                        <textarea class="form-control"  id="statement" name="statement" required>{{$question->statement}}</textarea>
+                        <textarea class="form-control"  id="statement" name="statement" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -371,6 +371,11 @@
             $('.remove_' + q_id).remove();
             q_id--
 
+        });
+        
+          $('.edit_question').on('click', function () {
+                let statement = $(this).attr('statement')
+                $('#statement').val(statement);
         });
 
 
