@@ -171,4 +171,26 @@ class WorkShopController extends Controller
                 return response()->json(0);
             }
     }
+
+    public function addQuestion(Request $request){
+        $workshop = WorkShop::find($request->workshop_id);
+        $question = Question::create([
+            'work_shop_id' => $workshop->id,
+            'statement' => $request->question,
+        ]);
+        foreach($request->options as $okey=>$option){
+            $option = Option::create([
+                'question_id' => $question->id,
+                'option' => $option,
+            ]);
+
+            if ($request->correct == $okey+1) {
+                $question->update([
+                    'option_id' => $option->id
+                ]);
+            }
+        }
+        alert()->success('Question was added to Workshop');
+        return redirect()->back();
+    }   
 }

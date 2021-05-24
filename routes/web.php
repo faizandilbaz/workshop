@@ -68,6 +68,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
 
     ///////////////////////////////Work Shope/////////////////////////////
     Route::resource('workshop', 'WorkShopController');
+    Route::post('workshop/question/add','WorkShopController@addQuestion')->name('workshop.add_question');
    
     Route::resource('question', 'QuestionController');
     Route::resource('option', 'OptionController');

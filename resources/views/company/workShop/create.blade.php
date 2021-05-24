@@ -171,7 +171,7 @@
                 '<textarea rows="2" name="questions[' + q_id + ']" style="resize:none" placeholder="Enter Question Statement" class="form-control txt4 q" required></textarea>' +
                 '</div>' +
                 '<div class="col-md-8">' +
-                '<lable>Select Correct Option</lable>' +
+                '<label>Select Correct Option</label>' +
                 ' <select class="form-control show-tick append_more_' + q_id + ' q"  name="correct[' + q_id + ']" data-placeholder="Corect Option Number" required="true">' +
                 '<option selected disabled value="">Correct Option Number</option>' +
                 '<option value="1">Option: 1</option>' +
@@ -227,8 +227,8 @@
                     '</div>'
                 );
                 $('.append_more_' + id).append(
-                    '<option value="1">Option: 3</option>' +
-                    '<option value="2" >Option: 4</option>'
+                    '<option value="3">Option: 3</option>' +
+                    '<option value="4" >Option: 4</option>'
                 );
             }
         });
