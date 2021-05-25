@@ -155,10 +155,10 @@ class WorkShopController extends Controller
         
         elseif(Carbon::now()>=Carbon::parse($request->start) || $request->start == null){
            return response()->json(1);
-        } 
+        }
         
         
-        elseif(Carbon::parse($request->start)>Carbon::parse($request->end) || $request->end == null ){
+        elseif(Carbon::parse($request->start)>=Carbon::parse($request->end) || $request->end == null ){
            return response()->json(2);
         }
         

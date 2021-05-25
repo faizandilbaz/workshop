@@ -42,7 +42,13 @@
                                         <a href="{{route('employee.task.show',$task->id)}}" type="submit" class="btn btn-primary edit">Detail</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('employee.task.accepted',$task->id) }}" type="submit" class="btn btn-success edit">Accept</a>
+                                        <a @if ((Carbon\Carbon::now())>(Carbon\Carbon::parse($task->deadline)))
+                                            disabled       
+                                        @else
+                                        href="{{ route('employee.task.accepted',$task->id) }}" type="submit" 
+                                        @endif 
+                                        
+                                        class="btn btn-success edit ">Accept</a>
                                     </td>
                                 </tr>
                                 @endforeach

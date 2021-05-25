@@ -27,7 +27,8 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-                        <form action="{{route('company.workshop.update',$workshop->id)}}" method="POST" enctype="multipart/form-data" id="form">
+                        <form action="{{route('company.workshop.update',$workshop->id)}}" method="POST"
+                            enctype="multipart/form-data" id="form">
                             @method('put')
                             @csrf
                             {{-- {{dd($workshop)}} --}}
@@ -190,7 +191,7 @@
         </div>
         @endforeach
     </div>
-</section>   
+</section>
 
 <div id="add_question" class="modal fade">
     <div class="modal-dialog modal-lg">
@@ -201,144 +202,165 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form action="{{route('company.workshop.add_question')}}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{route('company.workshop.add_question')}}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-md-8">
                             <label>Question Statement</label>
                             <textarea rows="2" name="question" style="resize:none"
                                 placeholder="Enter Question Statement" class="form-control txt4 q" required></textarea>
                         </div>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <label>Select Correct Option</label>
-                            <select class="form-control   mr-3 ms" id="append_more" name="correct" required="true">
+                            <select class="form-control   mr-3" id="append_more" name="correct" required="true">
+                                <option selected disabled value="">Correct Option Number</option>
+                                <option value="1">Option: 1</option>
+                                <option value="2">Option: 2</option>
+                            </select>
+                        </div> --}}
+
+                        <div class="form-group col-md-4">
+                            <label>Select Correct Option</label>
+                            <select class="form-control mr-3 ms" id="append_more" name="correct" required="true">
                                 <option selected disabled value="">Correct Option Number</option>
                                 <option value="1">Option: 1</option>
                                 <option value="2">Option: 2</option>
                             </select>
                         </div>
-                    </div>
-                    <input type="hidden" name="workshop_id" value="{{$workshop->id}}">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group form-float">
-                                <input type="text" class="form-control q" placeholder="Enter Option" name="options[]"
-                                    required>
+
+                        <input type="hidden" name="workshop_id" value="{{$workshop->id}}">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group form-float">
+                                    <input type="text" class="form-control q" placeholder="Enter Option"
+                                        name="options[]" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group form-float">
+                                    <input type="text" class="form-control q" placeholder=" Enter Option"
+                                        name="options[]" required>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" counter="2" class="check btn btn-primary add_options">+</button>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <div class="form-group form-float">
-                                <input type="text" class="form-control q" placeholder=" Enter Option" name="options[]"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" counter="2" class="check btn btn-primary add_options">+</button>
+                        <div class="row options_append">
                         </div>
                     </div>
-                    <div class="row options_append">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light">Add</button>
                     </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
-                <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light">Add</button>
-            </div>
+            </form>
         </div>
-        </form>
     </div>
-</div>
 
 
 
 
-<div id="edit_modal" class="modal fade">
-    <div class="modal-dialog">
-        <form  method="POST" enctype="multipart/form-data" id="q_edit">
-            @method('put')
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myModalLabel">Update Question Statement</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Question Statement</label>
-                        <textarea class="form-control" id="statement" name="statement" required></textarea>
+    <div id="edit_modal" class="modal fade">
+        <div class="modal-dialog">
+            <form action="{{route('company.question.update',$question->id)}}" method="POST"
+                enctype="multipart/form-data">
+                @method('put')
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myModalLabel">Update Question Statement</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Question Statement</label>
+                            <textarea class="form-control" id="statement" name="statement" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" id="submit"
+                            class="btn btn-primary waves-effect waves-light">Update</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
-                    <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light">Update</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
-<div id="delete_modal" class="modal fade">
-    <div class="modal-dialog">
-        <form id="delete_q" method="POST" enctype="multipart/form-data">
-            @method('DELETE')
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myModalLabel">Delete Question</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
-                    <button type="submit" id="delete" class="btn btn-primary waves-effect waves-light">Delete</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="edit_modals" class="modal fade">
-    <div class="modal-dialog">
-        <form id="updateForm" method="POST" enctype="multipart/form-data">
-            @method('PUT')
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myModalLabel">Update Option</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Option</label>
-                        <input type="text" id="option" class="form-control" name="option" value="" required>
+    <div id="delete_modal" class="modal fade">
+        <div class="modal-dialog">
+            <form id="delete_q" method="POST" enctype="multipart/form-data">
+                @method('DELETE')
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myModalLabel">Delete Question</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" id="delete"
+                            class="btn btn-primary waves-effect waves-light">Delete</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-@endsection
-@section('script')
-<script src="{{asset('admin/assets/plugins/summernote/dist/summernote.js')}}"></script>
-{{--
-<script src="{{asset('admin/assets/plugins/jquery-validation/jquery.validate.js')}}"></script> --}}
-<!-- Jquery Validation Plugin Css -->
-<script src="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.js')}}"></script> <!-- JQuery Steps Plugin Js -->
-<script src="{{asset('admin/assets/js/pages/forms/form-wizard.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/momentjs/moment.js')}}"></script> <!-- Moment Plugin Js -->
-<!-- Bootstrap Material Datetime Picker Plugin Js -->
-<script
-    src="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
-</script>
-<script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
-<script src="{{asset('assets/plugins/select2/select2.min.js')}}"></script>
-<script>
-    $(document).ready(function(){
+    <div id="edit_modals" class="modal fade">
+        <div class="modal-dialog">
+            <form id="updateForm" method="POST" enctype="multipart/form-data">
+                @method('PUT')
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myModalLabel">Update Option</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Option</label>
+                            <input type="text" id="option" class="form-control" name="option" value="" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    @endsection
+    @section('script')
+
+    <script src="{{asset('admin/assets/plugins/summernote/dist/summernote.js')}}"></script>
+
+    <script src="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.js')}}"></script>
+    <script src="{{asset('admin/assets/js/pages/forms/form-wizard.js')}}"></script>
+    <script src="{{asset('admin/assets/plugins/momentjs/moment.js')}}"></script> 
+
+    <script
+        src="{{asset('admin/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
+    </script>
+    <script src="{{asset('admin/assets/js/pages/forms/basic-form-elements.js')}}"></script>
+    <script src="{{asset('assets/plugins/select2/select2.min.js')}}"></script>
+
+    
+
+    
+    <script>
+        $(document).ready(function(){
+
         let q_id = 0;
         let counter;
+
         $('.add_question').on('click', function () {
             $('.question_append').append('<input type="hidden" name="" id="que" value="100">')
+
             q_id++;
             counter = 2;
         });
@@ -372,38 +394,43 @@
                     '<option value="3">Option: 3</option>' +
                     '<option value="4">Option: 4</option>'
                 );
+                
             }
         });
+
         $('.options_append').on('click', '.options_remove', function () {
             $('.check').attr("counter", function () { return $('.check').attr("counter") - 2 });
+
             $('.options_append').children().remove();
             $('#append_more').find("option:last").remove();
             $('#append_more').find("option:last").remove();
         });
+
         $('.remove_question').on('click', function () {
             $('.remove_' + q_id).remove();
             q_id--
+
         });
         
           $('.edit_question').on('click', function () {
-                let id = $(this).attr('id');
                 let statement = $(this).attr('statement')
                 $('#statement').val(statement);
-                $('#q_edit').attr('action','{{route('company.question.update','')}}' +'/'+id);
         });
-        
+
+
         $('.edit-btn').click(function(){
             let option = $(this).attr('option');
             let id = $(this).attr('id');
             $('#option').val(option);
             $('#id').val(id);
-            
+            $('#updateForm').attr('action','{{route('company.option.update','')}}' +'/'+id);
         }); 
         
         $('.delete-btn').click(function(){
             let id = $(this).attr('id');
             $('#delete_q').attr('action','{{route('company.question.destroy','')}}' +'/'+id);
         });  
+
         $('#submit').on('click', function (e) {
             let start = $('#start').val();
             let end = $('#end').val();
@@ -411,6 +438,7 @@
             let heading = $('#heading').val();
             let link = $('#link').val();
             let desc = $('#desc').val();
+
             $.ajax({
                 url: "{{route('company.workshop.check')}}",
                 type: 'POST',
@@ -431,6 +459,7 @@
                             text: 'Kindly Put Start-Time Rightly',
                         });
                     }
+
                     else if (response == 2) {
                         Swal.fire({
                             icon: 'error',
@@ -438,6 +467,7 @@
                             text: 'Kindly Put End-Time Rightly',
                         });
                     }
+
                     else if (response == 3) {
                         Swal.fire({
                             icon: 'error',
@@ -445,6 +475,7 @@
                             text: 'Kindly Put Questionnaire-End-Time Rightly',
                         });
                     }
+
                     else if (response == 4) {
                         Swal.fire({
                             icon: 'error',
@@ -452,6 +483,7 @@
                             text: 'Kindly fill-out all input field',
                         });
                     }
+
                     else if (response == 0) {    
                         $('#form').submit(); 
                     }
@@ -459,6 +491,6 @@
             })
         })
     });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-@endsection
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @endsection

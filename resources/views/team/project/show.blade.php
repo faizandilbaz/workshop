@@ -378,6 +378,8 @@
 
 @section('script')
 <script>
+    
+
     $(document).ready(function(){
         $('.delete-btn').click(function(){
             let id = $(this).attr('id');
@@ -412,7 +414,7 @@
          let employ = $('.employe').val();
          let title = $('.title').val();
          let date = $('.date').val();
-         let point = $('.point').val();
+         let point = $('.points').val();
 
          if (date == '' || title == '' || employ == '' || point == '' ) {
             Swal.fire({
@@ -422,11 +424,28 @@
                         });
          }
          else{
-             $('#assignform').submit();
+            $.ajax({
+                url: "{{route('team.project.check')}}",
+                type: 'POST',
+                data: {
+                    deadline: deadline,
+                    date: date,
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response == 1) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Time Error',
+                            text: 'Kindly Put Time Rightly',
+                        });
+                    }
+                    else if (response == 0) {    
+                        $('#assignform').submit(); 
+                    }
+                }
+            })
          }
-        //  else if(new date(deadline)<new date(date)){
-        //      alert(1);
-        //  }
         });
     });
 </script>

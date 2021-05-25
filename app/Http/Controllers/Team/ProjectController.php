@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Team;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -107,5 +108,16 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+
+    public function check(Request $request)
+    {
+        if((Carbon::parse($request->deadline))<=(Carbon::parse($request->date)) || $request->date<=Carbon::now()){
+            return response()->json(1);
+        }
+        else{
+            return response()->json(0);          
+        }
+       
     }
 }

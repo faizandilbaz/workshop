@@ -111,6 +111,7 @@ Route::post('login','\App\Http\Controllers\AuthController@login')->name('login-p
     Route::view('team/profile', 'team.profile.index')->name('profile.index');
     Route::put('team/update/{id}','TeamController@update')->name('update');
      ////////////////////////////////PROJECT CONTROLLERS/////////////////////////////
+     Route::post('project/check', 'ProjectController@check')->name('project.check'); 
      Route::view('project/new', 'team.project.new')->name('project.new');
      Route::view('project/accepted', 'team.project.accept')->name('project.accept');
      Route::view('project/decline', 'team.project.decline')->name('project.declines');
