@@ -162,7 +162,7 @@ class WorkShopController extends Controller
            return response()->json(2);
         }
         
-        elseif(Carbon::parse($request->end)>Carbon::parse($request->paper_end_time) || $request->paper_end_time == null){
+        elseif(Carbon::parse($request->end)>=Carbon::parse($request->paper_end_time) || $request->paper_end_time == null){
            return response()->json(3);
         }
         elseif((Carbon::now()->lte(Carbon::parse($request->start))) && ((Carbon::parse($request->start))->lt(Carbon::parse($request->end))) 
