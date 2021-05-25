@@ -166,11 +166,11 @@
             $('.question_append').append(
                 '<div class="remove_' + q_id + '">' +
                 '<div class="row">' +
-                '<div class="form-group col-md-4">' +
+                '<div class="form-group col-md-8">' +
                 '<label>Question Statement</label>' +
                 '<textarea rows="2" name="questions[' + q_id + ']" style="resize:none" placeholder="Enter Question Statement" class="form-control txt4 q" required></textarea>' +
                 '</div>' +
-                '<div class="col-md-8">' +
+                '<div class="col-md-4">' +
                 '<label>Select Correct Option</label>' +
                 ' <select class="form-control show-tick append_more_' + q_id + ' q"  name="correct[' + q_id + ']" data-placeholder="Corect Option Number" required="true">' +
                 '<option selected disabled value="">Correct Option Number</option>' +

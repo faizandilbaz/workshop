@@ -253,7 +253,7 @@
 
 <div id="edit_modal" class="modal fade">
     <div class="modal-dialog">
-        <form  method="POST" enctype="multipart/form-data" id="q_edit">
+        <form method="POST" enctype="multipart/form-data" id="q_edit">
             @method('put')
             @csrf
             <div class="modal-content">
@@ -385,19 +385,19 @@
             q_id--
         });
         
-          $('.edit_question').on('click', function () {
+        $('.edit_question').on('click', function () {
                 let id = $(this).attr('id');
                 let statement = $(this).attr('statement')
                 $('#statement').val(statement);
                 $('#q_edit').attr('action','{{route('company.question.update','')}}' +'/'+id);
         });
-        
+
         $('.edit-btn').click(function(){
             let option = $(this).attr('option');
             let id = $(this).attr('id');
             $('#option').val(option);
             $('#id').val(id);
-            
+            $('#updateForm').attr('action','{{route('company.option.update','')}}' +'/'+id);
         }); 
         
         $('.delete-btn').click(function(){

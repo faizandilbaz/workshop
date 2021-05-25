@@ -44,12 +44,10 @@
                                         <a href="{{ route('company.workshop.edit',$workshop->id) }}" type="submit" class="btn btn-warning edit">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="{{route('company.workshop.destroy',$workshop->id)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button data-toggle="modal" data-target="#delete_modal"
-                                                class="btn btn-danger delete-btn"> Delete</button>
-                                        </form>
+                                        <button id="{{$workshop->id}}" data-toggle="modal" data-target="#delete_modal"
+                                            class="btn btn-danger delete-btn">
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -61,6 +59,26 @@
         </div>
     </div>
     
+
+    <div id="delete_modal" class="modal fade">
+        <div class="modal-dialog">
+            <form id="delete_q" method="POST" enctype="multipart/form-data">
+                @method('DELETE')
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myModalLabel">Delete Question</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
+                        <button type="submit" id="delete" class="btn btn-primary waves-effect waves-light">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </section>
 @endsection
 @section('script')
@@ -68,5 +86,14 @@
 <!-- Jquery Validation Plugin Css -->
 <script src="{{asset('admin/assets/plugins/jquery-steps/jquery.steps.js')}}"></script> <!-- JQuery Steps Plugin Js -->
 <script src="{{asset('admin/assets/js/pages/forms/form-wizard.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/momentjs/moment.js')}}"></script> <!-- Moment Plugin Js -->
+<script src="{{asset('admin/assets/plugins/momentjs/moment.js')}}"></script> 
+<!-- Moment Plugin Js -->
+<script>
+     $(document).ready(function(){
+     $('.delete-btn').click(function(){
+            let id = $(this).attr('id');
+            $('#delete_q').attr('action','{{route('company.workshop.destroy','')}}' +'/'+id);
+        });
+    });
+</script>
 @endsection
