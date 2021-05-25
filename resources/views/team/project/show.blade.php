@@ -138,7 +138,7 @@
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="form-group form-float col-md-6">
-                                                <select name="employee_id"  class="form-control show-tick  mr-3"  required>
+                                                <select name="employee_id"  class="form-control show-tick  mr-3 employe_id"  required>
                                                     <option selected disabled value="">-- Select Employee--</option>
                                                     @foreach (Auth::user()->employee as $user)
                                                     <option value="{{$user->id}}">{{$user->name}}</option> 
@@ -147,7 +147,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-float">
-                                                    <input type="text" class="form-control" placeholder=" Enter Project Title"
+                                                    <input type="text" class="form-control title" placeholder=" Enter Project Title"
                                                         name="title" >  
                                                     <input type="hidden" class="form-control" value="{{Auth::user()->id}}" placeholder=" Enter Employee Name"
                                                         name="team_id" required>
@@ -165,11 +165,11 @@
                                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                                     </div>
                                                     <input type="datetime-local" onkeydown="return false" name="deadline"
-                                                        class="form-control datetime"  placeholder="Ex: 30/07/2016 23:59" id="assigndate">
+                                                        class="form-control datetime date"  placeholder="Ex: 30/07/2016 23:59">
                                                 </div>
                                             </div>
                                             <div class=" form-group col-md-6">
-                                                <input type="number" class="form-control"  name="points" placeholder="Enter Points" required>
+                                                <input type="number" class="form-control points"  name="points" placeholder="Enter Points" required>
                                             </div>
                                         </div>   
                                         <br>
@@ -183,7 +183,7 @@
                                 </div>
                                 
                                 <div class="text-right">
-                                    <button class="btn btn-raised btn-success waves-effect" type="submit">Create</button>
+                                    <a class="btn btn-raised btn-success waves-effect form">create<a>
                                 </div>
                             </form>
                         </div>
@@ -407,10 +407,30 @@
 
 <script>
     $(document).ready(function(){
-      let deadline = $('#deadline').attr('deadline')
-      
+        $('.form').click(function(){
+         let deadline = $('#deadline').attr('deadline');
+         let employ = $('.employe').val();
+         let title = $('.title').val();
+         let date = $('.date').val();
+         let point = $('.point').val();
+
+         if (date == '' || title == '' || employ == '' || point == '' ) {
+            Swal.fire({
+                            icon: 'error',
+                            title: 'Empty Input Field',
+                            text: 'Kindly fill-out all input field',
+                        });
+         }
+         else{
+             $('#assignform').submit();
+         }
+        //  else if(new date(deadline)<new date(date)){
+        //      alert(1);
+        //  }
+        });
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{{asset('admin/assets/plugins/summernote/dist/summernote.js')}}"></script>  
 <script src="{{asset('admin/assets/js/pages/forms/advanced-form-elements.js')}}"></script> 
 <script src="{{asset('admin/assets/plugins/select2/select2.min.js')}}"></script> <!-- Select2 Js -->
